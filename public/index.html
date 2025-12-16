@@ -9,10 +9,8 @@
     <link rel="stylesheet" href="../assets/styles/style.css">
     <script defer src="../assets/js/main.js"></script>
 
-    <!-- Inclure Bootstrap CSS et JS via CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-    
+    <!-- Bootstrap Icons uniquement -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
     <!-- HEADER -->
@@ -36,24 +34,27 @@
     </header>
 
     <main>
-        <!-- Section 1 : RÉALISEZ JUSQU'À 70% D'ÉCONOMIE SUR VOTRE FACTURE DE CHAUFFAGE -->
+        <!-- Section 1 : Phrase d'accroche -->
         <section id="section1">
             <h1>RÉALISEZ JUSQU'À 70% D'ÉCONOMIE SUR VOTRE FACTURE DE CHAUFFAGE</h1>
             
             <div class="help-cards">
                 <article class="help-card">
+                    <i class="bi bi-piggy-bank-fill"></i>
                     <h2>Aides financières</h2>
                     <p>Jusqu'à 9 500€ d'aides directement versées</p>
                     <p>MaPrimeRenov' + CEE + reste à charge minimal pour votre projet</p>
                 </article>
 
                 <article class="help-card">
+                    <i class="bi bi-lightning-charge-fill"></i>
                     <h2>Économies d'énergie</h2>
                     <p>Divisez vos factures par 3</p>
                     <p>Économisez jusqu'à 2 000€ chaque année sur le gaz, fioul et l'électricité</p>
                 </article>
 
                 <article class="help-card">
+                    <i class="bi bi-house-check-fill"></i>
                     <h2>Classe énergétique</h2>
                     <p>Valorisez votre bien immobilier de +15 à 20% de valeur grâce au changement de la revente</p>
                 </article>
@@ -79,21 +80,21 @@
                         <div class="form-options">
                             <label class="option">
                                 <input type="radio" name="habitation" value="maison">
-                                <span class="option-icon"></span>
+                                <span class="option-icon"><i class="bi bi-house-fill"></i></span>
                                 <span>Maison</span>
                             </label>
 
                             <label class="option">
                                 <input type="radio" name="habitation" value="appartement">
-                                <span class="option-icon"></span>
+                                <span class="option-icon"><i class="bi bi-building-fill"></i></span>
                                 <span>Appartement</span>
                             </label>
                         </div>
 
                         <div class="form-navigation">
-                            <button type="button" class="nav-prev"><</button>
+                            <button type="button" class="nav-prev"><i class="bi bi-chevron-left"></i></button>
                             <span class="page-indicator">1/4</span>
-                            <button type="button" class="nav-next">></button>
+                            <button type="button" class="nav-next"><i class="bi bi-chevron-right"></i></button>
                         </div>
 
                         <p class="form-disclaimer">
@@ -117,21 +118,27 @@
 
             <div class="arguments">
                 <article class="argument">
-                    <div class="argument-icon"></div>
+                    <div class="argument-icon">
+                        <i class="bi bi-tree-fill"></i>
+                    </div>
                     <h3>Écologique</h3>
                     <p>Utilise l'énergie renouvelable de l'air, réduit votre empreinte carbone 
                     et contribue à la transition énergétique.</p>
                 </article>
 
                 <article class="argument">
-                    <div class="argument-icon"></div>
+                    <div class="argument-icon">
+                        <i class="bi bi-cash-coin"></i>
+                    </div>
                     <h3>Économique</h3>
                     <p>L'installation est amortie en 3 ou 5 ans. Divisez par 3 vos factures de chauffages 
                     et économisez jusqu'à 2 000€ par an.</p>
                 </article>
 
                 <article class="argument">
-                    <div class="argument-icon"></div>
+                    <div class="argument-icon">
+                        <i class="bi bi-thermometer-sun"></i>
+                    </div>
                     <h3>Confortable</h3>
                     <p>Valorisez votre bien immobilier de +15 à 20%. Chauffage homogène toute l'année 
                     avec possibilité de climatisation en été.</p>
@@ -145,18 +152,48 @@
 
             <div class="review-list">
                 <article class="review">
-                    <div class="user-avatar"></div>
-                    <p class="user-review">Le commentaire utilisateur</p>
+                    <div class="user-avatar">
+                        <i class="bi bi-person-fill"></i>
+                    </div>
+                    <div class="review-rating">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                    </div>
+                    <p class="user-review">"Service impeccable, installation rapide et équipe très professionnelle. Je recommande vivement !"</p>
+                    <p class="user-name">Jean D.</p>
                 </article>
 
                 <article class="review">
-                    <div class="user-avatar"></div>
-                    <p class="user-review"></p>
+                    <div class="user-avatar">
+                        <i class="bi bi-person-fill"></i>
+                    </div>
+                    <div class="review-rating">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                    </div>
+                    <p class="user-review">"Excellent accompagnement pour les aides. Des économies visibles dès le premier mois !"</p>
+                    <p class="user-name">Marie L.</p>
                 </article>
 
                 <article class="review">
-                    <div class="user-avatar"></div>
-                    <p class="user-review"></p>
+                    <div class="user-avatar">
+                        <i class="bi bi-person-fill"></i>
+                    </div>
+                    <div class="review-rating">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                    </div>
+                    <p class="user-review">"Installation propre et soignée. L'équipe est à l'écoute et très réactive."</p>
+                    <p class="user-name">Pierre M.</p>
                 </article>
             </div>
 
@@ -170,7 +207,14 @@
 
     <!-- FOOTER -->
     <footer class="footer">
-        <p>FOOTER</p>
+        <div class="footer-content">
+            <p>&copy; 2025 Haut Sommet - Tous droits réservés</p>
+            <div class="footer-social">
+                <a href="#"><i class="bi bi-facebook"></i></a>
+                <a href="#"><i class="bi bi-instagram"></i></a>
+                <a href="#"><i class="bi bi-linkedin"></i></a>
+            </div>
+        </div>
     </footer>
 </body>
 </html>
