@@ -1,7 +1,7 @@
 // Le menu burger
 
-
-const burgerMenu = document.querySelector('.burger-menu');
+// Je sélectionne les éléments dont je vais avoir besoin
+const burgerMenu = document.querySelector('.burger-menu'); 
 const navbar = document.querySelector('.navbar');
 const navLinks = document.querySelectorAll('.navbar a');
 
@@ -11,14 +11,14 @@ function toggleMenu() {
     burgerMenu.classList.toggle('active');
     burgerMenu.setAttribute('aria-expanded', isOpen);
     
-    // Empêcher le scroll quand le menu est ouvert
+    // J'empêche le scroll quand le menu est ouvert
     document.body.style.overflow = isOpen ? 'hidden' : '';
 }
 
 // Ouvrir/fermer le menu au clic sur le burger
 burgerMenu.addEventListener('click', toggleMenu);
 
-// Fermer le menu au clic sur un lien
+// Je ferme le menu au clic sur un lien
 navLinks.forEach(link => {
     link.addEventListener('click', () => {
         if (navbar.classList.contains('active')) {
@@ -27,7 +27,7 @@ navLinks.forEach(link => {
     });
 });
 
-// Fermer le menu au clic en dehors
+// Je Ferme le menu au clic en dehors
 document.addEventListener('click', (e) => {
     if (navbar.classList.contains('active') && 
         !navbar.contains(e.target) && 

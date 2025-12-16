@@ -640,7 +640,7 @@ section {
         padding: 1.5rem 3rem;
     }
 
-    /* BURGER - Caché en desktop */
+    /* Menu burger - caché en desktop */
     .burger-menu {
         display: none;
     }
