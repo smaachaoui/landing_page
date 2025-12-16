@@ -155,6 +155,12 @@ section {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+.help-card i {
+    font-size: 2.5rem;
+    color: #667eea;
+    margin-bottom: 1rem;
+}
+
 .help-card h2 {
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
@@ -297,6 +303,10 @@ section {
     transition: transform 0.3s;
 }
 
+.option-icon i {
+    color: #667eea;
+}
+
 /* La navigation du formulaire */
 .form-navigation {
     display: flex;
@@ -379,6 +389,14 @@ section {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     border-radius: 50%;
     margin: 0 auto 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.argument-icon i {
+    font-size: 1.8rem;
+    color: white;
 }
 
 .argument h3 {
@@ -425,12 +443,37 @@ section {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     border-radius: 50%;
     margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-avatar i {
+    font-size: 1.8rem;
+    color: white;
+}
+
+.review-rating {
+    margin-bottom: 0.5rem;
+}
+
+.review-rating i {
+    color: #ffc107;
+    font-size: 1rem;
 }
 
 .user-review {
     color: #666;
     font-size: 0.9rem;
     line-height: 1.6;
+    margin-bottom: 0.5rem;
+    font-style: italic;
+}
+
+.user-name {
+    font-weight: bold;
+    color: #333;
+    font-size: 0.9rem;
 }
 
 /* La pagination */
@@ -462,7 +505,29 @@ section {
     background: #333;
     color: white;
     padding: 2rem 1rem;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
     text-align: center;
+}
+
+.footer-social {
+    display: flex;
+    gap: 1rem;
+}
+
+.footer-social a {
+    color: white;
+    font-size: 1.5rem;
+    transition: color 0.3s;
+}
+
+.footer-social a:hover {
+    color: #667eea;
 }
 
 
@@ -550,9 +615,7 @@ section {
 }
 
 
-/* ========================================
-   DESKTOP (1024px et +)
-   ======================================== */
+/* DESKTOP (1024px et +) */
 
 @media (min-width: 1024px) {
     /* HEADER */
@@ -665,9 +728,7 @@ section {
 }
 
 
-/* ========================================
-   LARGE DESKTOP (1440px et +)
-   ======================================== */
+/* LARGE DESKTOP (1440px et +) */
 
 @media (min-width: 1440px) {
     /* SECTIONS */
