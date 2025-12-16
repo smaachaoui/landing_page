@@ -3,9 +3,158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing page</title>
+    <meta name="description" content="Obtenez jusqu'à 9500€ d'aides de l'État pour l'installation d'une pompe à chaleur. MaPrimeRénov', CEE, éco-prêt à taux zéro. Vérifiez votre éligibilité gratuitement.">
+    <meta name="keywords" content="pompe à chaleur, aides état, MaPrimeRénov, CEE, économie énergie, chauffage, rénovation énergétique">
+    <title>Pompe à Chaleur : Jusqu'à 9500€ d'Aides de l'État | Vérifiez votre Éligibilité</title>
+    <link rel="stylesheet" href="./assets/styles/style.css">
 </head>
 <body>
-    <h1>Hello world !</h1>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="logo">
+            <!-- Logo ici -->
+        </div>
+        <nav class="nav">
+            <a href="#section1">Aides financières</a>
+            <a href="#section2">Simulateur</a>
+            <a href="#section3">Pourquoi ?</a>
+            <a href="#section4">Avis clients</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Section 1 : RÉALISEZ JUSQU'À 70% D'ÉCONOMIE SUR VOTRE FACTURE DE CHAUFFAGE -->
+        <section id="section1">
+            <h1>RÉALISEZ JUSQU'À 70% D'ÉCONOMIE SUR VOTRE FACTURE DE CHAUFFAGE</h1>
+            
+            <div class="help-cards">
+                <article class="help-card">
+                    <h2>Aides financières</h2>
+                    <p>Jusqu'à 9 500€ d'aides directement versées</p>
+                    <p>MaPrimeRenov' + CEE + reste à charge minimal pour votre projet</p>
+                </article>
+
+                <article class="help-card">
+                    <h2>Économies d'énergie</h2>
+                    <p>Divisez vos factures par 3</p>
+                    <p>Économisez jusqu'à 2 000€ chaque année sur le gaz, fioul et l'électricité</p>
+                </article>
+
+                <article class="help-card">
+                    <h2>Classe énergétique</h2>
+                    <p>Valorisez votre bien immobilier de +15 à 20% de valeur grâce au changement de la revente</p>
+                </article>
+            </div>
+
+            <button class="btn-eligibility">Je vérifie mon éligibilité</button>
+            <div class="arrow-down"></div>
+        </section>
+
+        <!-- Section 2 : Calculez vos aides -->
+        <section id="section2">
+            <div class="calculator-box">
+                <h2>Calculez vos aides</h2>
+                <p>C'est simple, rapide et gratuit !</p>
+
+                <form class="form-calculator">
+                    <div class="form-step">
+                        <p class="form-question">1. Quel est votre type d'habitation ?</p>
+                        
+                        <div class="form-options">
+                            <label class="option">
+                                <input type="radio" name="habitation" value="maison">
+                                <span class="option-icon"></span>
+                                <span>Maison</span>
+                            </label>
+
+                            <label class="option">
+                                <input type="radio" name="habitation" value="appartement">
+                                <span class="option-icon"></span>
+                                <span>Appartement</span>
+                            </label>
+                        </div>
+
+                        <div class="form-navigation">
+                            <button type="button" class="nav-prev"><</button>
+                            <span class="page-indicator">1/4</span>
+                            <button type="button" class="nav-next">></button>
+                        </div>
+
+                        <p class="form-disclaimer">
+                            En soumettant ce formulaire, vous acceptez d'être recontacté(e) par Haut Sommet 
+                            dans le cadre de votre demande de simulation.
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Section 3 : Pourquoi choisir une pompe à chaleur  -->
+        <section id="section3">
+            <h2>Pourquoi installer une Pompe à Chaleur chez soi ?</h2>
+
+            <p class="section-intro">
+                Une pompe à chaleur permet de capter l'énergie de l'extérieur et évite les dépenses 
+                en énergies polluantes (fioul ou mazout). Une pompe à chaleur est donc 
+                un moyen d'économiser du chauffage et est considérée comme une énergie renouvelable.
+            </p>
+
+            <div class="arguments">
+                <article class="argument">
+                    <div class="argument-icon"></div>
+                    <h3>Écologique</h3>
+                    <p>Utilise l'énergie renouvelable de l'air, réduit votre empreinte carbone 
+                    et contribue à la transition énergétique.</p>
+                </article>
+
+                <article class="argument">
+                    <div class="argument-icon"></div>
+                    <h3>Économique</h3>
+                    <p>L'installation est amortie en 3 ou 5 ans. Divisez par 3 vos factures de chauffages 
+                    et économisez jusqu'à 2 000€ par an.</p>
+                </article>
+
+                <article class="argument">
+                    <div class="argument-icon"></div>
+                    <h3>Confortable</h3>
+                    <p>Valorisez votre bien immobilier de +15 à 20%. Chauffage homogène toute l'année 
+                    avec possibilité de climatisation en été.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Section 4 : Ils nous font confiance -->
+        <section id="section4">
+            <h2>Ils nous font confiance</h2>
+
+            <div class="testimonials-list">
+                <article class="testimonial">
+                    <div class="testimonial-avatar"></div>
+                    <p class="testimonial-text">Note + avis</p>
+                </article>
+
+                <article class="testimonial">
+                    <div class="testimonial-avatar"></div>
+                    <p class="testimonial-text"></p>
+                </article>
+
+                <article class="testimonial">
+                    <div class="testimonial-avatar"></div>
+                    <p class="testimonial-text"></p>
+                </article>
+            </div>
+
+            <div class="pagination">
+                <span class="pagination-dot active"></span>
+                <span class="pagination-dot"></span>
+                <span class="pagination-dot"></span>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>FOOTER</p>
+    </footer>
 </body>
 </html>
