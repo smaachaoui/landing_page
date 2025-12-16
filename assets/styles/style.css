@@ -515,18 +515,20 @@ section {
     text-align: center;
 }
 
-.footer-social {
+.footer-links {
     display: flex;
+    flex-direction: column;
     gap: 1rem;
 }
 
-.footer-social a {
+.footer-links a {
     color: white;
-    font-size: 1.5rem;
+    font-size: 14px;
     transition: color 0.3s;
+    text-decoration: none;
 }
 
-.footer-social a:hover {
+.footer-links a:hover {
     color: #667eea;
 }
 
@@ -598,7 +600,7 @@ section {
         flex: 1 1 100%;
     }
 
-    /* TESTIMONIALS - 2 colonnes */
+    /* Les témoignages clients - 2 colonnes */
     .review-list {
         flex-direction: row;
         flex-wrap: wrap;
@@ -612,6 +614,21 @@ section {
     .review:last-child {
         flex: 1 1 100%;
     }
+
+    .footer-links {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    }
+
+
+    .footer-links a {
+        color: white;
+        font-size: 16px;
+        transition: color 0.3s;
+        text-decoration: none;
+    }
+
 }
 
 
@@ -712,7 +729,7 @@ section {
         height: 80px;
     }
 
-    /* TESTIMONIALS - 3 colonnes */
+    /* Les témoignages clients - 3 colonnes */
     .review-list {
         max-width: 1200px;
         margin: 0 auto 2rem;
@@ -724,6 +741,20 @@ section {
 
     .review:last-child {
         flex: 1 1 calc(33.333% - 1rem);
+    }
+
+    .footer-links {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    }
+
+
+    .footer-links a {
+        color: white;
+        font-size: 18px;
+        transition: color 0.3s;
+        text-decoration: none;
     }
 }
 
@@ -774,5 +805,19 @@ section {
 
     .user-review {
         font-size: 1rem;
+    }
+
+    .footer-links {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    }
+
+
+    .footer-links a {
+        color: white;
+        font-size: 20px;
+        transition: color 0.3s;
+        text-decoration: none;
     }
 }
