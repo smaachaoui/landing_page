@@ -1,6 +1,4 @@
-// ========================================
-// BURGER MENU
-// ========================================
+// Le menu burger
 
 const burgerMenu = document.querySelector('.burger-menu');
 const navbar = document.querySelector('.navbar');
@@ -57,9 +55,6 @@ window.addEventListener('resize', () => {
 });
 
 
-// ========================================
-// SMOOTH SCROLL
-// ========================================
 
 // Smooth scroll pour les ancres
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -76,9 +71,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 
-// ========================================
-// FORMULAIRE MULTI-ÉTAPES
-// ========================================
+
+// Le formulaire à plusieurs étapes
 
 const formSteps = document.querySelectorAll('.form-step');
 const prevButtons = document.querySelectorAll('.nav-prev');
@@ -144,9 +138,7 @@ function validateCurrentStep() {
     return radioValid && textValid;
 }
 
-// ========================================
-// VALIDATION ET SÉCURITÉ
-// ========================================
+// Les tests de sécurité pour chacun des champs
 
 // Fonction de validation avancée pour chaque champ
 function validateInput(input) {
@@ -424,14 +416,10 @@ form.addEventListener('submit', (e) => {
         if (validateFormData(data)) {
 
             
-            // Ici, tu peux envoyer les données à un serveur
-            // fetch('/api/submit', {
-            //     method: 'POST',
-            //     headers: { 'Content-Type': 'application/json' },
-            //     body: JSON.stringify(data)
-            // });
+            //Envoyer les données à un serveur si nécessaire ici
             
-            // Passer à l'étape 5 (confirmation)
+
+            // Passer à l'étape 5 de confirmation
             currentStep++;
             showStep(currentStep);
             
