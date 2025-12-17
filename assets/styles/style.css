@@ -251,8 +251,12 @@ section {
 }
 
 .form-step {
-    display: flex;
+    display: none;
     flex-direction: column;
+}
+
+.form-step.active {
+    display: flex;
 }
 
 .form-question {
@@ -307,6 +311,70 @@ section {
     color: #667eea;
 }
 
+/* Champs de formulaire texte */
+.form-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-field label {
+    font-weight: 600;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+.form-field input {
+    padding: 0.75rem;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-field input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.form-field input::placeholder {
+    color: #999;
+}
+
+.form-field input:invalid:not(:placeholder-shown) {
+    border-color: #dc3545;
+}
+
+.form-field input:valid:not(:placeholder-shown) {
+    border-color: #28a745;
+}
+
+/* Messages d'erreur */
+.input-error {
+    border-color: #dc3545 !important;
+    animation: shake 0.3s;
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.error-message::before {
+    content: "⚠";
+}
+
 /* La navigation du formulaire */
 .form-navigation {
     display: flex;
@@ -342,6 +410,27 @@ section {
 .page-indicator {
     font-weight: bold;
     font-size: 1.1rem;
+}
+
+.btn-submit {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+    transition: background 0.3s, transform 0.3s;
+    cursor: pointer;
+}
+
+.btn-submit:hover {
+    background: #218838;
+    transform: translateY(-2px);
 }
 
 .form-disclaimer {
