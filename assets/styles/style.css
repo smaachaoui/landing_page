@@ -195,7 +195,7 @@ section {
     box-shadow: 0 6px 15px rgba(255, 107, 53, 0.4);
 }
 
-/* la flèche qui pointe vers le bas */
+
 .arrow-down {
     width: 30px;
     height: 30px;
@@ -887,7 +887,7 @@ section {
         font-size: 1rem;
     }
 
-    /* TESTIMONIALS */
+    /* Témoignages clients */
     .review {
         padding: 2rem;
     }
