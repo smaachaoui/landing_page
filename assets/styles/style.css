@@ -726,7 +726,7 @@ section {
 @media (min-width: 1024px) {
     /* HEADER */
     .header {
-        padding: 1.5rem 3rem;
+        padding: 0.5rem 3rem;
     }
 
     /* Menu burger - caché en desktop */
