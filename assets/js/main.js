@@ -422,6 +422,8 @@ form.addEventListener('submit', (e) => {
         
         // Vérification finale de sécurité
         if (validateFormData(data)) {
+
+            
             // Ici, tu peux envoyer les données à un serveur
             // fetch('/api/submit', {
             //     method: 'POST',
@@ -429,12 +431,10 @@ form.addEventListener('submit', (e) => {
             //     body: JSON.stringify(data)
             // });
             
-            alert(`Merci ${data.prenom} ${data.nom} ! Vos informations ont été enregistrées. Un conseiller vous contactera au ${data.telephone}.`);
+            // Passer à l'étape 5 (confirmation)
+            currentStep++;
+            showStep(currentStep);
             
-            // Optionnel : Réinitialiser le formulaire
-            // form.reset();
-            // currentStep = 0;
-            // showStep(currentStep);
         } else {
             alert('Une erreur s\'est produite. Veuillez vérifier vos informations.');
         }
