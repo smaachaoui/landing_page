@@ -257,7 +257,7 @@ function validatePhone(input, value) {
     
     // 2. Doit contenir exactement 10 chiffres
     if (!/^\d{10}$/.test(cleanPhone)) {
-        showError(input, 'Le téléphone doit contenir 10 chiffres (ex: 0612345678)');
+        showError(input, 'Le numéro de téléphone doit contenir 10 chiffres (ex: 0612345678)');
         return false;
     }
     
@@ -269,7 +269,7 @@ function validatePhone(input, value) {
     
     // 4. Protection contre les injections
     if (/[^0-9\s\-\.]/.test(value)) {
-        showError(input, 'Le téléphone ne peut contenir que des chiffres, espaces, tirets et points');
+        showError(input, 'Le numéro de téléphone ne peut contenir que des chiffres, espaces, tirets et points');
         return false;
     }
     
