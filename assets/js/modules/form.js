@@ -1,6 +1,6 @@
-// ========================================
-// FORMULAIRE MULTI-ÉTAPES
-// ========================================
+// Formulaire multi-étapes
+// J'ai créé un système de navigation entre 5 étapes de formulaire
+
 
 const formSteps = document.querySelectorAll('.form-step');
 const prevButtons = document.querySelectorAll('.nav-prev');
@@ -9,7 +9,7 @@ const form = document.querySelector('.form-calculator');
 
 let currentStep = 0;
 
-// Afficher une étape spécifique
+// J'affiche l'étape demandée et je masque les autres
 function showStep(stepIndex) {
     formSteps.forEach(step => step.classList.remove('active'));
     
@@ -17,13 +17,13 @@ function showStep(stepIndex) {
         formSteps[stepIndex].classList.add('active');
     }
     
-    // Mettre à jour les indicateurs (1/5, 2/5, etc.)
+    // Je mets à jour l'indicateur de progression
     document.querySelectorAll('.current-step').forEach(span => {
         span.textContent = currentStep + 1;
     });
 }
 
-// Valider l'étape courante
+// Je vérifie que l'étape actuelle est correctement remplie
 function validateCurrentStep() {
     const currentStepElement = formSteps[currentStep];
     const requiredInputs = currentStepElement.querySelectorAll('input[required]');
@@ -31,6 +31,7 @@ function validateCurrentStep() {
     const radioGroups = {};
     const textInputs = [];
     
+    // Je sépare les boutons radio des champs texte
     requiredInputs.forEach(input => {
         if (input.type === 'radio') {
             radioGroups[input.name] = radioGroups[input.name] || false;
@@ -40,9 +41,11 @@ function validateCurrentStep() {
         }
     });
     
+    // Je vérifie que tous les groupes radio ont une sélection
     const radioValid = Object.keys(radioGroups).length === 0 || 
                       Object.values(radioGroups).every(checked => checked);
     
+    // Je vérifie que tous les champs texte sont remplis et valides
     const textValid = textInputs.every(input => 
         input.value.trim() !== '' && window.validateInput(input)
     );
@@ -50,7 +53,7 @@ function validateCurrentStep() {
     return radioValid && textValid;
 }
 
-// Navigation précédente
+// Je gère le bouton Précédent
 prevButtons.forEach(button => {
     button.addEventListener('click', () => {
         if (currentStep > 0) {
@@ -60,7 +63,7 @@ prevButtons.forEach(button => {
     });
 });
 
-// Navigation suivante
+// Je gère le bouton Suivant
 nextButtons.forEach(button => {
     button.addEventListener('click', () => {
         if (validateCurrentStep()) {
@@ -74,13 +77,15 @@ nextButtons.forEach(button => {
     });
 });
 
-// Auto-avancer après sélection radio (sauf si champ texte présent)
+// J'avance automatiquement après une sélection radio
 document.querySelectorAll('.option input[type="radio"]').forEach(radio => {
     radio.addEventListener('change', () => {
+        // Je vérifie s'il y a des champs texte dans l'étape actuelle
         const hasTextField = formSteps[currentStep].querySelector(
             'input[type="text"], input[type="tel"], input[type="email"]'
         );
         
+        // Si pas de champs texte, j'avance automatiquement
         if (!hasTextField && currentStep < formSteps.length - 1) {
             setTimeout(() => {
                 currentStep++;
@@ -90,16 +95,17 @@ document.querySelectorAll('.option input[type="radio"]').forEach(radio => {
     });
 });
 
-// Soumission du formulaire
+// Je gère la soumission du formulaire
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
     
+    // Je vérifie une dernière fois la validation
     if (!validateCurrentStep()) {
         alert('Veuillez remplir tous les champs correctement.');
         return;
     }
     
-    // Récupérer et sanitiser les données
+    // Je récupère toutes les données du formulaire
     const formData = new FormData(form);
     const data = {};
     formData.forEach((value, key) => {
@@ -108,22 +114,23 @@ form.addEventListener('submit', async (e) => {
     
     console.log('Données du formulaire:', data);
     
-    // Validation finale
+    // Je valide toutes les données une dernière fois
     if (!window.validateFormData(data)) {
         alert('Erreur de validation. Vérifiez vos informations.');
         return;
     }
     
-    // Envoyer l'email via EmailJS
+    // Je prépare le bouton pour l'envoi
     const submitBtn = form.querySelector('.btn-submit');
     const originalText = submitBtn.innerHTML;
     submitBtn.disabled = true;
     submitBtn.innerHTML = '<i class="bi bi-hourglass-split"></i> Envoi en cours...';
     
+    // J'envoie l'email via EmailJS
     try {
         await window.sendEmail(data);
         
-        // Passer à l'étape de confirmation
+        // Je passe à la page de confirmation
         currentStep++;
         showStep(currentStep);
     } catch (error) {
@@ -134,71 +141,74 @@ form.addEventListener('submit', async (e) => {
     }
 });
 
-// Initialiser le formulaire à la première étape
+// J'initialise le formulaire à la première étape
 showStep(currentStep);
 
 
-// ========================================
-// GESTION DU CHAMP "AUTRE" POUR LE CHAUFFAGE
-// ========================================
+// Gestion du champ conditionnel "Autre type de chauffage"
+// J'affiche ce champ uniquement si l'utilisateur sélectionne "Autre"
+
 
 const chauffageRadios = document.querySelectorAll('input[name="chauffage"]');
 const autreChauffageField = document.getElementById('autre-chauffage-field');
 const autreChauffageInput = document.getElementById('autre-chauffage');
 
+// Je gère l'affichage du champ "Autre"
 function toggleAutreChauffage() {
     const selectedValue = document.querySelector('input[name="chauffage"]:checked')?.value;
     
     if (selectedValue === 'autre') {
+        // J'affiche le champ avec une animation
         autreChauffageField.style.display = 'block';
         autreChauffageInput.required = true;
         
-        // Animation d'apparition
         setTimeout(() => {
             autreChauffageField.style.opacity = '1';
             autreChauffageField.style.transform = 'translateY(0)';
         }, 10);
     } else {
+        // Je masque et réinitialise le champ
         autreChauffageField.style.display = 'none';
         autreChauffageInput.required = false;
         autreChauffageInput.value = '';
         
-        // Réinitialiser l'animation
         autreChauffageField.style.opacity = '0';
         autreChauffageField.style.transform = 'translateY(-10px)';
     }
 }
 
+// J'écoute les changements sur les boutons radio
 chauffageRadios.forEach(radio => {
     radio.addEventListener('change', toggleAutreChauffage);
 });
 
+// J'initialise l'état du champ au chargement
 toggleAutreChauffage();
 
 
-// ========================================
-// BOUTON DE FERMETURE DE LA CONFIRMATION
-// ========================================
+// Bouton de fermeture de la page de confirmation
+// Je permets à l'utilisateur de fermer la confirmation et recommencer
+
 
 const closeConfirmationBtn = document.getElementById('close-confirmation');
 
 if (closeConfirmationBtn) {
     closeConfirmationBtn.addEventListener('click', () => {
-        // Réinitialiser le formulaire
+        // Je réinitialise complètement le formulaire
         form.reset();
         
-        // Retourner à l'étape 1
+        // Je retourne à la première étape
         currentStep = 0;
         showStep(currentStep);
         
-        // Réactiver le bouton submit si désactivé
+        // Je réactive le bouton d'envoi
         const submitBtn = form.querySelector('.btn-submit');
         if (submitBtn) {
             submitBtn.disabled = false;
             submitBtn.innerHTML = '<i class="bi bi-check-circle"></i>Envoyer';
         }
         
-        // Scroll vers le formulaire
+        // Je scroll vers le formulaire
         document.querySelector('#section2').scrollIntoView({ 
             behavior: 'smooth',
             block: 'start'

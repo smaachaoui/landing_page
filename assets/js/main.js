@@ -1,63 +1,58 @@
-// MAIN.JS - Le point d'entrée de l'application
-
-
-// Ce fichier contrôle tous les modules
+// Point d'entrée de l'application
+// J'orchestre le chargement de tous les modules dans le bon ordre
 
 
 (function() {
     'use strict';
     
-    console.log('Application Haut Sommet - Démarrage...');
+    console.log('Application Haut Sommet : démarrage...');
     
-    // CHARGEMENT DES MODULES
-    
-    
-    // Les modules sont chargés dans l'ordre de dépendance
+    // Je définis l'ordre de chargement des modules
     const modules = [
-        '../assets/js/modules/config.js',        // 1. Configuration (pas de dépendance)
-        '../assets/js/modules/validation.js',    // 2. Validation (pas de dépendance)
-        '../assets/js/modules/email.js',         // 3. Email (dépend de config)
-        '../assets/js/modules/menu.js',          // 4. Menu (indépendant)
-        '../assets/js/modules/form.js'           // 5. Form (dépend de tout)
+        '../assets/js/modules/config.js',
+        '../assets/js/modules/validation.js',
+        '../assets/js/modules/email.js',
+        '../assets/js/modules/menu.js',
+        '../assets/js/modules/form.js'
     ];
     
-    // Fonction pour charger un script dynamiquement
+    // Je charge un script de manière dynamique
     function loadScript(src) {
         return new Promise((resolve, reject) => {
             const script = document.createElement('script');
             script.src = src;
             script.defer = true;
             script.onload = () => {
-                console.log(`Module chargé: ${src}`);
+                console.log(`Module chargé : ${src}`);
                 resolve();
             };
             script.onerror = () => {
-                console.error(`Erreur de chargement: ${src}`);
+                console.error(`Erreur de chargement : ${src}`);
                 reject(new Error(`Impossible de charger ${src}`));
             };
             document.head.appendChild(script);
         });
     }
     
-    // Charger tous les modules séquentiellement
+    // Je charge tous les modules l'un après l'autre
     async function loadAllModules() {
         try {
             for (const module of modules) {
                 await loadScript(module);
             }
-            console.log('Tous les modules sont chargés !');
+            console.log('Tous les modules sont chargés.');
             initApp();
         } catch (error) {
-            console.error('Erreur lors du chargement des modules:', error);
+            console.error('Erreur lors du chargement des modules :', error);
             showError();
         }
     }
     
-    // Initialiser l'application une fois tous les modules chargés
+    // Je vérifie que l'application est prête
     function initApp() {
-        console.log('Application prête !');
+        console.log('Application prête.');
         
-        // Vérifier que les modules essentiels sont bien chargés
+        // Je vérifie que tous les modules essentiels sont disponibles
         const requiredModules = [
             'EMAILJS_CONFIG',
             'validateInput',
@@ -69,14 +64,14 @@
         const missingModules = requiredModules.filter(mod => !window[mod]);
         
         if (missingModules.length > 0) {
-            console.error(' Modules manquants:', missingModules);
+            console.error('Modules manquants :', missingModules);
             showError();
         } else {
-            console.log('Tous les modules requis sont disponibles');
+            console.log('Tous les modules requis sont disponibles.');
         }
     }
     
-    // Afficher une erreur si le chargement échoue
+    // J'affiche une erreur si le chargement échoue
     function showError() {
         const errorDiv = document.createElement('div');
         errorDiv.style.cssText = `
@@ -98,7 +93,7 @@
         document.body.appendChild(errorDiv);
     }
     
-    // Démarrer le chargement des modules
+    // Je démarre le chargement
     loadAllModules();
     
 })();
