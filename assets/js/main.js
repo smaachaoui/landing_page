@@ -1,8 +1,8 @@
-// MAIN.JS - Point d'entrée de l'application
+// MAIN.JS - Le point d'entrée de l'application
 
 
-// Ce fichier orchestre tous les modules
-// Un seul script à importer dans le HTML !
+// Ce fichier contrôle tous les modules
+
 
 (function() {
     'use strict';
@@ -28,11 +28,11 @@
             script.src = src;
             script.defer = true;
             script.onload = () => {
-                console.log(`✅ Module chargé: ${src}`);
+                console.log(`Module chargé: ${src}`);
                 resolve();
             };
             script.onerror = () => {
-                console.error(`❌ Erreur de chargement: ${src}`);
+                console.error(`Erreur de chargement: ${src}`);
                 reject(new Error(`Impossible de charger ${src}`));
             };
             document.head.appendChild(script);
