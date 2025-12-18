@@ -46,8 +46,26 @@ button {
 }
 
 .logo {
-    font-weight: bold;
-    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.help-logo {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    }
+
+.help-logo img {
+    width: 60px;
+    height: 40px;
+    object-fit: contain;
 }
 
 /* Le menu burger*/
@@ -713,6 +731,23 @@ section {
         padding: 1.5rem 2rem;
     }
 
+    .logo img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .help-logo {
+        display: flex;
+        align-items: center;
+        gap: 3.5rem;
+    }
+
+    .help-logo img {
+        width: 120px;
+        height: 60px;
+        object-fit: contain;
+    }
+
     /* NAVBAR TABLET */
     .navbar {
         width: 50%;
@@ -834,6 +869,23 @@ section {
     /* HEADER */
     .header {
         padding: 0.5rem 3rem;
+    }
+
+    .logo img {
+        width: 100px;
+        height: 90px;
+    }
+
+    .help-logo {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .help-logo img {
+        width: 100px;
+        height: 70px;
+        object-fit: contain;
     }
 
     /* Menu burger - caché en desktop */
@@ -975,6 +1027,23 @@ section {
 /* LARGE DESKTOP (1440px et +) */
 
 @media (min-width: 1440px) {
+    .logo img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .help-logo {
+        display: flex;
+        align-items: center;
+        gap: 2.5rem;
+    }
+
+    .help-logo img {
+        width: 120px;
+        height: 70px;
+        object-fit: contain;
+    }
+
     /* SECTIONS */
     section {
         padding: 5rem 4rem;
