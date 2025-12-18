@@ -1,0 +1,200 @@
+GUIDE DE CONFIGURATION EMAILJS
+
+Ce guide explique comment configurer EmailJS pour recevoir les demandes de votre site web par email.
+
+
+SOMMAIRE
+
+1. Création du compte EmailJS
+2. Configuration du service email
+3. Création du template
+4. Récupération des identifiants
+5. Intégration dans le code
+6. Test de fonctionnement
+
+
+1. CREATION DU COMPTE EMAILJS
+
+Etape 1 : Accédez au site EmailJS
+Rendez-vous sur https://www.emailjs.com
+
+Etape 2 : Créez votre compte
+Cliquez sur "Sign Up" en haut à droite
+Remplissez le formulaire avec votre adresse email professionnelle
+Confirmez votre email via le lien reçu
+
+Etape 3 : Connexion
+Connectez-vous avec vos identifiants
+
+
+2. CONFIGURATION DU SERVICE EMAIL
+
+Etape 1 : Accédez aux services
+Dans le menu de gauche, cliquez sur "Email Services"
+
+Etape 2 : Ajoutez un service
+Cliquez sur "Add New Service"
+Choisissez votre fournisseur d'email (Gmail, Outlook, etc.)
+
+Pour Gmail :
+Cliquez sur "Gmail"
+Cliquez sur "Connect Account"
+Autorisez EmailJS à accéder à votre compte Gmail
+
+Pour Outlook :
+Cliquez sur "Outlook.com"
+Cliquez sur "Connect Account"
+Autorisez EmailJS à accéder à votre compte Outlook
+
+Etape 3 : Notez le Service ID
+Après connexion, vous verrez un identifiant comme "service_abc1234"
+Notez cet identifiant, vous en aurez besoin plus tard
+
+
+3. CREATION DU TEMPLATE
+
+Etape 1 : Accédez aux templates
+Dans le menu de gauche, cliquez sur "Email Templates"
+
+Etape 2 : Créez un nouveau template
+Cliquez sur "Create New Template"
+
+Etape 3 : Configurez le template
+
+Dans "To Email", mettez :
+{{to_email}}
+
+Dans "Subject", mettez :
+{{subject}}
+
+Dans "Content", copiez ce texte :
+
+NOUVELLE DEMANDE DE CLIENT
+
+Informations client :
+Nom : {{nom}}
+Prénom : {{prenom}}
+Email : {{email}}
+Téléphone : {{telephone}}
+
+Informations projet :
+Type d'habitation : {{type_habitation}}
+Statut : {{statut}}
+Type de chauffage : {{type_chauffage}}
+Département : {{departement}}
+
+Date de soumission : {{date_soumission}}
+
+
+Etape 4 : Enregistrez le template
+Cliquez sur "Save" en haut à droite
+Notez le Template ID affiché (exemple : "template_xyz5678")
+
+
+4. RECUPERATION DES IDENTIFIANTS
+
+Vous devez récupérer trois informations :
+
+1. Service ID
+Allez dans "Email Services"
+Copiez l'identifiant de votre service (commence par "service_")
+
+2. Template ID
+Allez dans "Email Templates"
+Copiez l'identifiant de votre template (commence par "template_")
+
+3. Public Key
+Cliquez sur votre nom en haut à droite
+Cliquez sur "Account"
+Dans la section "API Keys", copiez votre "Public Key"
+
+
+5. INTEGRATION DANS LE CODE
+
+Etape 1 : Ouvrez le fichier de configuration
+Dans votre projet, ouvrez le fichier :
+assets/js/modules/config.js
+
+Etape 2 : Remplacez les valeurs
+Remplacez les valeurs existantes par vos identifiants :
+
+const EMAILJS_CONFIG = {
+    serviceID: 'votre_service_id',
+    templateID: 'votre_template_id',
+    publicKey: 'votre_public_key',
+    emailDestination: 'votre-email@entreprise.com'
+};
+
+Exemple :
+
+const EMAILJS_CONFIG = {
+    serviceID: 'service_abc1234',
+    templateID: 'template_xyz5678',
+    publicKey: 'abcd1234efgh5678',
+    emailDestination: 'contact@hautsommet.fr'
+};
+
+Etape 3 : Enregistrez le fichier
+Sauvegardez vos modifications
+
+
+6. TEST DE FONCTIONNEMENT
+
+Etape 1 : Ouvrez votre site
+Accédez à votre site dans un navigateur
+
+Etape 2 : Remplissez le formulaire
+Remplissez toutes les étapes du formulaire avec des données de test
+
+Etape 3 : Soumettez
+Cliquez sur "Envoyer"
+
+Etape 4 : Vérifiez votre boîte email
+Vous devriez recevoir un email avec les informations du formulaire
+
+Si vous ne recevez rien :
+Vérifiez vos spams
+Vérifiez que les identifiants sont corrects dans config.js
+Ouvrez la console du navigateur (F12) pour voir les erreurs
+
+
+LIMITES DU PLAN GRATUIT
+
+Plan gratuit EmailJS :
+200 emails par mois
+2000 emails maximum par mois
+
+Si vous dépassez :
+Vous recevrez un email d'avertissement
+Vous devrez passer à un plan payant
+
+
+DEPANNAGE
+
+Problème : "Invalid public key"
+Solution : Vérifiez que vous avez copié la bonne Public Key
+
+Problème : "Service not found"
+Solution : Vérifiez le Service ID dans config.js
+
+Problème : "Template not found"
+Solution : Vérifiez le Template ID dans config.js
+
+Problème : Emails non reçus
+Solution :
+Vérifiez vos spams
+Vérifiez que to_email est correct dans config.js
+Testez l'envoi depuis le dashboard EmailJS
+
+
+SUPPORT
+
+Pour toute question technique :
+Documentation EmailJS : https://www.emailjs.com/docs/
+Support EmailJS : https://www.emailjs.com/support/
+
+Pour toute question sur le code :
+Contactez votre développeur
+
+
+FIN DU GUIDE
