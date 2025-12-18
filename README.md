@@ -60,7 +60,7 @@ landing_page/
 │   └── styles/
 │       └── style.css          (Styles responsive)
 ├── README.md                  (Ce fichier)
-└── GUIDE_EMAILJS_ENTREPRISE.txt (Guide de configuration)
+└── Guide_EmailJS.txt (Guide de configuration)
 
 
 TECHNOLOGIES UTILISEES
@@ -122,7 +122,7 @@ GUIDE EMAILJS POUR L'ENTREPRISE
 J'ai créé un guide complet pour configurer EmailJS sans compétences techniques.
 
 Le guide est disponible dans le fichier :
-GUIDE_EMAILJS_ENTREPRISE.txt
+Guide_EmailJS.txt
 
 Ce guide explique :
 Comment créer un compte EmailJS
@@ -270,7 +270,7 @@ Documentation : https://www.emailjs.com/docs/
 Support : https://www.emailjs.com/support/
 
 Pour les questions sur le code :
-Contactez votre développeur
+Contactez votre développeur à l'adresse mail suivante : smaachaoui@outlook.com
 
 
 MAINTENANCE
