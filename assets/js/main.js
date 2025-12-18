@@ -14,11 +14,11 @@
     
     // Les modules sont chargés dans l'ordre de dépendance
     const modules = [
-        'modules/config.js',        // 1. Configuration (pas de dépendance)
-        'modules/validation.js',    // 2. Validation (pas de dépendance)
-        'modules/email.js',         // 3. Email (dépend de config)
-        'modules/menu.js',          // 4. Menu (indépendant)
-        'modules/form.js'           // 5. Form (dépend de tout)
+        '../assets/js/modules/config.js',        // 1. Configuration (pas de dépendance)
+        '../assets/js/modules/validation.js',    // 2. Validation (pas de dépendance)
+        '../assets/js/modules/email.js',         // 3. Email (dépend de config)
+        '../assets/js/modules/menu.js',          // 4. Menu (indépendant)
+        '../assets/js/modules/form.js'           // 5. Form (dépend de tout)
     ];
     
     // Fonction pour charger un script dynamiquement
@@ -55,7 +55,7 @@
     
     // Initialiser l'application une fois tous les modules chargés
     function initApp() {
-        console.log('🎉 Application prête !');
+        console.log('Application prête !');
         
         // Vérifier que les modules essentiels sont bien chargés
         const requiredModules = [
