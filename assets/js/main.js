@@ -14,11 +14,11 @@
     
     // Les modules sont chargés dans l'ordre de dépendance
     const modules = [
-        'config.js',        // 1. Configuration (pas de dépendance)
-        'validation.js',    // 2. Validation (pas de dépendance)
-        'email.js',         // 3. Email (dépend de config)
-        'menu.js',          // 4. Menu (indépendant)
-        'form.js'           // 5. Form (dépend de tout)
+        'modules/config.js',        // 1. Configuration (pas de dépendance)
+        'modules/validation.js',    // 2. Validation (pas de dépendance)
+        'modules/email.js',         // 3. Email (dépend de config)
+        'modules/menu.js',          // 4. Menu (indépendant)
+        'modules/form.js'           // 5. Form (dépend de tout)
     ];
     
     // Fonction pour charger un script dynamiquement
