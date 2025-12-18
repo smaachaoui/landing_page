@@ -5,6 +5,16 @@
 async function sendEmail(formData) {
     const config = window.EMAILJS_CONFIG;
     
+    // Déterminer le type de chauffage à afficher
+    let typeChauffage;
+    if (formData.chauffage === 'autre' && formData.autre_chauffage) {
+        // Si "Autre" sélectionné, utiliser la valeur saisie
+        typeChauffage = formData.autre_chauffage;
+    } else {
+        // Sinon, capitaliser la première lettre
+        typeChauffage = formData.chauffage.charAt(0).toUpperCase() + formData.chauffage.slice(1);
+    }
+    
     const templateParams = {
         to_email: config.emailDestination,
         subject: 'Client à recontacter',
@@ -18,7 +28,7 @@ async function sendEmail(formData) {
         // Données du projet
         type_habitation: formData.habitation === 'maison' ? 'Maison' : 'Appartement',
         statut: formData.statut === 'proprietaire' ? 'Propriétaire' : 'Locataire',
-        type_chauffage: formData.chauffage.charAt(0).toUpperCase() + formData.chauffage.slice(1),
+        type_chauffage: typeChauffage,
         departement: formData.departement,
         
         // Date

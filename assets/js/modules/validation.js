@@ -17,7 +17,8 @@ function validateInput(input) {
         'prenom': () => validateName(input, value),
         'email': () => validateEmail(input, value),
         'telephone': () => validatePhone(input, value),
-        'departement': () => validateDepartement(input, value)
+        'departement': () => validateDepartement(input, value),
+        'autre_chauffage': () => validateAutreChauffage(input, value)
     };
     
     return validators[name] ? validators[name]() : true;
@@ -106,6 +107,32 @@ function validateDepartement(input, value) {
     
     if (value.length === 3 && !validDepts.includes(dept)) {
         showError(input, 'Département DOM-TOM invalide');
+        return false;
+    }
+    
+    clearError(input);
+    return true;
+}
+
+// Validation autre_chauffage
+function validateAutreChauffage(input, value) {
+    if (value.length < 3) {
+        showError(input, 'Minimum 3 caractères');
+        return false;
+    }
+    
+    if (value.length > 50) {
+        showError(input, 'Maximum 50 caractères');
+        return false;
+    }
+    
+    if (/<|>|script|javascript/gi.test(value)) {
+        showError(input, 'Caractères non autorisés');
+        return false;
+    }
+    
+    if (!/[a-zA-ZÀ-ÿ]/.test(value)) {
+        showError(input, 'Veuillez saisir un type de chauffage valide');
         return false;
     }
     

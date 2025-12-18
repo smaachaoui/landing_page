@@ -136,3 +136,72 @@ form.addEventListener('submit', async (e) => {
 
 // Initialiser le formulaire à la première étape
 showStep(currentStep);
+
+
+// ========================================
+// GESTION DU CHAMP "AUTRE" POUR LE CHAUFFAGE
+// ========================================
+
+const chauffageRadios = document.querySelectorAll('input[name="chauffage"]');
+const autreChauffageField = document.getElementById('autre-chauffage-field');
+const autreChauffageInput = document.getElementById('autre-chauffage');
+
+function toggleAutreChauffage() {
+    const selectedValue = document.querySelector('input[name="chauffage"]:checked')?.value;
+    
+    if (selectedValue === 'autre') {
+        autreChauffageField.style.display = 'block';
+        autreChauffageInput.required = true;
+        
+        // Animation d'apparition
+        setTimeout(() => {
+            autreChauffageField.style.opacity = '1';
+            autreChauffageField.style.transform = 'translateY(0)';
+        }, 10);
+    } else {
+        autreChauffageField.style.display = 'none';
+        autreChauffageInput.required = false;
+        autreChauffageInput.value = '';
+        
+        // Réinitialiser l'animation
+        autreChauffageField.style.opacity = '0';
+        autreChauffageField.style.transform = 'translateY(-10px)';
+    }
+}
+
+chauffageRadios.forEach(radio => {
+    radio.addEventListener('change', toggleAutreChauffage);
+});
+
+toggleAutreChauffage();
+
+
+// ========================================
+// BOUTON DE FERMETURE DE LA CONFIRMATION
+// ========================================
+
+const closeConfirmationBtn = document.getElementById('close-confirmation');
+
+if (closeConfirmationBtn) {
+    closeConfirmationBtn.addEventListener('click', () => {
+        // Réinitialiser le formulaire
+        form.reset();
+        
+        // Retourner à l'étape 1
+        currentStep = 0;
+        showStep(currentStep);
+        
+        // Réactiver le bouton submit si désactivé
+        const submitBtn = form.querySelector('.btn-submit');
+        if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<i class="bi bi-check-circle"></i>Envoyer';
+        }
+        
+        // Scroll vers le formulaire
+        document.querySelector('#section2').scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+        });
+    });
+}
