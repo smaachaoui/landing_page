@@ -1,7 +1,5 @@
 // Menu burger et navigation
 // J'ai créé un menu responsive qui s'ouvre et se ferme au clic
-
-
 const burgerMenu = document.querySelector('.burger-menu');
 const navbar = document.querySelector('.navbar');
 const navLinks = document.querySelectorAll('.navbar a');
@@ -56,8 +54,6 @@ window.addEventListener('resize', () => {
 
 // Défilement fluide vers les sections
 // J'ai activé le smooth scroll pour tous les liens d'ancrage
-
-
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();

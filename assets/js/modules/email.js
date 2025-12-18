@@ -1,7 +1,5 @@
 // Envoi des emails via EmailJS
 // J'utilise le service EmailJS pour transmettre les demandes par email
-
-
 async function sendEmail(formData) {
     // Je récupère la configuration EmailJS
     const config = window.EMAILJS_CONFIG;

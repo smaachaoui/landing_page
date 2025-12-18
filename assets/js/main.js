@@ -1,7 +1,5 @@
 // Point d'entrée de l'application
 // J'orchestre le chargement de tous les modules dans le bon ordre
-
-
 (function() {
     'use strict';
     

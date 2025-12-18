@@ -1,7 +1,5 @@
 // Formulaire multi-étapes
 // J'ai créé un système de navigation entre 5 étapes de formulaire
-
-
 const formSteps = document.querySelectorAll('.form-step');
 const prevButtons = document.querySelectorAll('.nav-prev');
 const nextButtons = document.querySelectorAll('.nav-next');
@@ -147,8 +145,6 @@ showStep(currentStep);
 
 // Gestion du champ conditionnel "Autre type de chauffage"
 // J'affiche ce champ uniquement si l'utilisateur sélectionne "Autre"
-
-
 const chauffageRadios = document.querySelectorAll('input[name="chauffage"]');
 const autreChauffageField = document.getElementById('autre-chauffage-field');
 const autreChauffageInput = document.getElementById('autre-chauffage');
@@ -188,8 +184,6 @@ toggleAutreChauffage();
 
 // Bouton de fermeture de la page de confirmation
 // Je permets à l'utilisateur de fermer la confirmation et recommencer
-
-
 const closeConfirmationBtn = document.getElementById('close-confirmation');
 
 if (closeConfirmationBtn) {
