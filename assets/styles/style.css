@@ -1050,3 +1050,114 @@ section {
         text-decoration: none;
     }
 }
+
+/* ========================================
+   CHAMP "AUTRE" CHAUFFAGE
+   ======================================== */
+
+#autre-chauffage-field {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    margin-top: 1.5rem;
+}
+
+#autre-chauffage-field[style*="display: block"] {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#autre-chauffage-field label {
+    color: #667eea;
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+#autre-chauffage {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+#autre-chauffage:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+#autre-chauffage::placeholder {
+    color: #999;
+    font-style: italic;
+}
+
+
+/* ========================================
+   BOUTON DE FERMETURE CONFIRMATION
+   ======================================== */
+
+.confirmation-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: transparent;
+    border: none;
+    color: #999;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.confirmation-close:hover {
+    background: #f0f0f0;
+    color: #333;
+    transform: rotate(90deg);
+}
+
+.confirmation-close:active {
+    transform: rotate(90deg) scale(0.95);
+}
+
+.confirmation-message {
+    position: relative;
+}
+
+/* Responsive pour le bouton de fermeture */
+@media (max-width: 768px) {
+    .confirmation-close {
+        top: 0.5rem;
+        right: 0.5rem;
+        width: 35px;
+        height: 35px;
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .confirmation-close {
+        width: 32px;
+        height: 32px;
+        font-size: 1.2rem;
+    }
+    
+    #autre-chauffage-field label {
+        font-size: 0.9rem;
+    }
+    
+    #autre-chauffage {
+        padding: 0.7rem 0.9rem;
+        font-size: 0.95rem;
+    }
+}
