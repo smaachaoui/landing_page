@@ -7,11 +7,11 @@
     
     // Je définis l'ordre de chargement des modules
     const modules = [
-        '../assets/js/modules/config.js',
-        '../assets/js/modules/validation.js',
-        '../assets/js/modules/email.js',
-        '../assets/js/modules/menu.js',
-        '../assets/js/modules/form.js'
+        './assets/js/modules/config.js',
+        './assets/js/modules/validation.js',
+        './assets/js/modules/email.js',
+        './assets/js/modules/menu.js',
+        './assets/js/modules/form.js'
     ];
     
     // Je charge un script de manière dynamique
