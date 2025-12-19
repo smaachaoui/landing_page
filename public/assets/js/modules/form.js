@@ -4,8 +4,31 @@ const formSteps = document.querySelectorAll('.form-step');
 const prevButtons = document.querySelectorAll('.nav-prev');
 const nextButtons = document.querySelectorAll('.nav-next');
 const form = document.querySelector('.form-calculator');
+const progressBar = document.getElementById('progressBar');
 
 let currentStep = 0;
+const totalSteps = 4; // Nombre d'étapes (sans compter la confirmation)
+
+// Mise à jour de la barre de progression
+function updateProgressBar() {
+    const progressBarContainer = document.querySelector('.progress-bar-container');
+    
+    // Masquer la barre à l'étape de confirmation (étape 5, index 4)
+    if (currentStep >= 4) {
+        if (progressBarContainer) {
+            progressBarContainer.classList.add('hidden');
+        }
+    } else {
+        if (progressBarContainer) {
+            progressBarContainer.classList.remove('hidden');
+        }
+        
+        const progress = ((currentStep + 1) / totalSteps) * 100;
+        if (progressBar) {
+            progressBar.style.width = `${progress}%`;
+        }
+    }
+}
 
 // J'affiche l'étape demandée et je masque les autres
 function showStep(stepIndex) {
@@ -17,25 +40,28 @@ function showStep(stepIndex) {
     
     // Je mets à jour l'indicateur de progression
     document.querySelectorAll('.current-step').forEach(span => {
-        span.textContent = currentStep + 1;
+        span.textContent = Math.min(stepIndex + 1, totalSteps);
     });
+    
+    // Mise à jour de la barre de progression
+    updateProgressBar();
 }
 
 // Je vérifie que l'étape actuelle est correctement remplie
 function validateCurrentStep() {
     const currentStepElement = formSteps[currentStep];
-    const requiredInputs = currentStepElement.querySelectorAll('input[required]');
+    const requiredInputs = currentStepElement.querySelectorAll('input[required], select[required]');
     
     const radioGroups = {};
-    const textInputs = [];
+    const otherInputs = [];
     
-    // Je sépare les boutons radio des champs texte
+    // Je sépare les boutons radio des autres champs
     requiredInputs.forEach(input => {
         if (input.type === 'radio') {
             radioGroups[input.name] = radioGroups[input.name] || false;
             if (input.checked) radioGroups[input.name] = true;
         } else {
-            textInputs.push(input);
+            otherInputs.push(input);
         }
     });
     
@@ -43,12 +69,17 @@ function validateCurrentStep() {
     const radioValid = Object.keys(radioGroups).length === 0 || 
                       Object.values(radioGroups).every(checked => checked);
     
-    // Je vérifie que tous les champs texte sont remplis et valides
-    const textValid = textInputs.every(input => 
-        input.value.trim() !== '' && window.validateInput(input)
-    );
+    // Je vérifie que tous les autres champs sont remplis et valides
+    const otherValid = otherInputs.every(input => {
+        if (input.type === 'text' || input.type === 'email' || input.type === 'tel') {
+            return input.value.trim() !== '' && window.validateInput(input);
+        } else if (input.tagName === 'SELECT') {
+            return input.value !== '';
+        }
+        return true;
+    });
     
-    return radioValid && textValid;
+    return radioValid && otherValid;
 }
 
 // Je gère le bouton Précédent
@@ -78,17 +109,64 @@ nextButtons.forEach(button => {
 // J'avance automatiquement après une sélection radio
 document.querySelectorAll('.option input[type="radio"]').forEach(radio => {
     radio.addEventListener('change', () => {
-        // Je vérifie s'il y a des champs texte dans l'étape actuelle
+        // Vérification spéciale pour l'appartement - Non éligible
+        if (radio.name === 'habitation' && radio.value === 'appartement') {
+            // Afficher le message d'inéligibilité
+            setTimeout(() => {
+                alert('Votre profil n\'est pas éligible.\n\nMalheureusement vous n\'êtes pas éligible aux aides pour l\'installation d\'une pompe à chaleur.');
+                // Réinitialiser le formulaire
+                form.reset();
+                currentStep = 0;
+                showStep(currentStep);
+            }, 300);
+            return;
+        }
+        
+        // Vérification spéciale pour le locataire - Non éligible
+        if (radio.name === 'statut' && radio.value === 'locataire') {
+            // Afficher le message d'inéligibilité
+            setTimeout(() => {
+                alert('Votre profil n\'est pas éligible.\n\nMalheureusement vous n\'êtes pas éligible aux aides pour l\'installation d\'une pompe à chaleur.');
+                // Réinitialiser le formulaire
+                form.reset();
+                currentStep = 0;
+                showStep(currentStep);
+            }, 300);
+            return;
+        }
+        
+        // Si c'est l'étape du chauffage et que "Autre" est sélectionné, ne pas avancer
+        if (radio.name === 'chauffage' && radio.value === 'autre') {
+            return; // On attend que l'utilisateur remplisse le champ texte
+        }
+        
+        // Je vérifie s'il y a des champs texte requis dans l'étape actuelle
         const hasTextField = formSteps[currentStep].querySelector(
-            'input[type="text"], input[type="tel"], input[type="email"]'
+            'input[type="text"][required], input[type="tel"][required], input[type="email"][required], select[required]'
         );
         
-        // Si pas de champs texte, j'avance automatiquement
+        // Si pas de champs texte requis, j'avance automatiquement
         if (!hasTextField && currentStep < formSteps.length - 1) {
             setTimeout(() => {
                 currentStep++;
                 showStep(currentStep);
             }, 300);
+        }
+    });
+});
+
+// Je m'assure que les clics sur les labels fonctionnent bien
+document.querySelectorAll('.option').forEach(option => {
+    option.addEventListener('click', function(e) {
+        // Si le clic est directement sur l'input, ne rien faire (géré par l'event change ci-dessus)
+        if (e.target.tagName === 'INPUT') return;
+        
+        // Sinon, je déclenche le clic sur l'input radio
+        const radio = this.querySelector('input[type="radio"]');
+        if (radio) {
+            radio.checked = true;
+            // Je déclenche manuellement l'événement change
+            radio.dispatchEvent(new Event('change', { bubbles: true }));
         }
     });
 });
@@ -209,3 +287,17 @@ if (closeConfirmationBtn) {
         });
     });
 }
+
+// ============================================
+// ANIMATIONS AU HOVER SUR LES CARTES
+// ============================================
+document.querySelectorAll('.help-card, .argument, .review').forEach(card => {
+    card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-5px)';
+        this.style.transition = 'transform 0.3s ease';
+    });
+    
+    card.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0)';
+    });
+});
