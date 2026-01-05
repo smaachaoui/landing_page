@@ -7,23 +7,14 @@
     <meta name="keywords" content="pompe à chaleur, aides état, MaPrimeRénov, CEE, économie énergie, chauffage, rénovation énergétique">
     <title>Pompe à Chaleur : Jusqu'à 9500€ d'Aides de l'État | Vérifiez votre Éligibilité</title>
     <link rel="stylesheet" href="assets/styles/style.css">
-
-    <!-- Bootstrap Icons uniquement -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
-    <!-- EmailJS SDK -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    
-    <!-- Initialisation EmailJS -->
     <script type="text/javascript">
         (function(){
             emailjs.init('jKNqo-W9zXWuv8Rs5');
         })();
     </script>
-
-    <!-- Le script principal -->
     <script defer src="assets/js/main.js"></script>
-
 </head>
 <body>
     <!-- HEADER -->
@@ -45,450 +36,603 @@
         </button>
 
         <nav class="navbar">
-            <a href="#section1">Aides financières</a>
-            <a href="#section2">Simulateur</a>
-            <a href="#section3">Pourquoi ?</a>
-            <a href="#section4">Avis clients</a>
+            <a href="#accueil">Accueil</a>
+            <a href="#simulation">Simulation</a>
+            <a href="#avantages">Avantages</a>
+            <a href="#faq-avis">FAQ et Avis</a>
         </nav>
     </header>
 
+    <!-- Téléphone fixe en bas à droite -->
+    <a href="tel:0800003626" class="phone-fixed" aria-label="Appelez-nous">
+        <i class="bi bi-telephone-fill"></i>
+        <span class="phone-text">0 800 00 36 26</span>
+    </a>
+
     <main>
-        <!-- Section 1 : Phrase d'accroche -->
-        <section id="section1">
-            <h1>RÉALISEZ JUSQU'À 70% D'ÉCONOMIE SUR VOTRE FACTURE DE CHAUFFAGE</h1>
-            
-            <div class="help-cards">
-                <article class="help-card">
-                    <i class="bi bi-piggy-bank-fill"></i>
-                    <h2>Aides financières</h2>
-                    <p>Jusqu'à 9 500€ d'aides directement versées</p>
-                    <p>MaPrimeRenov' + CEE + reste à charge minimal pour votre projet</p>
-                </article>
-
-                <article class="help-card">
-                    <i class="bi bi-lightning-charge-fill"></i>
-                    <h2>Économies d'énergie</h2>
-                    <p>Divisez vos factures par 3</p>
-                    <p>Économisez jusqu'à 2 000€ chaque année sur le gaz, fioul et l'électricité</p>
-                </article>
-
-                <article class="help-card">
-                    <i class="bi bi-house-check-fill"></i>
-                    <h2>Classe énergétique</h2>
-                    <p>Valorisez votre bien immobilier de +15 à 20% de valeur grâce au changement de la revente</p>
-                </article>
-            </div>
-
-            <a href="#section2">
-                <button class="btn-eligibility">Je vérifie mon éligibilité</button>
-            </a>
-
-            <div class="arrow-down"></div>
-        </section>
-
-        <!-- Section 2 : Calculez vos aides -->
-        <section id="section2">
-            <div class="calculator-box">
-                <h2>Calculez vos aides</h2>
-                <p>C'est simple, rapide et gratuit !</p>
-
-                <!-- Barre de progression -->
-                <div class="progress-bar-container">
-                    <div class="progress-bar" id="progressBar"></div>
+        <!-- Section 1 : Accueil -->
+        <section id="accueil" class="section-accueil">
+            <div class="container">
+                <h1>RÉALISEZ JUSQU'À 70% D'ÉCONOMIE SUR VOTRE FACTURE DE CHAUFFAGE</h1>
+                
+                <div class="urgency-banner">
+                    <i class="bi bi-clock-history"></i>
+                    <span>Places limitées pour décembre 2025 • Profitez des aides avant leur révision</span>
                 </div>
 
-                <form class="form-calculator">
-                    <!-- Étape 1 : Type d'habitation -->
-                    <div class="form-step active" data-step="1">
-                        <p class="form-question">1. Quel est votre type d'habitation ?</p>
-                        
-                        <div class="form-options">
-                            <label class="option">
-                                <input type="radio" name="habitation" value="maison" required>
-                                <span class="option-icon"><i class="bi bi-house-fill"></i></span>
-                                <span>Maison</span>
-                            </label>
+                <div class="help-cards">
+                    <article class="help-card">
+                        <i class="bi bi-piggy-bank-fill"></i>
+                        <h2>Aides financières</h2>
+                        <p>Jusqu'à 9 500€ d'aides directement versées</p>
+                        <p>MaPrimeRenov' + CEE + reste à charge minimal</p>
+                    </article>
 
-                            <label class="option">
-                                <input type="radio" name="habitation" value="appartement" required>
-                                <span class="option-icon"><i class="bi bi-building-fill"></i></span>
-                                <span>Appartement</span>
-                            </label>
-                        </div>
+                    <article class="help-card">
+                        <i class="bi bi-lightning-charge-fill"></i>
+                        <h2>Économies d'énergie</h2>
+                        <p>Divisez vos factures par 3</p>
+                        <p>Économisez jusqu'à 2 000€ par an</p>
+                    </article>
 
-                        <div class="form-navigation">
-                            <button type="button" class="nav-prev" disabled><i class="bi bi-chevron-left"></i></button>
-                            <span class="page-indicator"><span class="current-step">1</span>/4</span>
-                            <button type="button" class="nav-next"><i class="bi bi-chevron-right"></i></button>
+                    <article class="help-card">
+                        <i class="bi bi-house-check-fill"></i>
+                        <h2>Classe énergétique</h2>
+                        <p>Valorisez votre bien de +15 à 20%</p>
+                        <p>Changement de classe énergétique</p>
+                    </article>
+                </div>
+
+                <div class="trust-indicators">
+                    <div class="trust-item">
+                        <i class="bi bi-people-fill"></i>
+                        <span><strong>+2 000</strong> familles équipées</span>
+                    </div>
+                    <div class="trust-item">
+                        <i class="bi bi-shield-check"></i>
+                        <span><strong>Certification RGE</strong> garantie</span>
+                    </div>
+                    <div class="trust-item">
+                        <i class="bi bi-calendar-check"></i>
+                        <span><strong>Installation</strong> sous 4 semaines</span>
+                    </div>
+                    <div class="trust-item">
+                        <i class="bi bi-award"></i>
+                        <span><strong>10 ans</strong> de garantie</span>
+                    </div>
+                </div>
+
+                <a href="#simulation" class="btn-primary">
+                    Je vérifie mon éligibilité gratuitement
+                </a>
+
+                <div class="arrow-down"></div>
+            </div>
+        </section>
+
+        <!-- Section 2 : Simulation -->
+        <section id="simulation" class="section-simulation">
+            <div class="container">
+                <!-- Comment ça marche - Grid Layout -->
+                <div class="how-it-works-grid">
+                    <h2 class="grid-title">Comment ça marche ?</h2>
+                    
+                    <article class="step-card">
+                        <div class="step-number">1</div>
+                        <div class="step-icon">
+                            <i class="bi bi-clipboard-check"></i>
                         </div>
+                        <h3>Remplissez le formulaire</h3>
+                        <p>Quelques infos sur votre logement pour évaluer votre éligibilité</p>
+                    </article>
+
+                    <article class="step-card">
+                        <div class="step-number">2</div>
+                        <div class="step-icon">
+                            <i class="bi bi-calculator"></i>
+                        </div>
+                        <h3>Estimez vos aides</h3>
+                        <p>Découvrez instantanément le montant de vos aides</p>
+                    </article>
+
+                    <article class="step-card">
+                        <div class="step-number">3</div>
+                        <div class="step-icon">
+                            <i class="bi bi-headset"></i>
+                        </div>
+                        <h3>Nous vous contactons</h3>
+                        <p>Un expert vous rappelle sous 24h pour finaliser</p>
+                    </article>
+                </div>
+
+                <!-- Formulaire -->
+                <div class="calculator-box">
+                    <h2>Vérifiez votre éligibilité en 30 secondes</h2>
+                    <p class="calculator-subtitle">C'est simple, rapide et gratuit !</p>
+
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" id="progressBar"></div>
                     </div>
 
-                    <!-- Étape 2 : Statut du logement -->
-                    <div class="form-step" data-step="2">
-                        <p class="form-question">2. Vous êtes ?</p>
-                        
-                        <div class="form-options">
-                            <label class="option">
-                                <input type="radio" name="statut" value="proprietaire" required>
-                                <span class="option-icon"><i class="bi bi-key-fill"></i></span>
-                                <span>Propriétaire</span>
-                            </label>
-
-                            <label class="option">
-                                <input type="radio" name="statut" value="locataire" required>
-                                <span class="option-icon"><i class="bi bi-door-open-fill"></i></span>
-                                <span>Locataire</span>
-                            </label>
-                        </div>
-
-                        <div class="form-navigation">
-                            <button type="button" class="nav-prev"><i class="bi bi-chevron-left"></i></button>
-                            <span class="page-indicator"><span class="current-step">2</span>/4</span>
-                            <button type="button" class="nav-next"><i class="bi bi-chevron-right"></i></button>
-                        </div>
-                    </div>
-
-                    <!-- Étape 3 : Type de chauffage -->
-                    <div class="form-step" data-step="3">
-                        <p class="form-question">3. Quel est votre type de chauffage actuel ?</p>
-                        
-                        <div class="form-options">
-                            <label class="option">
-                                <input type="radio" name="chauffage" value="gaz" required>
-                                <span class="option-icon"><i class="bi bi-fire"></i></span>
-                                <span>Gaz</span>
-                            </label>
-
-                            <label class="option">
-                                <input type="radio" name="chauffage" value="fioul" required>
-                                <span class="option-icon"><i class="bi bi-droplet-fill"></i></span>
-                                <span>Fioul</span>
-                            </label>
-
-                            <label class="option">
-                                <input type="radio" name="chauffage" value="electrique" required>
-                                <span class="option-icon"><i class="bi bi-lightning-fill"></i></span>
-                                <span>Électrique</span>
-                            </label>
-
-                            <label class="option">
-                                <input type="radio" name="chauffage" value="bois" required>
-                                <span class="option-icon"><i class="bi bi-tree"></i></span>
-                                <span>Bois</span>
-                            </label>
-
-                            <label class="option">
-                                <input type="radio" name="chauffage" value="autre" required>
-                                <span class="option-icon"><i class="bi bi-question-circle"></i></span>
-                                <span>Autre</span>
-                            </label>
-                        </div>
-
-                        <!-- Champ conditionnel pour "Autre" (caché par défaut) -->
-                        <div class="form-field" id="autre-chauffage-field" style="display: none;">
-                            <label for="autre-chauffage">Précisez votre type de chauffage *</label>
-                            <input 
-                                type="text" 
-                                id="autre-chauffage" 
-                                name="autre_chauffage" 
-                                placeholder="Ex: Pompe à chaleur existante, chauffage solaire, etc."
-                                maxlength="50"
-                            >
-                        </div>
-
-                        <div class="form-navigation">
-                            <button type="button" class="nav-prev"><i class="bi bi-chevron-left"></i></button>
-                            <span class="page-indicator"><span class="current-step">3</span>/4</span>
-                            <button type="button" class="nav-next"><i class="bi bi-chevron-right"></i></button>
-                        </div>
-                    </div>
-
-                    <!-- Étape 4 : Informations de contact -->
-                    <div class="form-step" data-step="4">
-                        <p class="form-question">
-                            4. Excellente nouvelle : vous êtes éligible ! <br>
-                            <span style="font-size: 0.95em; font-weight: normal;">
-                                Renseignez vos coordonnées. Un expert Haut Sommet calculera le montant 
-                                précis de vos aides et vous appellera dans les 24h.
-                            </span>
-                        </p>
-                        <div class="form-fields">
-                            <div class="form-field">
-                                <label for="nom">Nom *</label>
-                                <input type="text" id="nom" name="nom" placeholder="Votre nom" required>
-                            </div>
-
-                            <div class="form-field">
-                                <label for="prenom">Prénom *</label>
-                                <input type="text" id="prenom" name="prenom" placeholder="Votre prénom" required>
-                            </div>
-
-                            <div class="form-field">
-                                <label for="email">Email *</label>
-                                <input type="email" id="email" name="email" placeholder="exemple@email.com" required>
-                            </div>
-
-                            <div class="form-field">
-                                <label for="telephone">Téléphone portable *</label>
-                                <input type="tel" id="telephone" name="telephone" placeholder="06 12 34 56 78" required pattern="[0-9]{10}">
-                            </div>
-
-                            <div class="form-field">
-                                <label for="departement">Département *</label>
-                                <select id="departement" name="departement" required>
-                                    <option value="">Sélectionnez votre département</option>
-                                    <option value="01">01 - Ain</option>
-                                    <option value="02">02 - Aisne</option>
-                                    <option value="03">03 - Allier</option>
-                                    <option value="04">04 - Alpes-de-Haute-Provence</option>
-                                    <option value="05">05 - Hautes-Alpes</option>
-                                    <option value="06">06 - Alpes-Maritimes</option>
-                                    <option value="07">07 - Ardèche</option>
-                                    <option value="08">08 - Ardennes</option>
-                                    <option value="09">09 - Ariège</option>
-                                    <option value="10">10 - Aube</option>
-                                    <option value="11">11 - Aude</option>
-                                    <option value="12">12 - Aveyron</option>
-                                    <option value="13">13 - Bouches-du-Rhône</option>
-                                    <option value="14">14 - Calvados</option>
-                                    <option value="15">15 - Cantal</option>
-                                    <option value="16">16 - Charente</option>
-                                    <option value="17">17 - Charente-Maritime</option>
-                                    <option value="18">18 - Cher</option>
-                                    <option value="19">19 - Corrèze</option>
-                                    <option value="21">21 - Côte-d'Or</option>
-                                    <option value="22">22 - Côtes-d'Armor</option>
-                                    <option value="23">23 - Creuse</option>
-                                    <option value="24">24 - Dordogne</option>
-                                    <option value="25">25 - Doubs</option>
-                                    <option value="26">26 - Drôme</option>
-                                    <option value="27">27 - Eure</option>
-                                    <option value="28">28 - Eure-et-Loir</option>
-                                    <option value="29">29 - Finistère</option>
-                                    <option value="2A">2A - Corse-du-Sud</option>
-                                    <option value="2B">2B - Haute-Corse</option>
-                                    <option value="30">30 - Gard</option>
-                                    <option value="31">31 - Haute-Garonne</option>
-                                    <option value="32">32 - Gers</option>
-                                    <option value="33">33 - Gironde</option>
-                                    <option value="34">34 - Hérault</option>
-                                    <option value="35">35 - Ille-et-Vilaine</option>
-                                    <option value="36">36 - Indre</option>
-                                    <option value="37">37 - Indre-et-Loire</option>
-                                    <option value="38">38 - Isère</option>
-                                    <option value="39">39 - Jura</option>
-                                    <option value="40">40 - Landes</option>
-                                    <option value="41">41 - Loir-et-Cher</option>
-                                    <option value="42">42 - Loire</option>
-                                    <option value="43">43 - Haute-Loire</option>
-                                    <option value="44">44 - Loire-Atlantique</option>
-                                    <option value="45">45 - Loiret</option>
-                                    <option value="46">46 - Lot</option>
-                                    <option value="47">47 - Lot-et-Garonne</option>
-                                    <option value="48">48 - Lozère</option>
-                                    <option value="49">49 - Maine-et-Loire</option>
-                                    <option value="50">50 - Manche</option>
-                                    <option value="51">51 - Marne</option>
-                                    <option value="52">52 - Haute-Marne</option>
-                                    <option value="53">53 - Mayenne</option>
-                                    <option value="54">54 - Meurthe-et-Moselle</option>
-                                    <option value="55">55 - Meuse</option>
-                                    <option value="56">56 - Morbihan</option>
-                                    <option value="57">57 - Moselle</option>
-                                    <option value="58">58 - Nièvre</option>
-                                    <option value="59">59 - Nord</option>
-                                    <option value="60">60 - Oise</option>
-                                    <option value="61">61 - Orne</option>
-                                    <option value="62">62 - Pas-de-Calais</option>
-                                    <option value="63">63 - Puy-de-Dôme</option>
-                                    <option value="64">64 - Pyrénées-Atlantiques</option>
-                                    <option value="65">65 - Hautes-Pyrénées</option>
-                                    <option value="66">66 - Pyrénées-Orientales</option>
-                                    <option value="67">67 - Bas-Rhin</option>
-                                    <option value="68">68 - Haut-Rhin</option>
-                                    <option value="69">69 - Rhône</option>
-                                    <option value="70">70 - Haute-Saône</option>
-                                    <option value="71">71 - Saône-et-Loire</option>
-                                    <option value="72">72 - Sarthe</option>
-                                    <option value="73">73 - Savoie</option>
-                                    <option value="74">74 - Haute-Savoie</option>
-                                    <option value="75">75 - Paris</option>
-                                    <option value="76">76 - Seine-Maritime</option>
-                                    <option value="77">77 - Seine-et-Marne</option>
-                                    <option value="78">78 - Yvelines</option>
-                                    <option value="79">79 - Deux-Sèvres</option>
-                                    <option value="80">80 - Somme</option>
-                                    <option value="81">81 - Tarn</option>
-                                    <option value="82">82 - Tarn-et-Garonne</option>
-                                    <option value="83">83 - Var</option>
-                                    <option value="84">84 - Vaucluse</option>
-                                    <option value="85">85 - Vendée</option>
-                                    <option value="86">86 - Vienne</option>
-                                    <option value="87">87 - Haute-Vienne</option>
-                                    <option value="88">88 - Vosges</option>
-                                    <option value="89">89 - Yonne</option>
-                                    <option value="90">90 - Territoire de Belfort</option>
-                                    <option value="91">91 - Essonne</option>
-                                    <option value="92">92 - Hauts-de-Seine</option>
-                                    <option value="93">93 - Seine-Saint-Denis</option>
-                                    <option value="94">94 - Val-de-Marne</option>
-                                    <option value="95">95 - Val-d'Oise</option>
-                                    <option value="971">971 - Guadeloupe</option>
-                                    <option value="972">972 - Martinique</option>
-                                    <option value="973">973 - Guyane</option>
-                                    <option value="974">974 - La Réunion</option>
-                                    <option value="976">976 - Mayotte</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-navigation">
-                            <button type="button" class="nav-prev"><i class="bi bi-chevron-left"></i></button>
-                            <span class="page-indicator"><span class="current-step">4</span>/4</span>
-                        </div>
-
-                        <button type="submit" class="btn-submit"><i class="bi bi-check-circle"></i>Envoyer</button>
-
-                        <p class="form-disclaimer">
-                            En soumettant ce formulaire, vous acceptez d'être recontacté(e) par Haut Sommet 
-                            dans le cadre de votre demande de simulation.
-                        </p>
-                    </div>
-
-                    <!-- Étape 5 : Confirmation -->
-                    <div class="form-step" data-step="5">
-                        <div class="confirmation-message">
-                            <!--Bouton de fermeture-->
-                            <button type="button" class="confirmation-close" id="close-confirmation" aria-label="Fermer et recommencer">
-                                <i class="bi bi-x-lg"></i>
-                            </button>
+                    <form class="form-calculator">
+                        <!-- Étape 1 -->
+                        <div class="form-step active" data-step="1">
+                            <p class="form-question">1. Quel est votre type d'habitation ?</p>
                             
-                            <div class="confirmation-icon">
-                                <i class="bi bi-check-circle-fill"></i>
+                            <div class="form-options">
+                                <label class="option">
+                                    <input type="radio" name="habitation" value="maison" required>
+                                    <span class="option-icon"><i class="bi bi-house-fill"></i></span>
+                                    <span>Maison</span>
+                                </label>
+
+                                <label class="option">
+                                    <input type="radio" name="habitation" value="appartement" required>
+                                    <span class="option-icon"><i class="bi bi-building-fill"></i></span>
+                                    <span>Appartement</span>
+                                </label>
                             </div>
-                            <h3>Merci pour votre demande !</h3>
-                            <p class="confirmation-text">
-                                Votre demande a bien été enregistrée. Un de nos conseillers va vous recontacter 
-                                très prochainement pour vous communiquer le montant exact de vos aides et vous 
-                                accompagner dans votre projet.
+
+                            <div class="form-navigation">
+                                <button type="button" class="nav-prev" disabled><i class="bi bi-chevron-left"></i></button>
+                                <span class="page-indicator"><span class="current-step">1</span>/4</span>
+                                <button type="button" class="nav-next"><i class="bi bi-chevron-right"></i></button>
+                            </div>
+                        </div>
+
+                        <!-- Étape 2 -->
+                        <div class="form-step" data-step="2">
+                            <p class="form-question">2. Vous êtes ?</p>
+                            
+                            <div class="form-options">
+                                <label class="option">
+                                    <input type="radio" name="statut" value="proprietaire" required>
+                                    <span class="option-icon"><i class="bi bi-key-fill"></i></span>
+                                    <span>Propriétaire</span>
+                                </label>
+
+                                <label class="option">
+                                    <input type="radio" name="statut" value="locataire" required>
+                                    <span class="option-icon"><i class="bi bi-door-open-fill"></i></span>
+                                    <span>Locataire</span>
+                                </label>
+                            </div>
+
+                            <div class="form-navigation">
+                                <button type="button" class="nav-prev"><i class="bi bi-chevron-left"></i></button>
+                                <span class="page-indicator"><span class="current-step">2</span>/4</span>
+                                <button type="button" class="nav-next"><i class="bi bi-chevron-right"></i></button>
+                            </div>
+                        </div>
+
+                        <!-- Étape 3 -->
+                        <div class="form-step" data-step="3">
+                            <p class="form-question">3. Quel est votre type de chauffage actuel ?</p>
+                            
+                            <div class="form-options">
+                                <label class="option">
+                                    <input type="radio" name="chauffage" value="gaz" required>
+                                    <span class="option-icon"><i class="bi bi-fire"></i></span>
+                                    <span>Gaz</span>
+                                </label>
+
+                                <label class="option">
+                                    <input type="radio" name="chauffage" value="fioul" required>
+                                    <span class="option-icon"><i class="bi bi-droplet-fill"></i></span>
+                                    <span>Fioul</span>
+                                </label>
+
+                                <label class="option">
+                                    <input type="radio" name="chauffage" value="electrique" required>
+                                    <span class="option-icon"><i class="bi bi-lightning-fill"></i></span>
+                                    <span>Électrique</span>
+                                </label>
+
+                                <label class="option">
+                                    <input type="radio" name="chauffage" value="bois" required>
+                                    <span class="option-icon"><i class="bi bi-tree"></i></span>
+                                    <span>Bois</span>
+                                </label>
+
+                                <label class="option">
+                                    <input type="radio" name="chauffage" value="autre" required>
+                                    <span class="option-icon"><i class="bi bi-question-circle"></i></span>
+                                    <span>Autre</span>
+                                </label>
+                            </div>
+
+                            <div class="form-field" id="autre-chauffage-field" style="display: none;">
+                                <label for="autre-chauffage">Précisez votre type de chauffage *</label>
+                                <input 
+                                    type="text" 
+                                    id="autre-chauffage" 
+                                    name="autre_chauffage" 
+                                    placeholder="Ex: Pompe à chaleur existante, chauffage solaire, etc."
+                                    maxlength="50"
+                                >
+                            </div>
+
+                            <div class="form-navigation">
+                                <button type="button" class="nav-prev"><i class="bi bi-chevron-left"></i></button>
+                                <span class="page-indicator"><span class="current-step">3</span>/4</span>
+                                <button type="button" class="nav-next"><i class="bi bi-chevron-right"></i></button>
+                            </div>
+                        </div>
+
+                        <!-- Étape 4 -->
+                        <div class="form-step" data-step="4">
+                            <p class="form-question">
+                                4. Dernière étape !<br>
+                                <span style="font-size: 0.95em; font-weight: normal;">
+                                    Renseignez vos coordonnées pour recevoir votre simulation personnalisée.
+                                </span>
                             </p>
-                            <p class="confirmation-subtext">
-                                <i class="bi bi-telephone-fill"></i>
-                                Vous serez contacté(e) dans les 24 heures
+                            <div class="form-fields">
+                                <div class="form-field">
+                                    <label for="nom">Nom *</label>
+                                    <input type="text" id="nom" name="nom" placeholder="Votre nom" required>
+                                </div>
+
+                                <div class="form-field">
+                                    <label for="prenom">Prénom *</label>
+                                    <input type="text" id="prenom" name="prenom" placeholder="Votre prénom" required>
+                                </div>
+
+                                <div class="form-field">
+                                    <label for="email">Email *</label>
+                                    <input type="email" id="email" name="email" placeholder="exemple@email.com" required>
+                                </div>
+
+                                <div class="form-field">
+                                    <label for="telephone">Téléphone portable *</label>
+                                    <input type="tel" id="telephone" name="telephone" placeholder="06 12 34 56 78" required pattern="[0-9]{10}">
+                                </div>
+
+                                <div class="form-field">
+                                    <label for="departement">Département *</label>
+                                    <select id="departement" name="departement" required>
+                                        <option value="">Sélectionnez votre département</option>
+                                        <option value="01">01 - Ain</option>
+                                        <option value="02">02 - Aisne</option>
+                                        <option value="03">03 - Allier</option>
+                                        <option value="04">04 - Alpes-de-Haute-Provence</option>
+                                        <option value="05">05 - Hautes-Alpes</option>
+                                        <option value="06">06 - Alpes-Maritimes</option>
+                                        <option value="07">07 - Ardèche</option>
+                                        <option value="08">08 - Ardennes</option>
+                                        <option value="09">09 - Ariège</option>
+                                        <option value="10">10 - Aube</option>
+                                        <option value="11">11 - Aude</option>
+                                        <option value="12">12 - Aveyron</option>
+                                        <option value="13">13 - Bouches-du-Rhône</option>
+                                        <option value="14">14 - Calvados</option>
+                                        <option value="15">15 - Cantal</option>
+                                        <option value="16">16 - Charente</option>
+                                        <option value="17">17 - Charente-Maritime</option>
+                                        <option value="18">18 - Cher</option>
+                                        <option value="19">19 - Corrèze</option>
+                                        <option value="21">21 - Côte-d'Or</option>
+                                        <option value="22">22 - Côtes-d'Armor</option>
+                                        <option value="23">23 - Creuse</option>
+                                        <option value="24">24 - Dordogne</option>
+                                        <option value="25">25 - Doubs</option>
+                                        <option value="26">26 - Drôme</option>
+                                        <option value="27">27 - Eure</option>
+                                        <option value="28">28 - Eure-et-Loir</option>
+                                        <option value="29">29 - Finistère</option>
+                                        <option value="2A">2A - Corse-du-Sud</option>
+                                        <option value="2B">2B - Haute-Corse</option>
+                                        <option value="30">30 - Gard</option>
+                                        <option value="31">31 - Haute-Garonne</option>
+                                        <option value="32">32 - Gers</option>
+                                        <option value="33">33 - Gironde</option>
+                                        <option value="34">34 - Hérault</option>
+                                        <option value="35">35 - Ille-et-Vilaine</option>
+                                        <option value="36">36 - Indre</option>
+                                        <option value="37">37 - Indre-et-Loire</option>
+                                        <option value="38">38 - Isère</option>
+                                        <option value="39">39 - Jura</option>
+                                        <option value="40">40 - Landes</option>
+                                        <option value="41">41 - Loir-et-Cher</option>
+                                        <option value="42">42 - Loire</option>
+                                        <option value="43">43 - Haute-Loire</option>
+                                        <option value="44">44 - Loire-Atlantique</option>
+                                        <option value="45">45 - Loiret</option>
+                                        <option value="46">46 - Lot</option>
+                                        <option value="47">47 - Lot-et-Garonne</option>
+                                        <option value="48">48 - Lozère</option>
+                                        <option value="49">49 - Maine-et-Loire</option>
+                                        <option value="50">50 - Manche</option>
+                                        <option value="51">51 - Marne</option>
+                                        <option value="52">52 - Haute-Marne</option>
+                                        <option value="53">53 - Mayenne</option>
+                                        <option value="54">54 - Meurthe-et-Moselle</option>
+                                        <option value="55">55 - Meuse</option>
+                                        <option value="56">56 - Morbihan</option>
+                                        <option value="57">57 - Moselle</option>
+                                        <option value="58">58 - Nièvre</option>
+                                        <option value="59">59 - Nord</option>
+                                        <option value="60">60 - Oise</option>
+                                        <option value="61">61 - Orne</option>
+                                        <option value="62">62 - Pas-de-Calais</option>
+                                        <option value="63">63 - Puy-de-Dôme</option>
+                                        <option value="64">64 - Pyrénées-Atlantiques</option>
+                                        <option value="65">65 - Hautes-Pyrénées</option>
+                                        <option value="66">66 - Pyrénées-Orientales</option>
+                                        <option value="67">67 - Bas-Rhin</option>
+                                        <option value="68">68 - Haut-Rhin</option>
+                                        <option value="69">69 - Rhône</option>
+                                        <option value="70">70 - Haute-Saône</option>
+                                        <option value="71">71 - Saône-et-Loire</option>
+                                        <option value="72">72 - Sarthe</option>
+                                        <option value="73">73 - Savoie</option>
+                                        <option value="74">74 - Haute-Savoie</option>
+                                        <option value="75">75 - Paris</option>
+                                        <option value="76">76 - Seine-Maritime</option>
+                                        <option value="77">77 - Seine-et-Marne</option>
+                                        <option value="78">78 - Yvelines</option>
+                                        <option value="79">79 - Deux-Sèvres</option>
+                                        <option value="80">80 - Somme</option>
+                                        <option value="81">81 - Tarn</option>
+                                        <option value="82">82 - Tarn-et-Garonne</option>
+                                        <option value="83">83 - Var</option>
+                                        <option value="84">84 - Vaucluse</option>
+                                        <option value="85">85 - Vendée</option>
+                                        <option value="86">86 - Vienne</option>
+                                        <option value="87">87 - Haute-Vienne</option>
+                                        <option value="88">88 - Vosges</option>
+                                        <option value="89">89 - Yonne</option>
+                                        <option value="90">90 - Territoire de Belfort</option>
+                                        <option value="91">91 - Essonne</option>
+                                        <option value="92">92 - Hauts-de-Seine</option>
+                                        <option value="93">93 - Seine-Saint-Denis</option>
+                                        <option value="94">94 - Val-de-Marne</option>
+                                        <option value="95">95 - Val-d'Oise</option>
+                                        <option value="971">971 - Guadeloupe</option>
+                                        <option value="972">972 - Martinique</option>
+                                        <option value="973">973 - Guyane</option>
+                                        <option value="974">974 - La Réunion</option>
+                                        <option value="976">976 - Mayotte</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-navigation">
+                                <button type="button" class="nav-prev"><i class="bi bi-chevron-left"></i></button>
+                                <span class="page-indicator"><span class="current-step">4</span>/4</span>
+                            </div>
+
+                            <button type="submit" class="btn-submit">
+                                <i class="bi bi-check-circle"></i>
+                                Envoyer ma simulation
+                            </button>
+
+                            <p class="form-disclaimer">
+                                En soumettant ce formulaire, vous acceptez d'être recontacté(e) par Haut Sommet 
+                                dans le cadre de votre demande de simulation.
                             </p>
                         </div>
-                    </div>
-                </form>
+
+                        <!-- Étape 5 : Confirmation -->
+                        <div class="form-step" data-step="5">
+                            <div class="confirmation-message">
+                                <button type="button" class="confirmation-close" id="close-confirmation" aria-label="Fermer">
+                                    <i class="bi bi-x-lg"></i>
+                                </button>
+                                
+                                <div class="confirmation-icon">
+                                    <i class="bi bi-check-circle-fill"></i>
+                                </div>
+                                <h3>Merci pour votre demande !</h3>
+                                <p class="confirmation-text">
+                                    Votre demande a bien été enregistrée. Un de nos conseillers va vous recontacter 
+                                    très prochainement pour vous communiquer le montant exact de vos aides.
+                                </p>
+                                <p class="confirmation-subtext">
+                                    <i class="bi bi-telephone-fill"></i>
+                                    Vous serez contacté(e) dans les 24 heures
+                                </p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </section>
 
-        <!-- Section 3 : Pourquoi choisir une pompe à chaleur  -->
-        <section id="section3">
-            <h2>Pourquoi installer une Pompe à Chaleur chez soi ?</h2>
+        <!-- Section 3 : Avantages -->
+        <section id="avantages" class="section-avantages">
+            <div class="container">
+                <h2>Pourquoi installer une Pompe à Chaleur ?</h2>
+                <p class="section-intro">
+                    Une pompe à chaleur capte l'énergie de l'air extérieur et évite les dépenses 
+                    en énergies polluantes. C'est un système économique et écologique.
+                </p>
 
-            <p class="section-intro">
-                Une pompe à chaleur permet de capter l'énergie de l'extérieur et évite les dépenses 
-                en énergies polluantes (fioul ou mazout). Une pompe à chaleur est donc 
-                un moyen d'économiser du chauffage et est considérée comme une énergie renouvelable.
-            </p>
+                <div class="advantages-grid">
+                    <article class="advantage-card">
+                        <div class="advantage-icon">
+                            <i class="bi bi-tree-fill"></i>
+                        </div>
+                        <h3>Écologique</h3>
+                        <p>Utilise l'énergie renouvelable de l'air et réduit votre empreinte carbone</p>
+                    </article>
 
-            <div class="arguments">
-                <article class="argument">
-                    <div class="argument-icon">
-                        <i class="bi bi-tree-fill"></i>
-                    </div>
-                    <h3>Écologique</h3>
-                    <p>Utilise l'énergie renouvelable de l'air, réduit votre empreinte carbone 
-                    et contribue à la transition énergétique.</p>
-                </article>
+                    <article class="advantage-card">
+                        <div class="advantage-icon">
+                            <i class="bi bi-cash-coin"></i>
+                        </div>
+                        <h3>Économique</h3>
+                        <p>Divisez par 3 vos factures et économisez jusqu'à 2 000€ par an</p>
+                    </article>
 
-                <article class="argument">
-                    <div class="argument-icon">
-                        <i class="bi bi-cash-coin"></i>
-                    </div>
-                    <h3>Économique</h3>
-                    <p>L'installation est amortie en 3 ou 5 ans. Divisez par 3 vos factures de chauffages 
-                    et économisez jusqu'à 2 000€ par an.</p>
-                </article>
+                    <article class="advantage-card">
+                        <div class="advantage-icon">
+                            <i class="bi bi-thermometer-sun"></i>
+                        </div>
+                        <h3>Confortable</h3>
+                        <p>Chauffage homogène toute l'année avec climatisation en été</p>
+                    </article>
 
-                <article class="argument">
-                    <div class="argument-icon">
-                        <i class="bi bi-thermometer-sun"></i>
-                    </div>
-                    <h3>Confortable</h3>
-                    <p>Valorisez votre bien immobilier de +15 à 20%. Chauffage homogène toute l'année 
-                    avec possibilité de climatisation en été.</p>
-                </article>
+                    <article class="advantage-card">
+                        <div class="advantage-icon">
+                            <i class="bi bi-graph-up-arrow"></i>
+                        </div>
+                        <h3>Valorisation</h3>
+                        <p>Augmentez la valeur de votre bien de +15 à 20%</p>
+                    </article>
+
+                    <article class="advantage-card">
+                        <div class="advantage-icon">
+                            <i class="bi bi-gear-fill"></i>
+                        </div>
+                        <h3>Durable</h3>
+                        <p>Installation amortie en 3 à 5 ans avec 10 ans de garantie</p>
+                    </article>
+
+                    <article class="advantage-card">
+                        <div class="advantage-icon">
+                            <i class="bi bi-shield-check"></i>
+                        </div>
+                        <h3>Certifié RGE</h3>
+                        <p>Installation par des techniciens qualifiés et certifiés</p>
+                    </article>
+                </div>
             </div>
         </section>
 
-        <!-- Section 4 : Ils nous font confiance -->
-        <section id="section4">
-            <h2>Ils nous font confiance</h2>
+        <!-- Section 4 : FAQ et Avis -->
+        <section id="faq-avis" class="section-faq-avis">
+            <div class="container">
+                <!-- FAQ -->
+                <div class="faq-wrapper">
+                    <h2>Questions fréquentes</h2>
+                    
+                    <div class="faq-list">
+                        <div class="faq-item">
+                            <button class="faq-question">
+                                <span>Suis-je éligible aux aides de l'État ?</span>
+                                <i class="bi bi-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Vous êtes éligible si vous êtes propriétaire d'un logement de plus de 2 ans et que vous remplacez un système de chauffage fossile. Le montant peut atteindre jusqu'à 9 500€.</p>
+                            </div>
+                        </div>
 
-            <div class="review-list">
-                <article class="review">
-                    <div class="user-avatar">
-                        <i class="bi bi-person-fill"></i>
-                    </div>
-                    <div class="review-rating">
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                    </div>
-                    <p class="user-review">"Service impeccable, installation rapide et équipe très professionnelle. Je recommande vivement !"</p>
-                    <p class="user-name">Jean D.</p>
-                </article>
+                        <div class="faq-item">
+                            <button class="faq-question">
+                                <span>Combien de temps dure l'installation ?</span>
+                                <i class="bi bi-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>L'installation prend 1 à 2 jours selon votre logement. Nous garantissons une installation sous 4 semaines après validation.</p>
+                            </div>
+                        </div>
 
-                <article class="review">
-                    <div class="user-avatar">
-                        <i class="bi bi-person-fill"></i>
-                    </div>
-                    <div class="review-rating">
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                    </div>
-                    <p class="user-review">"Excellent accompagnement pour les aides. Des économies visibles dès le premier mois !"</p>
-                    <p class="user-name">Marie L.</p>
-                </article>
+                        <div class="faq-item">
+                            <button class="faq-question">
+                                <span>Quelles économies puis-je réaliser ?</span>
+                                <i class="bi bi-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>En moyenne, une réduction de 60 à 70% sur votre facture, soit jusqu'à 2 000€ d'économies par an.</p>
+                            </div>
+                        </div>
 
-                <article class="review">
-                    <div class="user-avatar">
-                        <i class="bi bi-person-fill"></i>
-                    </div>
-                    <div class="review-rating">
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                    </div>
-                    <p class="user-review">"Installation propre et soignée. L'équipe est à l'écoute et très réactive."</p>
-                    <p class="user-name">Pierre M.</p>
-                </article>
-            </div>
+                        <div class="faq-item">
+                            <button class="faq-question">
+                                <span>La pompe à chaleur fonctionne-t-elle en hiver ?</span>
+                                <i class="bi bi-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Oui ! Les pompes modernes fonctionnent jusqu'à -20°C et sont parfaitement adaptées au climat français.</p>
+                            </div>
+                        </div>
 
-            <div class="pagination">
-                <span class="pagination-dot active"></span>
-                <span class="pagination-dot"></span>
-                <span class="pagination-dot"></span>
+                        <div class="faq-item">
+                            <button class="faq-question">
+                                <span>Qui s'occupe des démarches administratives ?</span>
+                                <i class="bi bi-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Haut Sommet prend en charge toutes les démarches : MaPrimeRénov', CEE et formalités. Vous n'avez rien à faire !</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Avis clients -->
+                <div class="reviews-wrapper">
+                    <h2>Ils nous font confiance</h2>
+                    <p class="section-subtitle">Note moyenne : 4.9/5 sur 347 avis</p>
+
+                    <div class="reviews-grid">
+                        <article class="review-card">
+                            <div class="review-header">
+                                <div class="user-avatar">
+                                    <i class="bi bi-person-fill"></i>
+                                </div>
+                                <div class="review-rating">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+                            </div>
+                            <p class="user-review">"Service impeccable, installation rapide et équipe très professionnelle. Je recommande vivement !"</p>
+                            <p class="user-name">Jean D. - Marseille (13)</p>
+                            <p class="review-date">12 novembre 2025</p>
+                        </article>
+
+                        <article class="review-card">
+                            <div class="review-header">
+                                <div class="user-avatar">
+                                    <i class="bi bi-person-fill"></i>
+                                </div>
+                                <div class="review-rating">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+                            </div>
+                            <p class="user-review">"Excellent accompagnement pour les aides. Ma facture a baissé de 180€ dès le premier mois !"</p>
+                            <p class="user-name">Marie L. - Aix-en-Provence (13)</p>
+                            <p class="review-date">28 octobre 2025</p>
+                        </article>
+
+                        <article class="review-card">
+                            <div class="review-header">
+                                <div class="user-avatar">
+                                    <i class="bi bi-person-fill"></i>
+                                </div>
+                                <div class="review-rating">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+                            </div>
+                            <p class="user-review">"Installation propre et soignée. L'équipe est réactive et ils ont tout géré de A à Z."</p>
+                            <p class="user-name">Pierre M. - Aubagne (13)</p>
+                            <p class="review-date">5 octobre 2025</p>
+                        </article>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
     <!-- FOOTER -->
     <footer class="footer">
-        <div class="footer-content">
+        <div class="container">
             <p>&copy; 2025 Haut Sommet - Tous droits réservés</p>
             <div class="footer-links">
                 <a href="#">Mentions légales</a>
-                <a href="#">haut-sommet@test.fr</a>
-                <a href="#">Landing page</a>
+                <a href="mailto:contact@hautsommet-marseille.fr">contact@hautsommet-marseille.fr</a>
+                <a href="tel:0800003626">0 800 00 36 26</a>
             </div>
         </div>
     </footer>
