@@ -1,5 +1,4 @@
-// Point d'entrée de l'application
-// J'orchestre le chargement de tous les modules dans le bon ordre
+// Chargement de tous les modules dans le bon ordre
 (function() {
     'use strict';
     
@@ -11,7 +10,8 @@
         './assets/js/modules/validation.js',
         './assets/js/modules/email.js',
         './assets/js/modules/menu.js',
-        './assets/js/modules/form.js'
+        './assets/js/modules/form.js',
+        './assets/js/modules/faq.js'
     ];
     
     // Je charge un script de manière dynamique
