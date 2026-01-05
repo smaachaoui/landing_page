@@ -1,10 +1,10 @@
-// Menu burger et navigation
-// J'ai créé un menu responsive qui s'ouvre et se ferme au clic
+// Gestion du menu burger
+// Définition des variables
 const burgerMenu = document.querySelector('.burger-menu');
 const navbar = document.querySelector('.navbar');
 const navLinks = document.querySelectorAll('.navbar a');
 
-// Je gère l'ouverture et la fermeture du menu
+// Je gère l'ouverture et la fermeture du menu burger
 function toggleMenu() {
     const isOpen = navbar.classList.toggle('active');
     burgerMenu.classList.toggle('active');

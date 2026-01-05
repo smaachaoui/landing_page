@@ -1,5 +1,5 @@
 // Validation des champs du formulaire
-// J'ai créé un système de validation complète pour sécuriser toutes les saisies
+// Je met en place un système de validation complet pour sécuriser toutes les saisies
 
 
 // Je valide chaque champ selon son type
