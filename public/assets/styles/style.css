@@ -38,6 +38,7 @@
 html {
     scroll-behavior: smooth;
     font-size: 16px;
+    scroll-padding-top: 5rem; /* Compense le header sticky */
 }
 
 body {
@@ -1031,6 +1032,10 @@ a {
    ============================================ */
 
 @media (min-width: 768px) {
+    html {
+        scroll-padding-top: 6rem; /* Augmenté pour tablette */
+    }
+    
     /* Header */
     .logo img {
         width: 4rem;
@@ -1117,6 +1122,10 @@ a {
    ============================================ */
 
 @media (min-width: 1024px) {
+    html {
+        scroll-padding-top: 7rem; /* Augmenté pour desktop */
+    }
+    
     /* Container */
     .container {
         padding: 0 var(--spacing-lg);
@@ -1246,6 +1255,10 @@ a {
    ============================================ */
 
 @media (min-width: 1440px) {
+    html {
+        scroll-padding-top: 8rem; /* Augmenté pour large desktop */
+    }
+    
     .section-accueil h1 {
         font-size: 3rem;
     }
