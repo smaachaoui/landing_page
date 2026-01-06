@@ -844,10 +844,10 @@ a {
 }
 
 /* ============================================
-   SECTION FAQ ET AVIS
+   SECTION FAQ
    ============================================ */
 
-.section-faq-avis {
+.section-faq {
     background: var(--background-light);
     padding: var(--spacing-2xl) var(--spacing-sm);
 }
@@ -1195,7 +1195,7 @@ a {
     .section-accueil,
     .section-simulation,
     .section-avantages,
-    .section-faq-avis {
+    .section-faq {
         padding: var(--spacing-3xl) var(--spacing-lg);
     }
     
