@@ -240,7 +240,7 @@
 
         <nav class="navbar" role="navigation" aria-label="Navigation principale">
             <a href="#accueil">Accueil</a>
-            <a href="#simulation">Simulation</a>
+            <a href="#calculator">Simulation</a>
             <a href="#avantages">Avantages</a>
             <a href="#faq">FAQ</a>
         </nav>
@@ -305,7 +305,7 @@
                     </div>
                 </div>
 
-                <a href="#simulation" class="btn-primary">
+                <a href="#calculator" class="btn-primary">
                     Je vérifie mon éligibilité gratuitement
                 </a>
 
@@ -316,40 +316,8 @@
         <!-- Section 2 : Simulation -->
         <section id="simulation" class="section-simulation">
             <div class="container">
-                <!-- Comment ça marche - Grid Layout -->
-                <div class="how-it-works-grid">
-                    <h2 class="grid-title">Comment obtenir votre pompe à chaleur avec les aides de l'État ?</h2>
-                    
-                    <article class="step-card">
-                        <div class="step-number" aria-hidden="true">1</div>
-                        <div class="step-icon">
-                            <i class="bi bi-clipboard-check" aria-hidden="true"></i>
-                        </div>
-                        <h3>Remplissez le formulaire gratuit</h3>
-                        <p>Quelques informations sur votre logement pour évaluer votre éligibilité aux aides MaPrimeRénov' et CEE</p>
-                    </article>
-
-                    <article class="step-card">
-                        <div class="step-number" aria-hidden="true">2</div>
-                        <div class="step-icon">
-                            <i class="bi bi-calculator" aria-hidden="true"></i>
-                        </div>
-                        <h3>Estimez vos aides instantanément</h3>
-                        <p>Découvrez en quelques secondes le montant exact des aides de l'État dont vous bénéficiez</p>
-                    </article>
-
-                    <article class="step-card">
-                        <div class="step-number" aria-hidden="true">3</div>
-                        <div class="step-icon">
-                            <i class="bi bi-headset" aria-hidden="true"></i>
-                        </div>
-                        <h3>Un expert vous contacte</h3>
-                        <p>Un conseiller expert RGE vous rappelle sous 24h pour finaliser votre projet et planifier l'installation</p>
-                    </article>
-                </div>
-
-                <!-- Formulaire -->
-                <div class="calculator-box">
+                <!-- Formulaire en premier -->
+                <div id="calculator" class="calculator-box">
                     <h2>Vérifiez votre éligibilité aux aides en 30 secondes</h2>
                     <p class="calculator-subtitle">C'est simple, rapide et 100% gratuit !</p>
 
@@ -374,6 +342,47 @@
                                     <span class="option-icon"><i class="bi bi-building-fill" aria-hidden="true"></i></span>
                                     <span>Appartement</span>
                                 </label>
+                            </div>
+
+                            <!-- Champs supplémentaires pour appartement -->
+                            <div class="form-field-group" id="appartement-details" style="display: none;">
+                                <p class="form-sub-question">Informations sur votre appartement :</p>
+                                
+                                <div class="form-field">
+                                    <label for="balcon-terrasse">Disposez-vous d'un balcon ou d'une terrasse ? *</label>
+                                    <select id="balcon-terrasse" name="balcon_terrasse" autocomplete="off">
+                                        <option value="">Sélectionnez une option</option>
+                                        <option value="balcon">Oui, j'ai un balcon</option>
+                                        <option value="terrasse">Oui, j'ai une terrasse</option>
+                                        <option value="balcon-terrasse">Oui, j'ai un balcon et une terrasse</option>
+                                        <option value="non">Non, je n'ai ni balcon ni terrasse</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-field">
+                                    <label for="etage-appartement">À quel étage se trouve votre appartement ? *</label>
+                                    <select id="etage-appartement" name="etage_appartement" autocomplete="off">
+                                        <option value="">Sélectionnez un étage</option>
+                                        <option value="rdc">Rez-de-chaussée</option>
+                                        <option value="1">1er étage</option>
+                                        <option value="2">2ème étage</option>
+                                        <option value="3">3ème étage</option>
+                                        <option value="4">4ème étage</option>
+                                        <option value="5">5ème étage</option>
+                                        <option value="6-plus">6ème étage ou plus</option>
+                                        <option value="dernier">Dernier étage</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-field">
+                                    <label for="mur-exterieur">Avez-vous accès à un mur extérieur ? *</label>
+                                    <select id="mur-exterieur" name="mur_exterieur" autocomplete="off">
+                                        <option value="">Sélectionnez une option</option>
+                                        <option value="oui">Oui</option>
+                                        <option value="non">Non</option>
+                                        <option value="ne-sais-pas">Je ne sais pas</option>
+                                    </select>
+                                </div>
                             </div>
 
                             <div class="form-navigation">
@@ -446,14 +455,19 @@
 
                             <div class="form-field" id="autre-chauffage-field" style="display: none;">
                                 <label for="autre-chauffage">Précisez votre type de chauffage *</label>
-                                <input 
-                                    type="text" 
-                                    id="autre-chauffage" 
-                                    name="autre_chauffage" 
-                                    placeholder="Ex: Pompe à chaleur existante, chauffage solaire, etc."
-                                    maxlength="50"
-                                    autocomplete="off"
-                                >
+                                <select id="autre-chauffage" name="autre_chauffage" autocomplete="off">
+                                    <option value="">Sélectionnez votre type de chauffage</option>
+                                    <option value="pompe-chaleur-existante">Pompe à chaleur existante</option>
+                                    <option value="chauffage-solaire">Chauffage solaire</option>
+                                    <option value="chauffage-au-sol">Chauffage au sol électrique</option>
+                                    <option value="radiateurs-eau">Radiateurs à eau chaude</option>
+                                    <option value="poele-granules">Poêle à granulés</option>
+                                    <option value="insert-cheminee">Insert de cheminée</option>
+                                    <option value="climatisation-reversible">Climatisation réversible</option>
+                                    <option value="chauffage-mixte">Chauffage mixte</option>
+                                    <option value="aucun-chauffage">Aucun chauffage</option>
+                                    <option value="autre-non-liste">Autre non listé</option>
+                                </select>
                             </div>
 
                             <div class="form-navigation">
@@ -640,6 +654,38 @@
                         </div>
                     </form>
                 </div>
+
+                <!-- Comment ça marche - Grid Layout (MAINTENANT EN DESSOUS) -->
+                <div class="how-it-works-grid">
+                    <h2 class="grid-title">Comment obtenir votre pompe à chaleur avec les aides de l'État ?</h2>
+                    
+                    <article class="step-card">
+                        <div class="step-number" aria-hidden="true">1</div>
+                        <div class="step-icon">
+                            <i class="bi bi-clipboard-check" aria-hidden="true"></i>
+                        </div>
+                        <h3>Remplissez le formulaire gratuit</h3>
+                        <p>Quelques informations sur votre logement pour évaluer votre éligibilité aux aides MaPrimeRénov' et CEE</p>
+                    </article>
+
+                    <article class="step-card">
+                        <div class="step-number" aria-hidden="true">2</div>
+                        <div class="step-icon">
+                            <i class="bi bi-calculator" aria-hidden="true"></i>
+                        </div>
+                        <h3>Estimez vos aides instantanément</h3>
+                        <p>Découvrez en quelques secondes le montant exact des aides de l'État dont vous bénéficiez</p>
+                    </article>
+
+                    <article class="step-card">
+                        <div class="step-number" aria-hidden="true">3</div>
+                        <div class="step-icon">
+                            <i class="bi bi-headset" aria-hidden="true"></i>
+                        </div>
+                        <h3>Un expert vous contacte</h3>
+                        <p>Un conseiller expert RGE vous rappelle sous 24h pour finaliser votre projet et planifier l'installation</p>
+                    </article>
+                </div>
             </div>
         </section>
 
@@ -772,7 +818,7 @@
     <!-- FOOTER -->
     <footer class="footer" role="contentinfo">
         <div class="container">
-            <p>&copy; 2025 Haut Sommet Marseille - Installation pompe à chaleur - Tous droits réservés</p>
+            <p>&copy; 2026-2027 Haut Sommet Marseille - Installation pompe à chaleur - Tous droits réservés</p>
             <div class="footer-links">
                 <a href="#">Mentions légales</a>
                 <a href="mailto:contact@hautsommet-marseille.fr" itemprop="email">contact@hautsommet-marseille.fr</a>
