@@ -109,16 +109,11 @@ nextButtons.forEach(button => {
 // J'avance automatiquement après une sélection radio
 document.querySelectorAll('.option input[type="radio"]').forEach(radio => {
     radio.addEventListener('change', () => {
-        // Vérification spéciale pour l'appartement - Non éligible
+        // MODIFICATION : Si "Appartement" est sélectionné, ne pas avancer automatiquement
+        // On doit laisser l'utilisateur remplir les champs supplémentaires
         if (radio.name === 'habitation' && radio.value === 'appartement') {
-            // Afficher le message d'inéligibilité
-            setTimeout(() => {
-                alert('Votre profil n\'est pas éligible.\n\nMalheureusement vous n\'êtes pas éligible aux aides pour l\'installation d\'une pompe à chaleur.');
-                // Réinitialiser le formulaire
-                form.reset();
-                currentStep = 0;
-                showStep(currentStep);
-            }, 300);
+            // Les champs vont apparaître via toggleAppartementDetails()
+            // mais on ne passe PAS à l'étape suivante automatiquement
             return;
         }
         
@@ -134,10 +129,11 @@ document.querySelectorAll('.option input[type="radio"]').forEach(radio => {
             }, 300);
             return;
         }
+
         
         // Si c'est l'étape du chauffage et que "Autre" est sélectionné, ne pas avancer
         if (radio.name === 'chauffage' && radio.value === 'autre') {
-            return; // On attend que l'utilisateur remplisse le champ texte
+            return; // On attend que l'utilisateur sélectionne une option dans le select
         }
         
         // Je vérifie s'il y a des champs texte requis dans l'étape actuelle
@@ -221,11 +217,54 @@ form.addEventListener('submit', async (e) => {
 showStep(currentStep);
 
 
-// Gestion du champ conditionnel "Autre type de chauffage"
-// J'affiche ce champ uniquement si l'utilisateur sélectionne "Autre"
+// ============================================
+// GESTION DES CHAMPS SUPPLÉMENTAIRES POUR APPARTEMENT
+// ============================================
+const habitationRadios = document.querySelectorAll('input[name="habitation"]');
+const appartementDetails = document.getElementById('appartement-details');
+
+// Fonction pour afficher/masquer les détails de l'appartement
+function toggleAppartementDetails() {
+    const selectedHabitation = document.querySelector('input[name="habitation"]:checked');
+    
+    if (selectedHabitation && selectedHabitation.value === 'appartement') {
+        appartementDetails.style.display = 'block';
+        
+        // Rendre les champs requis
+        document.getElementById('balcon-terrasse').required = true;
+        document.getElementById('etage-appartement').required = true;
+        document.getElementById('mur-exterieur').required = true;
+    } else {
+        appartementDetails.style.display = 'none';
+        
+        // Retirer l'obligation des champs
+        document.getElementById('balcon-terrasse').required = false;
+        document.getElementById('etage-appartement').required = false;
+        document.getElementById('mur-exterieur').required = false;
+        
+        // Réinitialiser les valeurs
+        document.getElementById('balcon-terrasse').value = '';
+        document.getElementById('etage-appartement').value = '';
+        document.getElementById('mur-exterieur').value = '';
+    }
+}
+
+// Écouter les changements sur le type d'habitation
+habitationRadios.forEach(radio => {
+    radio.addEventListener('change', toggleAppartementDetails);
+});
+
+// Vérifier à l'initialisation
+toggleAppartementDetails();
+
+
+// ============================================
+// GESTION DU CHAMP "AUTRE TYPE DE CHAUFFAGE"
+// ============================================
+// MODIFICATION : Le champ est maintenant un SELECT au lieu d'un INPUT TEXT
 const chauffageRadios = document.querySelectorAll('input[name="chauffage"]');
 const autreChauffageField = document.getElementById('autre-chauffage-field');
-const autreChauffageInput = document.getElementById('autre-chauffage');
+const autreChauffageSelect = document.getElementById('autre-chauffage');
 
 // Je gère l'affichage du champ "Autre"
 function toggleAutreChauffage() {
@@ -234,7 +273,7 @@ function toggleAutreChauffage() {
     if (selectedValue === 'autre') {
         // J'affiche le champ avec une animation
         autreChauffageField.style.display = 'block';
-        autreChauffageInput.required = true;
+        autreChauffageSelect.required = true;
         
         setTimeout(() => {
             autreChauffageField.style.opacity = '1';
@@ -243,8 +282,8 @@ function toggleAutreChauffage() {
     } else {
         // Je masque et réinitialise le champ
         autreChauffageField.style.display = 'none';
-        autreChauffageInput.required = false;
-        autreChauffageInput.value = '';
+        autreChauffageSelect.required = false;
+        autreChauffageSelect.value = '';
         
         autreChauffageField.style.opacity = '0';
         autreChauffageField.style.transform = 'translateY(-10px)';
@@ -281,7 +320,7 @@ if (closeConfirmationBtn) {
         }
         
         // Je scroll vers le formulaire
-        document.querySelector('#section2').scrollIntoView({ 
+        document.querySelector('#calculator').scrollIntoView({ 
             behavior: 'smooth',
             block: 'start'
         });
