@@ -65,6 +65,8 @@ async function sendEmail(formData) {
     const templateParams = {
         to_email: config.emailDestination,
         subject: 'Client à recontacter',
+
+        civilite: formData.civilite === 'mr' ? 'Monsieur' : 'Madame',
         
         // Je formate les données du client
         nom: formData.nom,

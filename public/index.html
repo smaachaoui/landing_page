@@ -344,7 +344,7 @@
                                 </label>
                             </div>
 
-                            <!-- Champs supplémentaires pour appartement -->
+                            <!-- Les champs supplémentaires pour appartement -->
                             <div class="form-field-group" id="appartement-details" style="display: none;">
                                 <p class="form-sub-question">Informations sur votre appartement :</p>
                                 
@@ -485,6 +485,23 @@
                                     Renseignez vos coordonnées pour recevoir votre simulation personnalisée par un expert.
                                 </span>
                             </p>
+
+                            <div class="form-field">
+                                <label>Civilité *</label>
+                                <div class="form-options" style="grid-template-columns: repeat(2, 1fr); gap: 0.5rem;">
+                                    <label class="option" style="padding: 0.75rem;">
+                                        <input type="radio" name="civilite" value="mr" required>
+                                        
+                                        <span style="font-size: 0.9rem;">Monsieur</span>
+                                    </label>
+                                    <label class="option" style="padding: 0.75rem;">
+                                        <input type="radio" name="civilite" value="mme" required>
+                                        
+                                        <span style="font-size: 0.9rem;">Madame</span>
+                                    </label>
+                                </div>
+                            </div>
+
                             <div class="form-fields">
                                 <div class="form-field">
                                     <label for="nom">Nom *</label>
@@ -655,7 +672,7 @@
                     </form>
                 </div>
 
-                <!-- Comment ça marche - Grid Layout (MAINTENANT EN DESSOUS) -->
+                <!-- Comment ça marche - Grid Layout -->
                 <div class="how-it-works-grid">
                     <h2 class="grid-title">Comment obtenir votre pompe à chaleur avec les aides de l'État ?</h2>
                     
@@ -753,7 +770,9 @@
 
         <!-- Section 4 : FAQ -->
         <section id="faq" class="section-faq">
+
             <div class="container">
+
                 <!-- FAQ -->
                 <div class="faq-wrapper">
                     <h2>Questions fréquentes sur les pompes à chaleur</h2>

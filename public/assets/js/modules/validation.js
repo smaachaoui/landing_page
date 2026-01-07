@@ -144,7 +144,7 @@ function validateSelect(input, value, fieldName) {
 // Je valide toutes les données du formulaire avant envoi
 function validateFormData(data) {
     // J'ai défini la liste des champs obligatoires de base
-    const requiredFields = ['habitation', 'statut', 'chauffage', 'departement', 
+    const requiredFields = ['habitation', 'statut', 'chauffage', 'departement', 'civilite',
                            'nom', 'prenom', 'email', 'telephone'];
     
     // Je vérifie que tous les champs requis sont présents
@@ -188,10 +188,12 @@ function validateFormData(data) {
     const validHabitation = ['maison', 'appartement'];
     const validStatut = ['proprietaire', 'locataire'];
     const validChauffage = ['gaz', 'fioul', 'electrique', 'bois', 'autre'];
+    const validCivilite = ['mr', 'mme'];
     
     validations.push(validHabitation.includes(data.habitation));
     validations.push(validStatut.includes(data.statut));
     validations.push(validChauffage.includes(data.chauffage));
+    validations.push(validCivilite.includes(data.civilite));
     
     // Si appartement, je valide aussi les champs spécifiques
     if (data.habitation === 'appartement') {
