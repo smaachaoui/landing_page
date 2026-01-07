@@ -19,7 +19,10 @@ function validateInput(input) {
         'email': () => validateEmail(input, value),
         'telephone': () => validatePhone(input, value),
         'departement': () => validateDepartement(input, value),
-        'autre_chauffage': () => validateAutreChauffage(input, value)
+        'autre_chauffage': () => validateSelect(input, value, 'type de chauffage'),
+        'balcon_terrasse': () => validateSelect(input, value, 'balcon/terrasse'),
+        'etage_appartement': () => validateSelect(input, value, 'étage'),
+        'mur_exterieur': () => validateSelect(input, value, 'accès mur extérieur')
     };
     
     return validators[name] ? validators[name]() : true;
@@ -101,24 +104,11 @@ function validatePhone(input, value) {
 
 // Je valide le numéro de département
 function validateDepartement(input, value) {
-    // Je vérifie le format (2 ou 3 chiffres)
-    if (!/^\d{2,3}$/.test(value)) {
-        showError(input, '2 ou 3 chiffres requis');
-        return false;
-    }
+    // Je vérifie que le format correspond aux départements français valides
+    const validFormats = /^([0][1-9]|[1-8][0-9]|9[0-5]|2[AB]|97[1-6])$/;
     
-    const dept = parseInt(value);
-    const validDepts = [971, 972, 973, 974, 975, 976];
-    
-    // Je valide les départements métropole (01 à 95)
-    if (value.length === 2 && (dept < 1 || dept > 95)) {
+    if (!validFormats.test(value)) {
         showError(input, 'Département invalide');
-        return false;
-    }
-    
-    // Je valide les départements DOM-TOM (971 à 976)
-    if (value.length === 3 && !validDepts.includes(dept)) {
-        showError(input, 'Département DOM-TOM invalide');
         return false;
     }
     
@@ -126,27 +116,24 @@ function validateDepartement(input, value) {
     return true;
 }
 
-// Je valide le champ "Autre type de chauffage"
-function validateAutreChauffage(input, value) {
-    if (value.length < 3) {
-        showError(input, 'Minimum 3 caractères');
-        return false;
-    }
-    
-    if (value.length > 50) {
-        showError(input, 'Maximum 50 caractères');
+// Je valide les champs SELECT (liste déroulante)
+function validateSelect(input, value, fieldName) {
+    // Je vérifie qu'une option valide a été sélectionnée
+    if (!value || value === '') {
+        showError(input, `Veuillez sélectionner ${fieldName}`);
         return false;
     }
     
     // Je protège contre les injections XSS
     if (/<|>|script|javascript/gi.test(value)) {
-        showError(input, 'Caractères non autorisés');
+        showError(input, 'Valeur non autorisée');
         return false;
     }
     
-    // Je vérifie qu'il y a au moins une lettre
-    if (!/[a-zA-ZÀ-ÿ]/.test(value)) {
-        showError(input, 'Veuillez saisir un type de chauffage valide');
+    // Je vérifie que la valeur correspond à une option existante du select
+    const options = Array.from(input.options).map(opt => opt.value);
+    if (!options.includes(value)) {
+        showError(input, 'Option invalide');
         return false;
     }
     
@@ -156,7 +143,7 @@ function validateAutreChauffage(input, value) {
 
 // Je valide toutes les données du formulaire avant envoi
 function validateFormData(data) {
-    // J'ai défini la liste des champs obligatoires
+    // J'ai défini la liste des champs obligatoires de base
     const requiredFields = ['habitation', 'statut', 'chauffage', 'departement', 
                            'nom', 'prenom', 'email', 'telephone'];
     
@@ -168,12 +155,75 @@ function validateFormData(data) {
         }
     }
     
-    // Je vérifie une dernière fois tous les formats
-    return data.nom.length >= 2 && data.nom.length <= 50 &&
-           data.prenom.length >= 2 && data.prenom.length <= 50 &&
-           /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(data.email) &&
-           /^\d{10}$/.test(data.telephone) &&
-           /^\d{2,3}$/.test(data.departement);
+    // VALIDATION CONDITIONNELLE : Si appartement est sélectionné
+    if (data.habitation === 'appartement') {
+        const appartementFields = ['balcon_terrasse', 'etage_appartement', 'mur_exterieur'];
+        
+        for (let field of appartementFields) {
+            if (!data[field] || data[field].trim() === '') {
+                console.error(`Champ appartement manquant: ${field}`);
+                return false;
+            }
+        }
+    }
+    
+    // VALIDATION CONDITIONNELLE : Si "autre" type de chauffage est sélectionné
+    if (data.chauffage === 'autre') {
+        if (!data.autre_chauffage || data.autre_chauffage.trim() === '') {
+            console.error('Champ autre_chauffage manquant');
+            return false;
+        }
+    }
+    
+    // Je vérifie une dernière fois tous les formats des champs de base
+    const validations = [
+        data.nom.length >= 2 && data.nom.length <= 50,
+        data.prenom.length >= 2 && data.prenom.length <= 50,
+        /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(data.email),
+        /^\d{10}$/.test(data.telephone),
+        /^([0][1-9]|[1-8][0-9]|9[0-5]|2[AB]|97[1-6])$/.test(data.departement)
+    ];
+    
+    // Je vérifie la liste blanche des valeurs acceptées pour les radios
+    const validHabitation = ['maison', 'appartement'];
+    const validStatut = ['proprietaire', 'locataire'];
+    const validChauffage = ['gaz', 'fioul', 'electrique', 'bois', 'autre'];
+    
+    validations.push(validHabitation.includes(data.habitation));
+    validations.push(validStatut.includes(data.statut));
+    validations.push(validChauffage.includes(data.chauffage));
+    
+    // Si appartement, je valide aussi les champs spécifiques
+    if (data.habitation === 'appartement') {
+        const validBalconTerrasse = ['balcon', 'terrasse', 'balcon-terrasse', 'non'];
+        const validEtage = ['rdc', '1', '2', '3', '4', '5', '6-plus', 'dernier'];
+        const validMurExterieur = ['oui', 'non', 'ne-sais-pas'];
+        
+        validations.push(validBalconTerrasse.includes(data.balcon_terrasse));
+        validations.push(validEtage.includes(data.etage_appartement));
+        validations.push(validMurExterieur.includes(data.mur_exterieur));
+    }
+    
+    // Si "autre" chauffage, je valide le select
+    if (data.chauffage === 'autre') {
+        const validAutreChauffage = [
+            'pompe-chaleur-existante',
+            'chauffage-solaire',
+            'chauffage-au-sol',
+            'radiateurs-eau',
+            'poele-granules',
+            'insert-cheminee',
+            'climatisation-reversible',
+            'chauffage-mixte',
+            'aucun-chauffage',
+            'autre-non-liste'
+        ];
+        
+        validations.push(validAutreChauffage.includes(data.autre_chauffage));
+    }
+    
+    // Je retourne true uniquement si toutes les validations sont passées
+    return validations.every(v => v === true);
 }
 
 // J'affiche un message d'erreur sous le champ invalide
@@ -196,12 +246,16 @@ function clearError(input) {
 
 // Je nettoie les données pour éviter les failles XSS
 function sanitizeInput(value) {
+    if (typeof value !== 'string') {
+        return '';
+    }
+    
     const div = document.createElement('div');
     div.textContent = value;
     return div.innerHTML;
 }
 
-// J'active la validation en temps réel sur tous les champs
+// J'active la validation en temps réel sur tous les champs texte
 document.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"]').forEach(input => {
     // Je valide quand l'utilisateur quitte le champ
     input.addEventListener('blur', () => {
@@ -211,6 +265,19 @@ document.querySelectorAll('input[type="text"], input[type="email"], input[type="
     // Je supprime l'erreur quand l'utilisateur commence à corriger
     input.addEventListener('input', () => {
         if (input.classList.contains('input-error')) clearError(input);
+    });
+});
+
+// J'active la validation en temps réel sur tous les champs SELECT
+document.querySelectorAll('select[required]').forEach(select => {
+    // Je valide quand l'utilisateur sélectionne une option
+    select.addEventListener('change', () => {
+        if (select.value !== '') validateInput(select);
+    });
+    
+    // Je supprime l'erreur quand l'utilisateur change sa sélection
+    select.addEventListener('focus', () => {
+        if (select.classList.contains('input-error')) clearError(select);
     });
 });
 
