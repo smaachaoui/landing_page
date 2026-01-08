@@ -778,6 +778,7 @@ a {
 /* J'applique un style spécial quand l'option est sélectionnée */
 .option input[type="radio"]:checked ~ * {
     /* Je garde l'état de sélection visible */
+    border: #004C99;
 }
 
 /* J'améliore visuellement l'icône quand l'option est sélectionnée */
