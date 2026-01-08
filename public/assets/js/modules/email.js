@@ -1,12 +1,20 @@
-// Envoi des emails via EmailJS
+// ============================================
+// ENVOI DES EMAILS VIA EMAILJS
+// ============================================
 // J'utilise le service EmailJS pour transmettre les demandes par email
+// de manière sécurisée et fiable
 
+// ============================================
+// FORMATAGE DES VALEURS
+// ============================================
 // Je crée une fonction helper pour formater les valeurs des SELECT en texte lisible
 function formatSelectValue(field, value) {
+    // J'ai créé un dictionnaire de formatage pour chaque champ SELECT
     const formatters = {
-        // Formatage pour le champ "autre_chauffage"
+        // Je formate le champ "autre_chauffage"
         'autre_chauffage': {
             'pompe-chaleur-existante': 'Pompe à chaleur existante',
+            'chauffage-collectif': 'Chauffage collectif',
             'chauffage-solaire': 'Chauffage solaire',
             'chauffage-au-sol': 'Chauffage au sol électrique',
             'radiateurs-eau': 'Radiateurs à eau chaude',
@@ -17,14 +25,14 @@ function formatSelectValue(field, value) {
             'aucun-chauffage': 'Aucun chauffage',
             'autre-non-liste': 'Autre (non listé)'
         },
-        // Formatage pour le champ "balcon_terrasse"
+        // Je formate le champ "balcon_terrasse"
         'balcon_terrasse': {
             'balcon': 'Oui, balcon',
             'terrasse': 'Oui, terrasse',
             'balcon-terrasse': 'Oui, balcon et terrasse',
             'non': 'Non'
         },
-        // Formatage pour le champ "etage_appartement"
+        // Je formate le champ "etage_appartement"
         'etage_appartement': {
             'rdc': 'Rez-de-chaussée',
             '1': '1er étage',
@@ -35,7 +43,7 @@ function formatSelectValue(field, value) {
             '6-plus': '6ème étage ou plus',
             'dernier': 'Dernier étage'
         },
-        // Formatage pour le champ "mur_exterieur"
+        // Je formate le champ "mur_exterieur"
         'mur_exterieur': {
             'oui': 'Oui',
             'non': 'Non',
@@ -47,18 +55,28 @@ function formatSelectValue(field, value) {
     return formatters[field]?.[value] || value;
 }
 
+// ============================================
+// FONCTION D'ENVOI EMAIL
+// ============================================
+// J'envoie l'email avec toutes les données du formulaire
 async function sendEmail(formData) {
     // Je récupère la configuration EmailJS
     const config = window.EMAILJS_CONFIG;
     
+    // Je sécurise toutes les données avant l'envoi
+    const sanitizedData = {};
+    for (let key in formData) {
+        sanitizedData[key] = window.sanitizeInput(formData[key]);
+    }
+    
     // Je détermine le type de chauffage à afficher dans l'email
     let typeChauffage;
-    if (formData.chauffage === 'autre' && formData.autre_chauffage) {
+    if (sanitizedData.chauffage === 'autre' && sanitizedData.autre_chauffage) {
         // Si l'utilisateur a sélectionné "Autre", je formate la valeur du SELECT
-        typeChauffage = formatSelectValue('autre_chauffage', formData.autre_chauffage);
+        typeChauffage = formatSelectValue('autre_chauffage', sanitizedData.autre_chauffage);
     } else {
         // Sinon, je mets la première lettre en majuscule
-        typeChauffage = formData.chauffage.charAt(0).toUpperCase() + formData.chauffage.slice(1);
+        typeChauffage = sanitizedData.chauffage.charAt(0).toUpperCase() + sanitizedData.chauffage.slice(1);
     }
     
     // Je prépare les paramètres de base pour le template email
@@ -66,19 +84,20 @@ async function sendEmail(formData) {
         to_email: config.emailDestination,
         subject: 'Client à recontacter',
 
-        civilite: formData.civilite === 'mr' ? 'Monsieur' : 'Madame',
+        // Je formate la civilité
+        civilite: sanitizedData.civilite === 'mr' ? 'Monsieur' : 'Madame',
         
         // Je formate les données du client
-        nom: formData.nom,
-        prenom: formData.prenom,
-        email: formData.email,
-        telephone: formData.telephone,
+        nom: sanitizedData.nom,
+        prenom: sanitizedData.prenom,
+        email: sanitizedData.email,
+        telephone: sanitizedData.telephone,
         
         // Je formate les données du projet
-        type_habitation: formData.habitation === 'maison' ? 'Maison' : 'Appartement',
-        statut: formData.statut === 'proprietaire' ? 'Propriétaire' : 'Locataire',
+        type_habitation: sanitizedData.habitation === 'maison' ? 'Maison' : 'Appartement',
+        statut: sanitizedData.statut === 'proprietaire' ? 'Propriétaire' : 'Locataire',
         type_chauffage: typeChauffage,
-        departement: formData.departement,
+        departement: sanitizedData.departement,
         
         // J'ajoute la date et l'heure de soumission
         date_soumission: new Date().toLocaleDateString('fr-FR', {
@@ -91,10 +110,11 @@ async function sendEmail(formData) {
     };
     
     // J'ajoute les informations spécifiques si c'est un appartement
-    if (formData.habitation === 'appartement') {
-        templateParams.balcon_terrasse = formatSelectValue('balcon_terrasse', formData.balcon_terrasse);
-        templateParams.etage_appartement = formatSelectValue('etage_appartement', formData.etage_appartement);
-        templateParams.mur_exterieur = formatSelectValue('mur_exterieur', formData.mur_exterieur);
+    if (sanitizedData.habitation === 'appartement') {
+        // Je formate chaque champ appartement
+        templateParams.balcon_terrasse = formatSelectValue('balcon_terrasse', sanitizedData.balcon_terrasse);
+        templateParams.etage_appartement = formatSelectValue('etage_appartement', sanitizedData.etage_appartement);
+        templateParams.mur_exterieur = formatSelectValue('mur_exterieur', sanitizedData.mur_exterieur);
         
         // Je crée un résumé formaté des infos appartement pour l'email
         templateParams.infos_appartement = 
@@ -107,14 +127,35 @@ async function sendEmail(formData) {
         templateParams.infos_appartement = 'Non applicable (Maison individuelle)';
     }
     
-    // J'envoie l'email via EmailJS
-    return emailjs.send(
-        config.serviceID,
-        config.templateID,
-        templateParams,
-        config.publicKey
-    );
+    // Je log les données pour le débogage (sans les données sensibles)
+    console.log('J\'envoie l\'email avec les paramètres:', {
+        ...templateParams,
+        email: '***@***.***', // Je masque l'email pour la sécurité
+        telephone: '******' // Je masque le téléphone pour la sécurité
+    });
+    
+    try {
+        // J'envoie l'email via EmailJS
+        const response = await emailjs.send(
+            config.serviceID,
+            config.templateID,
+            templateParams,
+            config.publicKey
+        );
+        
+        console.log('Email envoyé avec succès !', response);
+        return response;
+        
+    } catch (error) {
+        console.error('Erreur lors de l\'envoi de l\'email:', error);
+        throw error;
+    }
 }
 
+// ============================================
+// EXPORT DE LA FONCTION
+// ============================================
 // J'exporte la fonction pour l'utiliser dans les autres modules
 window.sendEmail = sendEmail;
+
+console.log('Module d\'envoi d\'email chargé avec succès');

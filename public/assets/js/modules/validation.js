@@ -1,18 +1,24 @@
-// Validation des champs du formulaire
-// Je met en place un système de validation complet pour sécuriser toutes les saisies
+// ============================================
+// VALIDATION DES CHAMPS DU FORMULAIRE
+// ============================================
+// J'ai mis en place un système de validation complet pour sécuriser toutes les saisies
+// et protéger contre les injections XSS, SQL et autres attaques
 
-
-// Je valide chaque champ selon son type
+// ============================================
+// VALIDATION PRINCIPALE
+// ============================================
+// Je valide chaque champ selon son type et son nom
 function validateInput(input) {
     const value = input.value.trim();
-    const name = input.name;
+    const name = input.name || input.id.replace('-', '_');
     
+    // Je vérifie d'abord que le champ n'est pas vide
     if (value === '') {
         showError(input, 'Ce champ est requis');
         return false;
     }
     
-    // J'associe chaque champ à sa fonction de validation
+    // J'associe chaque champ à sa fonction de validation spécifique
     const validators = {
         'nom': () => validateName(input, value),
         'prenom': () => validateName(input, value),
@@ -25,24 +31,31 @@ function validateInput(input) {
         'mur_exterieur': () => validateSelect(input, value, 'accès mur extérieur')
     };
     
+    // J'exécute la validation appropriée ou je retourne true par défaut
     return validators[name] ? validators[name]() : true;
 }
 
-// Je valide le format des noms et prénoms
+// ============================================
+// VALIDATION DES NOMS ET PRÉNOMS
+// ============================================
+// Je valide le format des noms et prénoms avec protection XSS
 function validateName(input, value) {
+    // Je vérifie la longueur minimale
     if (value.length < 2) {
         showError(input, 'Minimum 2 caractères');
         return false;
     }
     
+    // Je vérifie la longueur maximale
     if (value.length > 50) {
         showError(input, 'Maximum 50 caractères');
         return false;
     }
     
-    // Je protège contre les injections XSS
-    if (/<|>|script|javascript/gi.test(value)) {
+    // Je protège contre les injections XSS - SÉCURITÉ CRITIQUE
+    if (/<|>|script|javascript|onerror|onload|onclick|eval|alert/gi.test(value)) {
         showError(input, 'Caractères non autorisés');
+        console.warn(`Tentative d'injection détectée dans le champ ${input.name}: ${value}`);
         return false;
     }
     
@@ -52,26 +65,38 @@ function validateName(input, value) {
         return false;
     }
     
+    // Je nettoie et valide le contenu
     clearError(input);
     return true;
 }
 
-// Je valide le format de l'adresse email
+// ============================================
+// VALIDATION DE L'EMAIL
+// ============================================
+// Je valide le format de l'adresse email avec protection XSS
 function validateEmail(input, value) {
+    // Je vérifie la longueur maximale
     if (value.length > 100) {
         showError(input, 'Email trop long');
         return false;
     }
     
-    // Je vérifie le format standard d'email
+    // Je vérifie le format standard d'email RFC 5322 simplifié
     if (!/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value)) {
         showError(input, 'Format email invalide');
         return false;
     }
     
-    // Je protège contre les injections XSS
-    if (/<|>|script|javascript/gi.test(value)) {
+    // Je protège contre les injections XSS dans l'email - SÉCURITÉ CRITIQUE
+    if (/<|>|script|javascript|onerror|onload|onclick|eval|alert/gi.test(value)) {
         showError(input, 'Caractères non autorisés');
+        console.warn(`Tentative d'injection détectée dans l'email: ${value}`);
+        return false;
+    }
+    
+    // Je vérifie qu'il n'y a pas de caractères dangereux
+    if (/[<>'"`;()\[\]{}|\\]/g.test(value)) {
+        showError(input, 'Caractères spéciaux non autorisés');
         return false;
     }
     
@@ -79,6 +104,9 @@ function validateEmail(input, value) {
     return true;
 }
 
+// ============================================
+// VALIDATION DU TÉLÉPHONE
+// ============================================
 // Je valide le numéro de téléphone mobile français
 function validatePhone(input, value) {
     // Je retire les espaces, tirets et points
@@ -90,9 +118,15 @@ function validatePhone(input, value) {
         return false;
     }
     
-    // Je vérifie que c'est un numéro mobile (commence par 06 ou 07)
+    // Je vérifie que c'est un numéro mobile français (commence par 06 ou 07)
     if (!cleanPhone.startsWith('06') && !cleanPhone.startsWith('07')) {
         showError(input, 'Doit commencer par 06 ou 07');
+        return false;
+    }
+    
+    // Je protège contre les injections dans le numéro
+    if (/[^0-9\s\-\.]/g.test(value)) {
+        showError(input, 'Format invalide');
         return false;
     }
     
@@ -102,9 +136,15 @@ function validatePhone(input, value) {
     return true;
 }
 
-// Je valide le numéro de département
+// ============================================
+// VALIDATION DU DÉPARTEMENT
+// ============================================
+// Je valide le numéro de département français
 function validateDepartement(input, value) {
     // Je vérifie que le format correspond aux départements français valides
+    // Départements métropolitains: 01-95 (sauf 20)
+    // Départements corses: 2A, 2B
+    // Départements d'outre-mer: 971-976
     const validFormats = /^([0][1-9]|[1-8][0-9]|9[0-5]|2[AB]|97[1-6])$/;
     
     if (!validFormats.test(value)) {
@@ -112,10 +152,19 @@ function validateDepartement(input, value) {
         return false;
     }
     
+    // Je protège contre les injections
+    if (/[^0-9AB]/g.test(value)) {
+        showError(input, 'Format invalide');
+        return false;
+    }
+    
     clearError(input);
     return true;
 }
 
+// ============================================
+// VALIDATION DES CHAMPS SELECT
+// ============================================
 // Je valide les champs SELECT (liste déroulante)
 function validateSelect(input, value, fieldName) {
     // Je vérifie qu'une option valide a été sélectionnée
@@ -124,9 +173,10 @@ function validateSelect(input, value, fieldName) {
         return false;
     }
     
-    // Je protège contre les injections XSS
-    if (/<|>|script|javascript/gi.test(value)) {
+    // Je protège contre les injections XSS - SÉCURITÉ CRITIQUE
+    if (/<|>|script|javascript|onerror|onload|onclick|eval|alert/gi.test(value)) {
         showError(input, 'Valeur non autorisée');
+        console.warn(`Tentative d'injection détectée dans le select ${fieldName}: ${value}`);
         return false;
     }
     
@@ -134,6 +184,7 @@ function validateSelect(input, value, fieldName) {
     const options = Array.from(input.options).map(opt => opt.value);
     if (!options.includes(value)) {
         showError(input, 'Option invalide');
+        console.warn(`Valeur non autorisée dans le select ${fieldName}: ${value}`);
         return false;
     }
     
@@ -141,10 +192,34 @@ function validateSelect(input, value, fieldName) {
     return true;
 }
 
-// Je valide toutes les données du formulaire avant envoi
+// ============================================
+// VÉRIFICATION ÉLIGIBILITÉ APPARTEMENT
+// ============================================
+// Je vérifie l'éligibilité pour l'installation d'une PAC en appartement
+function checkAppartementEligibility(balconTerrasse, murExterieur) {
+    // Conditions d'installation PAC en appartement :
+    // ✅ POSSIBLE si : Balcon OU Terrasse OU Accès mur extérieur
+    // ❌ IMPOSSIBLE si : PAS de balcon/terrasse ET PAS d'accès mur extérieur
+    
+    // Je vérifie d'abord que les valeurs sont sécurisées
+    const safeBalcon = sanitizeInput(balconTerrasse);
+    const safeMur = sanitizeInput(murExterieur);
+    
+    if (safeBalcon === 'non' && safeMur === 'non') {
+        console.error('Appartement non éligible : pas de balcon/terrasse et pas d\'accès mur extérieur');
+        return false;
+    }
+    
+    return true;
+}
+
+// ============================================
+// VALIDATION COMPLÈTE AVANT ENVOI
+// ============================================
+// Je valide toutes les données du formulaire avant l'envoi
 function validateFormData(data) {
     // J'ai défini la liste des champs obligatoires de base
-    const requiredFields = ['habitation', 'statut', 'chauffage', 'departement', 'civilite',
+    const requiredFields = ['habitation', 'statut', 'chauffage', 'departement', 
                            'nom', 'prenom', 'email', 'telephone'];
     
     // Je vérifie que tous les champs requis sont présents
@@ -165,6 +240,12 @@ function validateFormData(data) {
                 return false;
             }
         }
+        
+        // Je vérifie l'éligibilité pour l'installation d'une PAC
+        if (!checkAppartementEligibility(data.balcon_terrasse, data.mur_exterieur)) {
+            console.error('Appartement non éligible pour installation PAC');
+            return false;
+        }
     }
     
     // VALIDATION CONDITIONNELLE : Si "autre" type de chauffage est sélectionné
@@ -184,18 +265,16 @@ function validateFormData(data) {
         /^([0][1-9]|[1-8][0-9]|9[0-5]|2[AB]|97[1-6])$/.test(data.departement)
     ];
     
-    // Je vérifie la liste blanche des valeurs acceptées pour les radios
+    // Je vérifie la liste blanche des valeurs acceptées pour les radios - SÉCURITÉ CRITIQUE
     const validHabitation = ['maison', 'appartement'];
     const validStatut = ['proprietaire', 'locataire'];
     const validChauffage = ['gaz', 'fioul', 'electrique', 'bois', 'autre'];
-    const validCivilite = ['mr', 'mme'];
     
     validations.push(validHabitation.includes(data.habitation));
     validations.push(validStatut.includes(data.statut));
     validations.push(validChauffage.includes(data.chauffage));
-    validations.push(validCivilite.includes(data.civilite));
     
-    // Si appartement, je valide aussi les champs spécifiques
+    // Si appartement, je valide aussi les champs spécifiques avec liste blanche
     if (data.habitation === 'appartement') {
         const validBalconTerrasse = ['balcon', 'terrasse', 'balcon-terrasse', 'non'];
         const validEtage = ['rdc', '1', '2', '3', '4', '5', '6-plus', 'dernier'];
@@ -206,10 +285,11 @@ function validateFormData(data) {
         validations.push(validMurExterieur.includes(data.mur_exterieur));
     }
     
-    // Si "autre" chauffage, je valide le select
+    // Si "autre" chauffage, je valide le select avec liste blanche
     if (data.chauffage === 'autre') {
         const validAutreChauffage = [
             'pompe-chaleur-existante',
+            'chauffage-collectif',
             'chauffage-solaire',
             'chauffage-au-sol',
             'radiateurs-eau',
@@ -224,19 +304,39 @@ function validateFormData(data) {
         validations.push(validAutreChauffage.includes(data.autre_chauffage));
     }
     
+    // Je vérifie qu'aucune donnée ne contient de code malveillant - SÉCURITÉ CRITIQUE
+    for (let key in data) {
+        if (typeof data[key] === 'string') {
+            if (/<|>|script|javascript|onerror|onload|onclick|eval|alert/gi.test(data[key])) {
+                console.error(`Tentative d'injection XSS détectée dans le champ ${key}`);
+                return false;
+            }
+        }
+    }
+    
     // Je retourne true uniquement si toutes les validations sont passées
     return validations.every(v => v === true);
 }
 
+// ============================================
+// AFFICHAGE DES ERREURS
+// ============================================
 // J'affiche un message d'erreur sous le champ invalide
 function showError(input, message) {
+    // Je retire d'abord toute erreur existante
     clearError(input);
+    
+    // J'ajoute la classe d'erreur au champ
     input.classList.add('input-error');
     
+    // Je crée et affiche le message d'erreur
     const errorDiv = document.createElement('div');
     errorDiv.className = 'error-message';
     errorDiv.textContent = message;
     input.parentElement.appendChild(errorDiv);
+    
+    // J'anime l'apparition du message
+    errorDiv.style.animation = 'fadeIn 0.2s ease-out';
 }
 
 // Je supprime le message d'erreur
@@ -246,27 +346,53 @@ function clearError(input) {
     if (errorMsg) errorMsg.remove();
 }
 
-// Je nettoie les données pour éviter les failles XSS
+// ============================================
+// NETTOYAGE DES DONNÉES (SANITIZATION)
+// ============================================
+// Je nettoie les données pour éviter les failles XSS - SÉCURITÉ CRITIQUE
 function sanitizeInput(value) {
+    // Je vérifie d'abord que c'est une chaîne de caractères
     if (typeof value !== 'string') {
         return '';
     }
     
+    // Je crée un élément div temporaire pour encoder les caractères HTML
     const div = document.createElement('div');
     div.textContent = value;
-    return div.innerHTML;
+    
+    // Je récupère la version encodée (protection XSS)
+    let sanitized = div.innerHTML;
+    
+    // Je supprime les scripts et autres balises dangereuses
+    sanitized = sanitized.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
+    sanitized = sanitized.replace(/<iframe\b[^<]*(?:(?!<\/iframe>)<[^<]*)*<\/iframe>/gi, '');
+    sanitized = sanitized.replace(/javascript:/gi, '');
+    sanitized = sanitized.replace(/onerror=/gi, '');
+    sanitized = sanitized.replace(/onload=/gi, '');
+    sanitized = sanitized.replace(/onclick=/gi, '');
+    sanitized = sanitized.replace(/eval\(/gi, '');
+    sanitized = sanitized.replace(/alert\(/gi, '');
+    
+    return sanitized;
 }
 
+// ============================================
+// VALIDATION EN TEMPS RÉEL
+// ============================================
 // J'active la validation en temps réel sur tous les champs texte
 document.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"]').forEach(input => {
     // Je valide quand l'utilisateur quitte le champ
     input.addEventListener('blur', () => {
-        if (input.value.trim() !== '') validateInput(input);
+        if (input.value.trim() !== '') {
+            validateInput(input);
+        }
     });
     
     // Je supprime l'erreur quand l'utilisateur commence à corriger
     input.addEventListener('input', () => {
-        if (input.classList.contains('input-error')) clearError(input);
+        if (input.classList.contains('input-error')) {
+            clearError(input);
+        }
     });
 });
 
@@ -274,16 +400,26 @@ document.querySelectorAll('input[type="text"], input[type="email"], input[type="
 document.querySelectorAll('select[required]').forEach(select => {
     // Je valide quand l'utilisateur sélectionne une option
     select.addEventListener('change', () => {
-        if (select.value !== '') validateInput(select);
+        if (select.value !== '') {
+            validateInput(select);
+        }
     });
     
     // Je supprime l'erreur quand l'utilisateur change sa sélection
     select.addEventListener('focus', () => {
-        if (select.classList.contains('input-error')) clearError(select);
+        if (select.classList.contains('input-error')) {
+            clearError(select);
+        }
     });
 });
 
+// ============================================
+// EXPORT DES FONCTIONS
+// ============================================
 // J'exporte les fonctions pour les utiliser dans les autres modules
 window.validateInput = validateInput;
 window.validateFormData = validateFormData;
 window.sanitizeInput = sanitizeInput;
+window.checkAppartementEligibility = checkAppartementEligibility;
+
+console.log('Module de validation chargé avec succès. Protection XSS activée.');

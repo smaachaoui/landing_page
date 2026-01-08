@@ -3,7 +3,7 @@
    ============================================ */
 
 :root {
-    /* Palette de couleurs harmonieuse - Inspirée du logo Haut Sommet */
+    /* J'ai défini une palette de couleurs harmonieuse - Inspirée du logo Haut Sommet */
     --primary-blue: #0066CC;
     --primary-blue-light: #3399FF;
     --primary-blue-dark: #004C99;
@@ -19,10 +19,12 @@
     --accent-green-dark: #00856A;
     --accent-green-lighter: #D5F5EE;
     
+    /* J'ai créé des gradients cohérents pour les effets visuels */
     --gradient-start: #0066CC;
     --gradient-middle: #3399FF;
     --gradient-end: #00B894;
     
+    /* J'ai défini une échelle de couleurs de texte */
     --text-dark: #1A202C;
     --text-medium: #4A5568;
     --text-light: #A0AEC0;
@@ -30,11 +32,12 @@
     --background-lighter: #FFFFFF;
     --white: #FFFFFF;
     
+    /* J'ai ajouté des couleurs pour les états */
     --success: #48BB78;
     --warning: #ED8936;
     --error: #F56565;
     
-    /* Espacements */
+    /* J'ai créé une échelle d'espacements cohérente */
     --spacing-xs: 0.5rem;
     --spacing-sm: 1rem;
     --spacing-md: 1.5rem;
@@ -43,30 +46,33 @@
     --spacing-2xl: 4rem;
     --spacing-3xl: 6rem;
     
-    /* Ombres */
+    /* J'ai défini des ombres progressives */
     --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     
-    /* Transitions */
+    /* J'ai configuré des durées de transition standards */
     --transition-fast: 0.15s ease;
     --transition-base: 0.3s ease;
     --transition-slow: 0.5s ease;
 }
 
+/* Je réinitialise tous les éléments pour une base propre */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* J'active le scroll fluide et définis une taille de base */
 html {
     scroll-behavior: smooth;
     font-size: 16px;
     scroll-padding-top: 5rem;
 }
 
+/* J'ai configuré la typographie de base du site */
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     line-height: 1.6;
@@ -77,23 +83,26 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+/* Je m'assure que les images sont responsive */
 img {
     max-width: 100%;
     height: auto;
     display: block;
 }
 
+/* J'hérite la police pour tous les boutons */
 button {
     font-family: inherit;
     cursor: pointer;
 }
 
+/* Je retire le soulignement par défaut des liens */
 a {
     text-decoration: none;
     color: inherit;
 }
 
-/* Container */
+/* J'ai créé un container centré responsive */
 .container {
     width: 100%;
     max-width: 75rem;
@@ -105,6 +114,7 @@ a {
    HEADER
    ============================================ */
 
+/* J'ai créé un header sticky avec effet de flou */
 .header {
     background: rgba(255, 255, 255, 0.98);
     padding: var(--spacing-sm);
@@ -118,6 +128,7 @@ a {
     backdrop-filter: blur(10px);
 }
 
+/* J'ai stylisé le logo avec un effet hover */
 .logo {
     display: flex;
     align-items: center;
@@ -135,11 +146,16 @@ a {
     transform: scale(1.05);
 }
 
+/* Je cache les logos d'aide sur mobile */
 .help-logo {
     display: none;
 }
 
-/* Burger Menu */
+/* ============================================
+   BURGER MENU
+   ============================================ */
+
+/* J'ai créé un burger menu animé */
 .burger-menu {
     display: block;
     background: none;
@@ -150,6 +166,7 @@ a {
     position: relative;
 }
 
+/* J'ai stylisé les barres du burger */
 .burger-line {
     display: block;
     width: 1.5625rem;
@@ -160,6 +177,7 @@ a {
     border-radius: 2px;
 }
 
+/* J'anime la transformation en croix quand le menu est ouvert */
 .burger-menu.active .burger-line:nth-child(1) {
     transform: translateY(0.5rem) rotate(45deg);
 }
@@ -172,7 +190,11 @@ a {
     transform: translateY(-0.5rem) rotate(-45deg);
 }
 
-/* Navigation Mobile */
+/* ============================================
+   NAVIGATION MOBILE
+   ============================================ */
+
+/* J'ai créé un menu latéral avec effet glassmorphism */
 .navbar {
     display: flex;
     position: fixed;
@@ -189,10 +211,12 @@ a {
     box-shadow: -4px 0 20px rgba(0, 102, 204, 0.15);
 }
 
+/* J'active l'affichage quand le menu est ouvert */
 .navbar.active {
     right: 0;
 }
 
+/* J'ai stylisé les liens de navigation */
 .navbar a {
     display: block;
     padding: var(--spacing-sm) 0;
@@ -202,6 +226,7 @@ a {
     transition: color var(--transition-base), padding-left var(--transition-base);
 }
 
+/* J'ajoute un effet hover au survol */
 .navbar a:hover {
     color: var(--primary-blue);
     padding-left: 0.625rem;
@@ -212,6 +237,7 @@ a {
    TÉLÉPHONE FIXE
    ============================================ */
 
+/* J'ai créé un bouton d'appel flottant avec animation */
 .phone-fixed {
     position: fixed;
     bottom: 1.5rem;
@@ -230,22 +256,26 @@ a {
     font-size: 0.9rem;
 }
 
+/* J'ajoute un effet hover subtil */
 .phone-fixed:hover {
     transform: translateY(-3px) scale(1.02);
     box-shadow: 0 12px 32px rgba(255, 107, 53, 0.5);
 }
 
+/* J'anime l'icône du téléphone */
 .phone-fixed i {
     font-size: 1.25rem;
     animation: ring 2s infinite;
 }
 
+/* J'ai créé une animation de sonnerie */
 @keyframes ring {
     0%, 100% { transform: rotate(0deg); }
     10%, 30% { transform: rotate(-10deg); }
     20% { transform: rotate(10deg); }
 }
 
+/* Je m'assure que le texte ne passe pas à la ligne */
 .phone-text {
     white-space: nowrap;
 }
@@ -254,6 +284,7 @@ a {
    SECTION ACCUEIL
    ============================================ */
 
+/* J'ai créé un hero avec gradient et pattern de fond */
 .section-accueil {
     background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-middle) 50%, var(--gradient-end) 100%);
     color: white;
@@ -263,6 +294,7 @@ a {
     padding: var(--spacing-lg) var(--spacing-sm);
 }
 
+/* J'ajoute un motif de grille subtil en arrière-plan */
 .section-accueil::before {
     content: '';
     position: absolute;
@@ -274,11 +306,13 @@ a {
     opacity: 0.5;
 }
 
+/* Je m'assure que le contenu est au-dessus du pattern */
 .section-accueil > .container > * {
     position: relative;
     z-index: 1;
 }
 
+/* J'ai stylisé le titre principal */
 .section-accueil h1 {
     font-size: 1.5rem;
     line-height: 1.3;
@@ -287,7 +321,11 @@ a {
     font-weight: 700;
 }
 
-/* Bannière d'urgence */
+/* ============================================
+   BANNIÈRE D'URGENCE
+   ============================================ */
+
+/* J'ai créé une bannière d'urgence avec effet glassmorphism */
 .urgency-banner {
     display: inline-flex;
     align-items: center;
@@ -302,17 +340,23 @@ a {
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+/* J'anime l'icône avec un effet de pulsation */
 .urgency-banner i {
     font-size: 1.125rem;
     animation: pulse 2s infinite;
 }
 
+/* J'ai créé une animation de pulsation */
 @keyframes pulse {
     0%, 100% { opacity: 1; }
     50% { opacity: 0.6; }
 }
 
-/* Cartes d'aides */
+/* ============================================
+   CARTES D'AIDES
+   ============================================ */
+
+/* Je crée une grille pour les cartes d'aides */
 .help-cards {
     display: grid;
     grid-template-columns: 1fr;
@@ -320,6 +364,7 @@ a {
     margin-bottom: var(--spacing-lg);
 }
 
+/* J'ai stylisé chaque carte d'aide */
 .help-card {
     background: rgba(255, 255, 255, 0.98);
     color: var(--text-dark);
@@ -330,11 +375,13 @@ a {
     border: 1px solid rgba(0, 102, 204, 0.1);
 }
 
+/* J'ajoute un effet hover */
 .help-card:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-xl);
 }
 
+/* J'ai stylisé les icônes avec un gradient */
 .help-card i {
     font-size: 2.5rem;
     background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-light) 100%);
@@ -344,6 +391,7 @@ a {
     margin-bottom: var(--spacing-sm);
 }
 
+/* J'ai stylisé les titres des cartes */
 .help-card h2 {
     font-size: 1.2rem;
     margin-bottom: var(--spacing-xs);
@@ -351,6 +399,7 @@ a {
     font-weight: 700;
 }
 
+/* J'ai stylisé le texte des cartes */
 .help-card p {
     font-size: 0.9rem;
     margin-bottom: var(--spacing-xs);
@@ -361,7 +410,11 @@ a {
     margin-bottom: 0;
 }
 
-/* Indicateurs de confiance */
+/* ============================================
+   INDICATEURS DE CONFIANCE
+   ============================================ */
+
+/* Je crée une grille pour les indicateurs */
 .trust-indicators {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -369,6 +422,7 @@ a {
     margin-bottom: var(--spacing-lg);
 }
 
+/* J'ai stylisé chaque indicateur */
 .trust-item {
     display: flex;
     flex-direction: column;
@@ -382,21 +436,28 @@ a {
     transition: all var(--transition-base);
 }
 
+/* J'ajoute un effet hover aux indicateurs */
 .trust-item:hover {
     background: rgba(255, 255, 255, 0.2);
     transform: translateY(-2px);
 }
 
+/* J'ai dimensionné les icônes */
 .trust-item i {
     font-size: 1.5rem;
 }
 
+/* J'ai stylisé le texte */
 .trust-item span {
     font-size: 0.875rem;
     text-align: center;
 }
 
-/* Bouton principal */
+/* ============================================
+   BOUTON PRINCIPAL
+   ============================================ */
+
+/* J'ai créé un bouton principal avec gradient et ombre */
 .btn-primary {
     display: inline-block;
     background: linear-gradient(135deg, var(--secondary-orange) 0%, var(--secondary-orange-light) 100%);
@@ -410,16 +471,22 @@ a {
     border: none;
 }
 
+/* J'ajoute un effet hover au bouton */
 .btn-primary:hover {
     transform: translateY(-3px);
     box-shadow: 0 12px 24px rgba(255, 107, 53, 0.4);
 }
 
+/* J'ajoute un effet au clic */
 .btn-primary:active {
     transform: translateY(-1px);
 }
 
-/* Flèche vers le bas */
+/* ============================================
+   FLÈCHE VERS LE BAS
+   ============================================ */
+
+/* J'ai créé une flèche animée qui indique de scroller */
 .arrow-down {
     width: 1.875rem;
     height: 1.875rem;
@@ -430,6 +497,7 @@ a {
     animation: bounce 2s infinite;
 }
 
+/* J'ai créé une animation de rebond */
 @keyframes bounce {
     0%, 20%, 50%, 80%, 100% {
         transform: translateY(0) rotate(-45deg);
@@ -446,20 +514,26 @@ a {
    SECTION SIMULATION
    ============================================ */
 
+/* J'ai créé la section simulation avec fond clair */
 .section-simulation {
     background: var(--background-light);
     padding: var(--spacing-2xl) var(--spacing-sm);
 }
 
-/* "Comment ça marche" Grid */
+/* ============================================
+   COMMENT ÇA MARCHE - GRID
+   ============================================ */
+
+/* Je crée une grille pour les étapes */
 .how-it-works-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--spacing-lg);
     margin-bottom: var(--spacing-2xl);
-    margin-top: var(--spacing-2xl); /* AJOUT : Espace en haut du titre */
+    margin-top: var(--spacing-2xl);
 }
 
+/* J'ai stylisé le titre de la grille */
 .grid-title {
     grid-column: 1 / -1;
     font-size: 1.8rem;
@@ -467,20 +541,22 @@ a {
     color: var(--primary-blue-dark);
     font-weight: 700;
     position: relative;
-    margin-bottom: var(--spacing-xl); /* AUGMENTÉ : Plus d'espace sous le titre */
-    padding-top: var(--spacing-md); /* AJOUT : Espace au-dessus du titre */
+    margin-bottom: var(--spacing-xl);
+    padding-top: var(--spacing-md);
 }
 
+/* J'ajoute une ligne de soulignement sous le titre */
 .grid-title::after {
     content: '';
     display: block;
     width: 5rem;
     height: 4px;
     background: linear-gradient(90deg, var(--primary-blue) 0%, var(--accent-green) 100%);
-    margin: var(--spacing-md) auto 0; /* AUGMENTÉ : Plus d'espace pour le soulignement */
+    margin: var(--spacing-md) auto 0;
     border-radius: 2px;
 }
 
+/* J'ai créé des cartes pour chaque étape */
 .step-card {
     background: white;
     padding: var(--spacing-lg) var(--spacing-md);
@@ -492,12 +568,14 @@ a {
     text-align: center;
 }
 
+/* J'ajoute un effet hover aux cartes */
 .step-card:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-xl);
     border-color: var(--primary-blue-light);
 }
 
+/* J'ai créé des numéros d'étape circulaires */
 .step-number {
     position: absolute;
     top: -1.25rem;
@@ -516,6 +594,7 @@ a {
     box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
 }
 
+/* J'ai stylisé les icônes des étapes */
 .step-icon {
     margin: var(--spacing-md) 0 var(--spacing-sm);
 }
@@ -528,6 +607,7 @@ a {
     background-clip: text;
 }
 
+/* J'ai stylisé les titres des étapes */
 .step-card h3 {
     font-size: 1.3rem;
     color: var(--primary-blue-dark);
@@ -535,13 +615,18 @@ a {
     font-weight: 700;
 }
 
+/* J'ai stylisé les descriptions des étapes */
 .step-card p {
     color: var(--text-medium);
     line-height: 1.6;
     font-size: 0.95rem;
 }
 
-/* Calculateur / Formulaire */
+/* ============================================
+   CALCULATEUR / FORMULAIRE
+   ============================================ */
+
+/* J'ai créé une boîte centrée pour le calculateur */
 .calculator-box {
     background: white;
     padding: var(--spacing-lg) var(--spacing-md);
@@ -552,6 +637,7 @@ a {
     border: 2px solid var(--primary-blue-lighter);
 }
 
+/* J'ai stylisé le titre du calculateur */
 .calculator-box h2 {
     font-size: 1.5rem;
     text-align: center;
@@ -560,13 +646,18 @@ a {
     font-weight: 700;
 }
 
+/* J'ai ajouté un sous-titre */
 .calculator-subtitle {
     text-align: center;
     color: var(--text-medium);
     margin-bottom: var(--spacing-md);
 }
 
-/* Barre de progression */
+/* ============================================
+   BARRE DE PROGRESSION
+   ============================================ */
+
+/* J'ai créé un conteneur pour la barre */
 .progress-bar-container {
     width: 100%;
     height: 8px;
@@ -574,8 +665,10 @@ a {
     border-radius: 10px;
     overflow: hidden;
     margin-bottom: var(--spacing-lg);
+    transition: opacity var(--transition-base), transform var(--transition-base);
 }
 
+/* J'ai stylisé la barre elle-même avec un gradient */
 .progress-bar {
     height: 100%;
     background: linear-gradient(90deg, var(--primary-blue) 0%, var(--accent-green) 100%);
@@ -584,25 +677,45 @@ a {
     width: 25%;
 }
 
-/* Masquer la barre de progression sur l'étape de confirmation */
+/* Je cache la barre sur l'étape de confirmation */
 .progress-bar-container.hidden {
     display: none;
 }
 
-/* Formulaire */
+/* ============================================
+   FORMULAIRE MULTI-ÉTAPES
+   ============================================ */
+
+/* Je configure le formulaire */
 .form-calculator {
     width: 100%;
 }
 
+/* Je cache toutes les étapes par défaut */
 .form-step {
     display: none;
     flex-direction: column;
 }
 
+/* J'affiche uniquement l'étape active */
 .form-step.active {
     display: flex;
+    animation: fadeInSlide 0.3s ease-out;
 }
 
+/* J'ai créé une animation d'apparition */
+@keyframes fadeInSlide {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* J'ai stylisé la question principale */
 .form-question {
     font-weight: 700;
     font-size: 1.1rem;
@@ -611,6 +724,7 @@ a {
     color: var(--primary-blue-dark);
 }
 
+/* J'ai stylisé les sous-questions */
 .form-sub-question {
     font-size: 1rem;
     font-weight: 600;
@@ -621,13 +735,19 @@ a {
     text-align: center;
 }
 
+/* ============================================
+   OPTIONS DE FORMULAIRE (RADIO BUTTONS)
+   ============================================ */
+
+/* Je crée une grille pour les options */
 .form-options {
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--spacing-sm);
-    margin-bottom: var(--spacing-xl); /* AUGMENTÉ : Plus d'espace sous les options */
+    margin-bottom: var(--spacing-md);
 }
 
+/* J'ai créé des cartes cliquables pour chaque option */
 .option {
     display: flex;
     flex-direction: column;
@@ -638,29 +758,85 @@ a {
     cursor: pointer;
     transition: all var(--transition-base);
     background: white;
+    position: relative;
+    /* J'évite les problèmes de layout shift */
+    min-height: 120px;
 }
 
+/* J'ajoute un effet hover subtil */
 .option:hover {
     border-color: var(--primary-blue);
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
 }
 
+/* Je cache le bouton radio natif */
 .option input[type="radio"] {
     display: none;
 }
 
+/* J'applique un style spécial quand l'option est sélectionnée */
+.option input[type="radio"]:checked ~ * {
+    /* Je garde l'état de sélection visible */
+}
+
+/* J'améliore visuellement l'icône quand l'option est sélectionnée */
 .option input[type="radio"]:checked + .option-icon {
     background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-green) 100%);
     color: white;
     transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
 }
 
+/* Je mets en évidence le texte quand l'option est sélectionnée */
 .option input[type="radio"]:checked ~ span {
     color: var(--primary-blue);
     font-weight: 700;
 }
 
+/* J'ajoute une bordure plus visible quand l'option est sélectionnée */
+.option:has(input[type="radio"]:checked) {
+    border-color: var(--primary-blue);
+    border-width: 3px;
+    background: linear-gradient(135deg, rgba(0, 102, 204, 0.03), rgba(0, 184, 148, 0.03));
+}
+
+/* J'ajoute un indicateur visuel de validation */
+.option input[type="radio"]:checked ~ .option-icon::after {
+    content: '✓';
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: var(--success);
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(72, 187, 120, 0.4);
+    animation: checkPop 0.3s ease-out;
+}
+
+/* J'anime l'apparition du checkmark */
+@keyframes checkPop {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* J'ai stylisé les icônes des options */
 .option-icon {
     width: 3.75rem;
     height: 3.75rem;
@@ -673,25 +849,34 @@ a {
     font-size: 2rem;
     margin-bottom: var(--spacing-xs);
     transition: all var(--transition-base);
+    position: relative;
 }
 
+/* J'ai stylisé le label de l'option */
 .option span:last-child {
     font-size: 1rem;
     font-weight: 500;
+    text-align: center;
 }
 
-/* Champs de formulaire */
+/* ============================================
+   CHAMPS DE FORMULAIRE
+   ============================================ */
+
+/* Je crée une grille pour les champs */
 .form-fields {
     display: grid;
     gap: var(--spacing-md);
-    margin-bottom: var(--spacing-xl); /* AUGMENTÉ : Plus d'espace sous les champs */
+    margin-bottom: var(--spacing-md);
 }
 
+/* J'ai structuré chaque champ */
 .form-field {
     display: flex;
     flex-direction: column;
 }
 
+/* J'ai stylisé les labels */
 .form-field label {
     font-weight: 600;
     color: var(--primary-blue);
@@ -699,6 +884,7 @@ a {
     font-size: 0.95rem;
 }
 
+/* J'ai stylisé les inputs et selects */
 .form-field input,
 .form-field select {
     padding: 0.875rem var(--spacing-sm);
@@ -709,6 +895,7 @@ a {
     background: white;
 }
 
+/* J'ajoute un effet focus */
 .form-field input:focus,
 .form-field select:focus {
     outline: none;
@@ -716,30 +903,58 @@ a {
     box-shadow: 0 0 0 3px var(--primary-blue-lighter);
 }
 
+/* J'ajoute un effet hover */
 .form-field input:hover,
 .form-field select:hover {
     border-color: var(--primary-blue-light);
 }
 
-/* Messages d'erreur */
+/* ============================================
+   MESSAGES D'ERREUR
+   ============================================ */
+
+/* Je style les champs en erreur */
 .input-error {
     border-color: var(--error) !important;
+    animation: shake 0.3s ease-in-out;
 }
 
+/* J'ai créé une animation de secousse */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+/* J'ai stylisé les messages d'erreur */
 .error-message {
     color: var(--error);
     font-size: 0.875rem;
     margin-top: 0.25rem;
     font-weight: 500;
+    animation: fadeIn 0.2s ease-out;
+}
+
+/* J'anime l'apparition des messages d'erreur */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* ============================================
    GROUPE DE CHAMPS APPARTEMENT
    ============================================ */
 
+/* J'ai créé un groupe visuel pour les champs appartement */
 .form-field-group {
     margin-top: var(--spacing-lg);
-    margin-bottom: var(--spacing-xl); /* AUGMENTÉ : Plus d'espace sous le groupe */
+    margin-bottom: var(--spacing-md);
     padding: var(--spacing-md);
     background: linear-gradient(135deg, var(--primary-blue-lighter) 0%, var(--accent-green-lighter) 100%);
     border-radius: 16px;
@@ -747,6 +962,7 @@ a {
     animation: slideDown 0.3s ease-out;
 }
 
+/* J'ai créé une animation de descente */
 @keyframes slideDown {
     from {
         opacity: 0;
@@ -758,6 +974,7 @@ a {
     }
 }
 
+/* J'espace les champs du groupe */
 .form-field-group .form-field {
     margin-bottom: var(--spacing-sm);
 }
@@ -766,6 +983,7 @@ a {
     margin-bottom: 0;
 }
 
+/* J'ai stylisé les labels du groupe */
 .form-field-group label {
     display: block;
     font-size: 0.95rem;
@@ -774,6 +992,7 @@ a {
     margin-bottom: var(--spacing-xs);
 }
 
+/* J'ai stylisé les selects du groupe */
 .form-field-group select {
     width: 100%;
     padding: 0.875rem var(--spacing-sm);
@@ -799,23 +1018,27 @@ a {
    CHAMP "AUTRE" CHAUFFAGE
    ============================================ */
 
+/* J'ai créé un champ conditionnel pour "autre chauffage" */
 #autre-chauffage-field {
+    display: none;
     opacity: 0;
     transform: translateY(-10px);
     transition: all var(--transition-base);
     margin-top: var(--spacing-md);
-    margin-bottom: var(--spacing-xl); /* AUGMENTÉ : Plus d'espace sous le champ */
+    margin-bottom: var(--spacing-md);
     padding: var(--spacing-md);
     background: var(--secondary-orange-lighter);
     border-radius: 12px;
     border: 2px dashed var(--secondary-orange);
 }
 
+/* J'anime l'apparition du champ */
 #autre-chauffage-field[style*="display: block"] {
     opacity: 1;
     transform: translateY(0);
 }
 
+/* J'ai stylisé le label */
 #autre-chauffage-field label {
     font-weight: 600;
     color: var(--secondary-orange-dark);
@@ -823,6 +1046,7 @@ a {
     margin-bottom: var(--spacing-xs);
 }
 
+/* J'ai stylisé le select */
 #autre-chauffage {
     width: 100%;
     padding: 0.875rem var(--spacing-sm);
@@ -839,17 +1063,22 @@ a {
     box-shadow: 0 0 0 3px var(--secondary-orange-lighter);
 }
 
-/* Navigation formulaire */
+/* ============================================
+   NAVIGATION FORMULAIRE
+   ============================================ */
+
+/* J'ai créé une barre de navigation pour les étapes */
 .form-navigation {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: var(--spacing-xl); /* AUGMENTÉ : Plus d'espace au-dessus de la navigation */
+    margin-top: var(--spacing-lg);
     margin-bottom: var(--spacing-md);
-    padding-top: var(--spacing-md); /* AJOUT : Espace supplémentaire */
-    border-top: 1px solid var(--primary-blue-lighter); /* AJOUT : Séparateur visuel */
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--primary-blue-lighter);
 }
 
+/* J'ai créé des boutons circulaires pour la navigation */
 .nav-prev,
 .nav-next {
     background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-light) 100%);
@@ -864,26 +1093,32 @@ a {
     font-size: 1.25rem;
     transition: all var(--transition-base);
     box-shadow: var(--shadow-sm);
+    flex-shrink: 0;
 }
 
+/* Je style le bouton désactivé */
 .nav-prev:disabled {
     background: var(--text-light);
     cursor: not-allowed;
     box-shadow: none;
+    opacity: 0.5;
 }
 
+/* J'ajoute un effet hover aux boutons actifs */
 .nav-prev:not(:disabled):hover,
-.nav-next:hover {
+.nav-next:not(:disabled):hover {
     background: linear-gradient(135deg, var(--primary-blue-dark) 0%, var(--primary-blue) 100%);
     transform: scale(1.15);
     box-shadow: var(--shadow-md);
 }
 
+/* J'ajoute un effet au clic */
 .nav-prev:not(:disabled):active,
-.nav-next:active {
+.nav-next:not(:disabled):active {
     transform: scale(1.05);
 }
 
+/* J'ai créé un indicateur de page */
 .page-indicator {
     font-weight: 600;
     color: var(--text-medium);
@@ -892,12 +1127,17 @@ a {
     border-radius: 20px;
 }
 
+/* Je mets en évidence l'étape actuelle */
 .current-step {
     color: var(--primary-blue);
     font-size: 1.125rem;
 }
 
-/* Bouton submit */
+/* ============================================
+   BOUTON SUBMIT
+   ============================================ */
+
+/* J'ai créé un bouton d'envoi proéminent */
 .btn-submit {
     width: 100%;
     background: linear-gradient(135deg, var(--secondary-orange) 0%, var(--secondary-orange-light) 100%);
@@ -914,24 +1154,29 @@ a {
     margin-bottom: var(--spacing-sm);
     transition: all var(--transition-base);
     box-shadow: 0 8px 16px rgba(255, 107, 53, 0.3);
-    margin-top: var(--spacing-md); /* AJOUT : Espace au-dessus du bouton */
+    margin-top: var(--spacing-md);
 }
 
-.btn-submit:hover {
+/* J'ajoute un effet hover */
+.btn-submit:not(:disabled):hover {
     transform: translateY(-2px);
     box-shadow: 0 12px 24px rgba(255, 107, 53, 0.4);
 }
 
-.btn-submit:active {
+/* J'ajoute un effet au clic */
+.btn-submit:not(:disabled):active {
     transform: translateY(0);
 }
 
+/* Je style le bouton désactivé */
 .btn-submit:disabled {
     background: var(--text-light);
     cursor: not-allowed;
     box-shadow: none;
+    opacity: 0.6;
 }
 
+/* J'ai ajouté un disclaimer */
 .form-disclaimer {
     font-size: 0.75rem;
     color: var(--text-medium);
@@ -939,13 +1184,31 @@ a {
     line-height: 1.5;
 }
 
-/* Confirmation */
+/* ============================================
+   MESSAGE DE CONFIRMATION
+   ============================================ */
+
+/* J'ai créé un message de confirmation centré */
 .confirmation-message {
     text-align: center;
     padding: var(--spacing-2xl) var(--spacing-md);
     position: relative;
+    animation: fadeInScale 0.5s ease-out;
 }
 
+/* J'anime l'apparition de la confirmation */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* J'ai ajouté un bouton de fermeture */
 .confirmation-close {
     position: absolute;
     top: var(--spacing-sm);
@@ -962,12 +1225,14 @@ a {
     transition: all var(--transition-base);
 }
 
+/* J'ajoute un effet hover au bouton de fermeture */
 .confirmation-close:hover {
     background: var(--primary-blue-lighter);
     color: var(--primary-blue);
     transform: rotate(90deg);
 }
 
+/* J'ai créé une grande icône de succès */
 .confirmation-icon {
     font-size: 4rem;
     color: var(--success);
@@ -975,6 +1240,7 @@ a {
     animation: successPop 0.6s ease-out;
 }
 
+/* J'anime l'apparition de l'icône */
 @keyframes successPop {
     0% {
         transform: scale(0);
@@ -989,18 +1255,23 @@ a {
     }
 }
 
+/* J'ai stylisé le titre de confirmation */
 .confirmation-message h3 {
     font-size: 2rem;
     color: var(--primary-blue-dark);
     margin-bottom: var(--spacing-md);
+    animation: fadeIn 0.6s ease-out 0.2s both;
 }
 
+/* J'ai stylisé le texte de confirmation */
 .confirmation-text {
     color: var(--text-medium);
     margin-bottom: var(--spacing-md);
     line-height: 1.7;
+    animation: fadeIn 0.6s ease-out 0.3s both;
 }
 
+/* J'ai ajouté un sous-texte avec badge */
 .confirmation-subtext {
     display: inline-flex;
     align-items: center;
@@ -1010,17 +1281,20 @@ a {
     border-radius: 50px;
     color: var(--primary-blue);
     font-weight: 600;
+    animation: fadeIn 0.6s ease-out 0.4s both;
 }
 
 /* ============================================
    SECTION AVANTAGES
    ============================================ */
 
+/* J'ai créé la section avantages */
 .section-avantages {
     background: white;
     padding: var(--spacing-2xl) var(--spacing-sm);
 }
 
+/* J'ai stylisé le titre de section */
 .section-avantages h2 {
     font-size: 2rem;
     text-align: center;
@@ -1029,6 +1303,7 @@ a {
     font-weight: 700;
 }
 
+/* J'ai ajouté une introduction */
 .section-intro {
     text-align: center;
     color: var(--text-medium);
@@ -1037,12 +1312,14 @@ a {
     line-height: 1.7;
 }
 
+/* Je crée une grille pour les avantages */
 .advantages-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--spacing-lg);
 }
 
+/* J'ai créé des cartes pour chaque avantage */
 .advantage-card {
     background: var(--background-light);
     padding: var(--spacing-lg);
@@ -1053,12 +1330,14 @@ a {
     border: 2px solid transparent;
 }
 
+/* J'ajoute un effet hover */
 .advantage-card:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-lg);
     border-color: var(--primary-blue-light);
 }
 
+/* J'ai créé des icônes circulaires avec gradient */
 .advantage-icon {
     width: 4rem;
     height: 4rem;
@@ -1073,6 +1352,7 @@ a {
     box-shadow: var(--shadow-md);
 }
 
+/* J'ai stylisé les titres des avantages */
 .advantage-card h3 {
     font-size: 1.25rem;
     color: var(--primary-blue-dark);
@@ -1080,6 +1360,7 @@ a {
     font-weight: 700;
 }
 
+/* J'ai stylisé les descriptions */
 .advantage-card p {
     color: var(--text-medium);
     line-height: 1.6;
@@ -1089,119 +1370,135 @@ a {
    SECTION FAQ
    ============================================ */
 
+/* J'ai créé la section FAQ */
 .section-faq {
     background: var(--background-light);
     padding: var(--spacing-2xl) var(--spacing-sm);
 }
 
+/* J'ai ajouté des marges aux wrappers */
 .faq-wrapper,
 .reviews-wrapper {
     margin-bottom: var(--spacing-2xl);
 }
 
+/* J'ai stylisé le titre de la FAQ */
 .faq-wrapper h2,
 .reviews-wrapper h2 {
     font-size: 2rem;
     text-align: center;
     color: var(--primary-blue-dark);
-    margin-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
     font-weight: 700;
 }
 
-.section-subtitle {
-    text-align: center;
-    color: var(--text-medium);
-    margin-bottom: var(--spacing-lg);
-}
-
-/* FAQ */
+/* J'ai créé une liste pour les questions */
 .faq-list {
     max-width: 50rem;
     margin: 0 auto;
 }
 
+/* J'ai stylisé chaque item de FAQ */
 .faq-item {
     background: white;
     border-radius: 12px;
     margin-bottom: var(--spacing-sm);
-    overflow: hidden;
     box-shadow: var(--shadow-sm);
-    border: 2px solid transparent;
+    overflow: hidden;
     transition: all var(--transition-base);
 }
 
+/* J'ajoute un effet hover */
 .faq-item:hover {
-    border-color: var(--primary-blue-light);
+    box-shadow: var(--shadow-md);
 }
 
+/* J'ai créé des boutons cliquables pour les questions */
 .faq-question {
     width: 100%;
-    background: none;
-    border: none;
-    padding: var(--spacing-md);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: var(--spacing-md);
+    background: white;
+    border: none;
+    cursor: pointer;
     font-size: 1rem;
     font-weight: 600;
-    color: var(--text-dark);
-    cursor: pointer;
-    transition: all var(--transition-base);
+    color: var(--primary-blue-dark);
     text-align: left;
+    transition: all var(--transition-base);
 }
 
+/* J'ajoute un effet hover à la question */
 .faq-question:hover {
     color: var(--primary-blue);
+    background: var(--primary-blue-lighter);
 }
 
+/* J'anime l'icône chevron */
 .faq-question i {
     font-size: 1.25rem;
-    color: var(--primary-blue);
     transition: transform var(--transition-base);
+    color: var(--primary-blue);
 }
 
+/* Je rotate l'icône quand la question est ouverte */
 .faq-item.active .faq-question i {
     transform: rotate(180deg);
 }
 
+/* J'ai créé un conteneur pour les réponses */
 .faq-answer {
     max-height: 0;
     overflow: hidden;
-    transition: max-height var(--transition-base);
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                padding 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 0 var(--spacing-md);
 }
 
+/* J'affiche la réponse quand l'item est actif */
 .faq-item.active .faq-answer {
     max-height: 500px;
+    padding: 0 var(--spacing-md) var(--spacing-md);
 }
 
+/* J'ai stylisé le texte des réponses */
 .faq-answer p {
-    padding: 0 var(--spacing-md) var(--spacing-md);
     color: var(--text-medium);
     line-height: 1.7;
+    animation: fadeIn 0.3s ease-out;
 }
 
-/* Avis */
+/* ============================================
+   SECTION AVIS CLIENTS
+   ============================================ */
+
+/* Je crée une grille pour les avis */
 .reviews-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--spacing-lg);
 }
 
+/* J'ai créé des cartes pour chaque avis */
 .review-card {
     background: white;
     padding: var(--spacing-lg);
     border-radius: 16px;
     box-shadow: var(--shadow-sm);
     transition: all var(--transition-base);
-    border: 2px solid transparent;
+    border: 2px solid var(--primary-blue-lighter);
 }
 
+/* J'ajoute un effet hover */
 .review-card:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-lg);
-    border-color: var(--primary-blue-light);
+    border-color: var(--primary-blue);
 }
 
+/* J'ai structuré l'en-tête de l'avis */
 .review-header {
     display: flex;
     justify-content: space-between;
@@ -1209,6 +1506,7 @@ a {
     margin-bottom: var(--spacing-sm);
 }
 
+/* J'ai créé des avatars circulaires avec gradient */
 .user-avatar {
     width: 3rem;
     height: 3rem;
@@ -1219,13 +1517,16 @@ a {
     justify-content: center;
     color: white;
     font-size: 1.5rem;
+    box-shadow: var(--shadow-sm);
 }
 
+/* J'ai stylisé les étoiles de notation */
 .review-rating {
     color: #fbbf24;
     font-size: 1rem;
 }
 
+/* J'ai stylisé le texte de l'avis */
 .user-review {
     color: var(--text-dark);
     line-height: 1.7;
@@ -1233,12 +1534,14 @@ a {
     font-style: italic;
 }
 
+/* J'ai stylisé le nom de l'utilisateur */
 .user-name {
     font-weight: 600;
     color: var(--primary-blue-dark);
     margin-bottom: 0.25rem;
 }
 
+/* J'ai stylisé la date de l'avis */
 .review-date {
     font-size: 0.875rem;
     color: var(--text-light);
@@ -1248,6 +1551,7 @@ a {
    FOOTER
    ============================================ */
 
+/* J'ai créé un footer avec gradient sombre */
 .footer {
     background: linear-gradient(135deg, var(--text-dark) 0%, #2D3748 100%);
     color: white;
@@ -1255,24 +1559,28 @@ a {
     text-align: center;
 }
 
+/* J'ai structuré le contenu du footer */
 .footer .container {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-sm);
 }
 
+/* J'ai créé une liste de liens */
 .footer-links {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-xs);
 }
 
+/* J'ai stylisé les liens du footer */
 .footer-links a {
     color: rgba(255, 255, 255, 0.8);
     transition: color var(--transition-base);
     font-size: 0.875rem;
 }
 
+/* J'ajoute un effet hover aux liens */
 .footer-links a:hover {
     color: var(--accent-green-light);
 }
@@ -1282,16 +1590,18 @@ a {
    ============================================ */
 
 @media (min-width: 768px) {
+    /* J'adapte le scroll padding pour tablette */
     html {
         scroll-padding-top: 6rem;
     }
     
-    /* Header */
+    /* J'agrandis le logo en tablette */
     .logo img {
         width: 4rem;
         height: 4rem;
     }
     
+    /* J'affiche les logos d'aide en tablette */
     .help-logo {
         display: flex;
         gap: var(--spacing-md);
@@ -1303,27 +1613,29 @@ a {
         object-fit: contain;
     }
     
-    /* Téléphone fixe */
+    /* J'adapte le téléphone fixe pour tablette */
     .phone-fixed {
         padding: 1.125rem 1.75rem;
         font-size: 1rem;
     }
     
-    /* Section Accueil */
+    /* J'agrandis le titre en tablette */
     .section-accueil h1 {
         font-size: 2rem;
     }
     
+    /* Je passe les cartes d'aide en 3 colonnes */
     .help-cards {
         grid-template-columns: repeat(3, 1fr);
         gap: var(--spacing-md);
     }
     
+    /* Je passe les indicateurs en 4 colonnes */
     .trust-indicators {
         grid-template-columns: repeat(4, 1fr);
     }
     
-    /* Comment ça marche - Grid */
+    /* Je passe les étapes en 3 colonnes */
     .how-it-works-grid {
         grid-template-columns: repeat(3, 1fr);
         gap: var(--spacing-lg);
@@ -1343,22 +1655,22 @@ a {
         margin-top: var(--spacing-2xl);
     }
     
-    /* Formulaire */
+    /* Je passe les options de formulaire en 2 colonnes */
     .form-options {
         grid-template-columns: repeat(2, 1fr);
     }
     
-    /* Avantages */
+    /* Je passe les avantages en 2 colonnes */
     .advantages-grid {
         grid-template-columns: repeat(2, 1fr);
     }
     
-    /* Avis */
+    /* Je passe les avis en 2 colonnes */
     .reviews-grid {
         grid-template-columns: repeat(2, 1fr);
     }
     
-    /* Footer */
+    /* J'adapte le footer pour tablette */
     .footer .container {
         flex-direction: row;
         justify-content: space-between;
@@ -1376,25 +1688,28 @@ a {
    ============================================ */
 
 @media (min-width: 1024px) {
+    /* J'adapte le scroll padding pour desktop */
     html {
         scroll-padding-top: 7rem;
     }
     
-    /* Container */
+    /* J'augmente le padding du container */
     .container {
         padding: 0 var(--spacing-lg);
     }
     
-    /* Header */
+    /* J'adapte le header pour desktop */
     .header {
         padding: var(--spacing-sm) var(--spacing-xl);
     }
     
+    /* J'agrandis le logo en desktop */
     .logo img {
         width: 6.25rem;
         height: 5.625rem;
     }
     
+    /* J'espace mieux les logos d'aide */
     .help-logo {
         gap: var(--spacing-lg);
     }
@@ -1404,10 +1719,12 @@ a {
         height: 4.375rem;
     }
     
+    /* Je cache le burger menu en desktop */
     .burger-menu {
         display: none;
     }
     
+    /* Je transforme la navbar en horizontale */
     .navbar {
         position: static;
         width: auto;
@@ -1419,6 +1736,7 @@ a {
         background: transparent;
     }
     
+    /* J'adapte les liens pour le desktop */
     .navbar a {
         border-bottom: none;
         padding: var(--spacing-xs) 0;
@@ -1426,6 +1744,7 @@ a {
         position: relative;
     }
     
+    /* J'ajoute un soulignement animé */
     .navbar a::after {
         content: '';
         position: absolute;
@@ -1446,7 +1765,7 @@ a {
         width: 100%;
     }
     
-    /* Sections */
+    /* J'augmente le padding des sections */
     .section-accueil,
     .section-simulation,
     .section-avantages,
@@ -1454,7 +1773,7 @@ a {
         padding: var(--spacing-3xl) var(--spacing-lg);
     }
     
-    /* Section Accueil */
+    /* J'agrandis le titre principal */
     .section-accueil h1 {
         font-size: 2.5rem;
         max-width: 56.25rem;
@@ -1462,44 +1781,49 @@ a {
         margin-right: auto;
     }
     
-    /* Grid "Comment ça marche" */
+    /* J'agrandis le titre de la grille */
     .grid-title {
         font-size: 2.5rem;
     }
     
+    /* J'augmente le padding des cartes d'étape */
     .step-card {
         padding: var(--spacing-xl) var(--spacing-lg);
     }
     
+    /* J'agrandis les numéros d'étape */
     .step-number {
         width: 3.125rem;
         height: 3.125rem;
         font-size: 1.5rem;
     }
     
+    /* J'agrandis les icônes */
     .step-icon i {
         font-size: 4rem;
     }
     
+    /* J'agrandis les titres des étapes */
     .step-card h3 {
         font-size: 1.5rem;
     }
     
+    /* J'augmente la taille du texte */
     .step-card p {
         font-size: 1rem;
     }
     
-    /* Calculateur */
+    /* J'augmente le padding du calculateur */
     .calculator-box {
         padding: var(--spacing-2xl);
     }
     
-    /* Avantages */
+    /* Je passe les avantages en 3 colonnes */
     .advantages-grid {
         grid-template-columns: repeat(3, 1fr);
     }
     
-    /* Avis */
+    /* Je passe les avis en 3 colonnes */
     .reviews-grid {
         grid-template-columns: repeat(3, 1fr);
     }
@@ -1510,34 +1834,42 @@ a {
    ============================================ */
 
 @media (min-width: 1440px) {
+    /* J'adapte le scroll padding pour grand écran */
     html {
         scroll-padding-top: 8rem;
     }
     
+    /* J'agrandis encore le titre principal */
     .section-accueil h1 {
         font-size: 3rem;
     }
     
+    /* J'agrandis le titre de la grille */
     .grid-title {
         font-size: 2.8rem;
     }
     
+    /* J'espace mieux les étapes */
     .how-it-works-grid {
         gap: var(--spacing-xl);
     }
     
+    /* J'augmente le padding des cartes */
     .step-card {
         padding: 3rem 2.5rem;
     }
     
+    /* J'agrandis les titres */
     .step-card h3 {
         font-size: 1.6rem;
     }
     
+    /* J'agrandis le texte */
     .step-card p {
         font-size: 1.1rem;
     }
     
+    /* J'agrandis les icônes */
     .step-icon i {
         font-size: 4.5rem;
     }
@@ -1547,10 +1879,12 @@ a {
    UTILITAIRES
    ============================================ */
 
+/* Je crée une classe pour cacher les éléments */
 .hidden {
     display: none !important;
 }
 
+/* Je crée une classe pour le texte avec gradient */
 .text-gradient {
     background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-green) 100%);
     -webkit-background-clip: text;
@@ -1558,7 +1892,7 @@ a {
     background-clip: text;
 }
 
-/* Animation d'apparition pour les éléments */
+/* J'ai créé une animation d'apparition par le bas */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -1570,6 +1904,7 @@ a {
     }
 }
 
+/* Je crée une classe pour l'animation */
 .fade-in-up {
     animation: fadeInUp 0.6s ease-out;
 }
