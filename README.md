@@ -63,7 +63,7 @@ landing_page/
 └── Guide_EmailJS.txt (Guide de configuration)
 
 
-TECHNOLOGIES UTILISEES
+TECHNOLOGIES UTILISÉES
 
 HTML5 : Structure sémantique
 CSS3 : Flexbox, Grid, animations
