@@ -242,14 +242,14 @@ a {
     position: fixed;
     bottom: 1.5rem;
     right: 1.5rem;
-    background: linear-gradient(135deg, var(--secondary-orange) 0%, var(--secondary-orange-light) 100%);
-    color: white;
+    background: #b1ff58;
+    color: rgb(91, 91, 91);
     padding: 1rem 1.5rem;
     border-radius: 50px;
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    box-shadow: 0 8px 24px rgba(255, 107, 53, 0.4);
+    box-shadow: 0 8px 24px rgba(214, 214, 214, 0.4);
     z-index: 99;
     transition: all var(--transition-base);
     font-weight: 600;
@@ -259,7 +259,7 @@ a {
 /* J'ajoute un effet hover subtil */
 .phone-fixed:hover {
     transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 12px 32px rgba(255, 107, 53, 0.5);
+    box-shadow: 0 12px 32px rgba(102, 102, 102, 0.5);
 }
 
 /* J'anime l'icône du téléphone */
