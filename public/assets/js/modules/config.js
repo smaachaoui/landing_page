@@ -9,10 +9,10 @@ const EMAILJS_CONFIG = {
     serviceID: 'service_64807va',
     
     // J'ai défini l'ID du template d'email
-    templateID: 'template_qu1cjou',
+    templateID: 'template_wt7uqyk',
     
     // J'ai ajouté la clé publique pour l'authentification
-    publicKey: 'jKNqo-W9zXWuv8Rs5',
+    publicKey: 'NMJm1o0Uk4AvGz4hb',
     
     // J'ai configuré l'email de destination
     emailDestination: 'contact.hautsommet@gmail.com'
