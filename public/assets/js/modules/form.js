@@ -380,7 +380,27 @@ form.addEventListener('submit', async (e) => {
     submitBtn.style.transform = 'scale(0.95)';
     
     try {
+        // Envoi de l'email 
         await window.sendEmail(data);
+        console.log('Email envoyé avec succès');
+        
+        // Envoi du SMS d'accusé de réception 
+        // Le SMS est envoyé en parallèle et ne bloque pas le formulaire en cas d'erreur
+        if (window.sendSMS) {
+            try {
+                const smsResult = await window.sendSMS(data);
+                if (smsResult.success && !smsResult.skipped) {
+                    console.log('SMS envoyé avec succès');
+                } else if (smsResult.skipped) {
+                    console.log('SMS désactivé');
+                } else {
+                    console.warn('SMS non envoyé:', smsResult.error);
+                }
+            } catch (smsError) {
+                // Je log l'erreur mais je ne bloque pas le formulaire
+                console.warn('Erreur SMS (non bloquant):', smsError);
+            }
+        }
         
         // Animation de succès
         submitBtn.innerHTML = '<i class="bi bi-check-circle"></i> Envoyé !';
