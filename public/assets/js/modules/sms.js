@@ -157,7 +157,7 @@ async function sendSMS(formData) {
 // ============================================
 // EXPORT DE LA FONCTION
 // ============================================
-// J'exporte la fonction sendSMS pour qu'elle soit accessible dans form.js
+// J'exporte la fonction sendSMS
 window.sendSMS = sendSMS;
 
 // ============================================
