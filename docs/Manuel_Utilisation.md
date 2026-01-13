@@ -17,10 +17,10 @@ J'ai conçu ce manuel pour :
 ### Accès au site web
 
 **URL de production**
-J'accède au site via l'URL : [à définir]
+J'accède au site via l'URL : https://www.hautsommet-marseille.fr
 
 **Hébergement**
-Le site est hébergé sur : [à définir]
+Le site est hébergé sur OVHcloud : https://www.ovhcloud.com/fr/web-hosting/
 
 ### Accès aux services tiers
 
