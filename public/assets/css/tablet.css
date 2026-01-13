@@ -1,0 +1,59 @@
+/* RESPONSIVE TABLETTE 768px a 1023px */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    /* Container */
+    .container {
+        padding: 30px 20px;
+    }
+    
+    /* Typography */
+    h1 {
+        font-size: 36px;
+    }
+    
+    h2 {
+        font-size: 28px;
+    }
+    
+    h3 {
+        font-size: 20px;
+    }
+    
+    /* Section accueil */
+    .section-accueil h1 {
+        font-size: 38px;
+    }
+    
+    /* Grille comment ca marche */
+    .how-it-works-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+    
+    .grid-title {
+        font-size: 2rem;
+    }
+    
+    /* Calculateur */
+    .calculator-box {
+        padding: 30px 25px;
+        margin: 30px auto;
+    }
+    
+    /* Options formulaire */
+    .form-options {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Grille avantages */
+    .advantages-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+    
+    /* Grille avis */
+    .reviews-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+}

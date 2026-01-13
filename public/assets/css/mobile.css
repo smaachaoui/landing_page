@@ -1,0 +1,390 @@
+/* RESPONSIVE MOBILE Moins de 768px */
+
+@media (max-width: 767px) {
+    /* Container principal */
+    .container {
+        padding: 20px 15px;
+        max-width: 100%;
+    }
+    
+    /* Typography responsive */
+    h1 {
+        font-size: 28px;
+        line-height: 1.2;
+        margin-bottom: 15px;
+    }
+    
+    h2 {
+        font-size: 24px;
+        line-height: 1.3;
+        margin-bottom: 15px;
+    }
+    
+    h3 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    
+    p {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+    
+    /* Section accueil */
+    .section-accueil {
+        padding: 40px 15px 60px;
+    }
+    
+    .section-accueil h1 {
+        font-size: 32px;
+        margin-bottom: 15px;
+    }
+    
+    /* Banniere urgence */
+    .urgency-banner {
+        font-size: 0.8rem;
+        padding: 0.6rem 1.2rem;
+        gap: 0.5rem;
+    }
+    
+    /* Cartes aides */
+    .help-cards {
+        gap: 12px;
+    }
+    
+    .help-card {
+        padding: 20px 15px;
+    }
+    
+    .help-card i {
+        font-size: 2rem;
+    }
+    
+    .help-card h2 {
+        font-size: 1.1rem;
+    }
+    
+    .help-card p {
+        font-size: 0.85rem;
+    }
+    
+    /* Indicateurs confiance */
+    .trust-indicators {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .trust-item {
+        padding: 12px;
+    }
+    
+    .trust-item i {
+        font-size: 1.25rem;
+    }
+    
+    .trust-item span {
+        font-size: 0.8rem;
+    }
+    
+    /* Bouton principal */
+    .btn-primary {
+        font-size: 0.95rem;
+        padding: 14px 24px;
+        width: 100%;
+    }
+    
+    /* Section simulation */
+    .section-simulation {
+        padding: 40px 15px;
+    }
+    
+    /* Grille comment ca marche */
+    .how-it-works-grid {
+        grid-template-columns: 1fr !important;
+        gap: 40px;
+        padding: 0;
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+    
+    .grid-title {
+        font-size: 1.5rem;
+        margin-bottom: 30px;
+        padding-top: 20px;
+    }
+    
+    .grid-title::after {
+        width: 60px;
+        height: 3px;
+        margin-top: 15px;
+    }
+    
+    /* Cartes etapes */
+    .step-card {
+        padding: 30px 20px;
+    }
+    
+    .step-number {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+        top: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .step-icon {
+        margin: 30px 0 20px;
+    }
+    
+    .step-icon i {
+        font-size: 2.5rem;
+    }
+    
+    .step-card h3 {
+        font-size: 1.1rem;
+    }
+    
+    .step-card p {
+        font-size: 0.9rem;
+    }
+    
+    /* Calculateur */
+    .calculator-box {
+        padding: 30px 20px;
+        margin: 30px 15px;
+        border-radius: 16px;
+    }
+    
+    .calculator-box h2 {
+        font-size: 1.3rem;
+    }
+    
+    /* Barre progression */
+    .progress-bar-container {
+        margin: 0 -20px 25px;
+        border-radius: 0;
+    }
+    
+    /* Formulaire */
+    .form-calculator {
+        padding: 0;
+    }
+    
+    .form-question {
+        font-size: 1rem;
+    }
+    
+    .form-sub-question {
+        font-size: 0.95rem;
+    }
+    
+    /* Options formulaire */
+    .form-options {
+        grid-template-columns: 1fr !important;
+        gap: 12px;
+    }
+    
+    .option {
+        font-size: 14px;
+        padding: 16px 14px;
+        min-height: 100px;
+    }
+    
+    .option-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+    
+    .option span:last-child {
+        font-size: 0.9rem;
+    }
+    
+    /* Champs formulaire */
+    .form-field label {
+        font-size: 0.9rem;
+    }
+    
+    .form-field input,
+    .form-field select {
+        font-size: 15px;
+        padding: 12px 14px;
+    }
+    
+    /* Navigation formulaire */
+    .form-navigation {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .nav-prev,
+    .nav-next {
+        width: 100%;
+        height: 45px;
+        border-radius: 8px;
+        font-size: 1rem;
+    }
+    
+    .page-indicator {
+        order: -1;
+        padding: 10px;
+    }
+    
+    /* Bouton submit */
+    .btn-submit {
+        font-size: 16px;
+        padding: 16px 24px;
+    }
+    
+    /* Message confirmation */
+    .confirmation-icon {
+        font-size: 3rem;
+    }
+    
+    .confirmation-message h3 {
+        font-size: 1.5rem;
+    }
+    
+    .confirmation-text {
+        font-size: 0.95rem;
+    }
+    
+    /* Section avantages */
+    .section-avantages {
+        padding: 50px 15px;
+    }
+    
+    .section-avantages h2 {
+        font-size: 1.5rem;
+    }
+    
+    .section-intro {
+        font-size: 0.95rem;
+        margin-bottom: 40px;
+    }
+    
+    /* Grille avantages */
+    .advantages-grid {
+        grid-template-columns: 1fr !important;
+        gap: 25px;
+    }
+    
+    .advantage-card {
+        padding: 25px 20px;
+    }
+    
+    .advantage-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.75rem;
+        margin-bottom: 15px;
+    }
+    
+    .advantage-card h3 {
+        font-size: 1.1rem;
+    }
+    
+    .advantage-card p {
+        font-size: 0.9rem;
+    }
+    
+    /* Section FAQ */
+    .section-faq {
+        padding: 50px 15px;
+    }
+    
+    .faq-wrapper h2,
+    .reviews-wrapper h2 {
+        font-size: 1.5rem;
+        margin-bottom: 30px;
+    }
+    
+    /* FAQ items */
+    .faq-item {
+        margin-bottom: 12px;
+    }
+    
+    .faq-question {
+        font-size: 0.95rem;
+        padding: 16px 45px 16px 16px;
+    }
+    
+    .faq-question i {
+        font-size: 1.1rem;
+    }
+    
+    .faq-answer p {
+        font-size: 0.9rem;
+    }
+    
+    /* Grille avis */
+    .reviews-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px;
+    }
+    
+    .review-card {
+        padding: 20px;
+    }
+    
+    .user-avatar {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1.25rem;
+    }
+    
+    .user-review {
+        font-size: 0.9rem;
+    }
+    
+    /* Footer */
+    .footer {
+        padding: 30px 15px;
+        text-align: center;
+    }
+    
+    .footer .container {
+        flex-direction: column;
+    }
+    
+    .footer-links {
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 15px;
+    }
+    
+    /* Telephone fixe */
+    .phone-fixed {
+        bottom: 1rem;
+        right: 1rem;
+        padding: 0.875rem 1.25rem;
+        font-size: 0.85rem;
+    }
+    
+    .phone-text {
+        display: none;
+    }
+    
+    /* Images responsive */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+/* Touch devices */
+@media (hover: none) and (pointer: coarse) {
+    .btn,
+    .option,
+    .faq-question {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    .advantage-card:hover,
+    .step-card:hover,
+    .option:hover {
+        transform: none;
+    }
+}
