@@ -1909,3 +1909,394 @@ a {
 .fade-in-up {
     animation: fadeInUp 0.6s ease-out;
 }
+
+/*  */
+/* RESPONSIVE MOBILE FIRST  */
+
+/* ============================================
+   MOBILE - Smartphones (< 768px)
+   ============================================ */
+@media (max-width: 767px) {
+    /* Container principal */
+    .container {
+        padding: 20px 15px;
+        max-width: 100%;
+    }
+    
+    /* Typography responsive */
+    h1 {
+        font-size: 28px;
+        line-height: 1.2;
+        margin-bottom: 15px;
+    }
+    
+    h2 {
+        font-size: 24px;
+        line-height: 1.3;
+        margin-bottom: 15px;
+    }
+    
+    h3 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    
+    p {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+    
+    /* Hero section */
+    .hero {
+        padding: 40px 0 60px;
+        min-height: auto;
+    }
+    
+    .hero-content {
+        padding: 20px 15px;
+    }
+    
+    .hero-content h1 {
+        font-size: 32px;
+        margin-bottom: 15px;
+    }
+    
+    .hero-content p {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    
+    /* Badges hero */
+    .hero-badges {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+    
+    .hero-badge {
+        font-size: 13px;
+        padding: 10px 15px;
+    }
+    
+    /* Formulaire calculator */
+    .calculator-box {
+        padding: 20px 15px;
+        margin: 20px 15px;
+        border-radius: 16px;
+    }
+    
+    .form-calculator {
+        padding: 20px 15px;
+    }
+    
+    .form-step {
+        padding: 0;
+    }
+    
+    /* Barre de progression */
+    .progress-bar-container {
+        margin: 0 -15px 20px;
+        border-radius: 0;
+    }
+    
+    /* Options du formulaire */
+    .options-grid {
+        grid-template-columns: 1fr !important;
+        gap: 12px;
+    }
+    
+    .option {
+        font-size: 14px;
+        padding: 14px;
+        min-height: 60px;
+    }
+    
+    .option i {
+        font-size: 20px;
+    }
+    
+    /* Champs de formulaire */
+    .form-group {
+        margin-bottom: 15px;
+    }
+    
+    .form-group label {
+        font-size: 14px;
+        margin-bottom: 6px;
+    }
+    
+    .form-group input,
+    .form-group select {
+        font-size: 15px;
+        padding: 12px 14px;
+    }
+    
+    /* Boutons */
+    .btn-primary,
+    .btn-submit {
+        font-size: 16px;
+        padding: 14px 24px;
+        width: 100%;
+    }
+    
+    .form-navigation {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .nav-prev,
+    .nav-next {
+        width: 100%;
+        padding: 12px;
+    }
+    
+    /* Grilles - Toutes en 1 colonne sur mobile */
+    .advantages-grid,
+    .how-it-works-grid,
+    .reviews-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px;
+    }
+    
+    /* Cards */
+    .advantage-card,
+    .step-card,
+    .review-card {
+        padding: 20px;
+    }
+    
+    .advantage-icon,
+    .step-icon {
+        font-size: 32px;
+        width: 60px;
+        height: 60px;
+        margin-bottom: 15px;
+    }
+    
+    .step-number {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+        top: 15px;
+        right: 15px;
+    }
+    
+    /* Section How it Works */
+    .how-it-works-grid {
+        padding: 0;
+    }
+    
+    /* Section Aides */
+    .aides-amount {
+        font-size: 36px;
+    }
+    
+    /* FAQ */
+    .faq-item {
+        margin-bottom: 12px;
+    }
+    
+    .faq-question {
+        font-size: 15px;
+        padding: 16px 45px 16px 16px;
+    }
+    
+    .faq-answer {
+        padding: 16px;
+        font-size: 14px;
+    }
+    
+    /* Footer */
+    .footer {
+        padding: 30px 0;
+        text-align: center;
+    }
+    
+    .footer-links {
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 15px;
+    }
+    
+    /* Menu mobile */
+    .nav-menu {
+        flex-direction: column;
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: white;
+        padding: 20px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        display: none;
+    }
+    
+    .nav-menu.active {
+        display: flex;
+    }
+    
+    .nav-menu a {
+        padding: 12px 0;
+        border-bottom: 1px solid #eee;
+    }
+}
+
+/* ============================================
+   TABLETTE - Portrait (768px - 1023px)
+   ============================================ */
+@media (min-width: 768px) and (max-width: 1023px) {
+    /* Container */
+    .container {
+        padding: 30px 20px;
+    }
+    
+    /* Grilles en 2 colonnes */
+    .advantages-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+    
+    .how-it-works-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+    
+    /* Formulaire */
+    .calculator-box {
+        padding: 30px 25px;
+        margin: 30px auto;
+    }
+    
+    .options-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Typography */
+    h1 {
+        font-size: 36px;
+    }
+    
+    h2 {
+        font-size: 28px;
+    }
+    
+    h3 {
+        font-size: 20px;
+    }
+}
+
+/* ============================================
+   DESKTOP - Small (1024px - 1279px)
+   ============================================ */
+@media (min-width: 1024px) and (max-width: 1279px) {
+    /* Grilles en 3 colonnes */
+    .advantages-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+    }
+    
+    .how-it-works-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+    }
+    
+    /* Container */
+    .container {
+        max-width: 1200px;
+        padding: 40px 30px;
+    }
+}
+
+/* ============================================
+   DESKTOP - Medium (1280px - 1919px)
+   ============================================ */
+@media (min-width: 1280px) and (max-width: 1919px) {
+    .container {
+        max-width: 1280px;
+    }
+    
+    .advantages-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+    }
+}
+
+/* ============================================
+   DESKTOP - Large (1920px+)
+   ============================================ */
+@media (min-width: 1920px) {
+    .container {
+        max-width: 1400px;
+    }
+    
+    h1 {
+        font-size: 48px;
+    }
+    
+    h2 {
+        font-size: 36px;
+    }
+}
+
+/* ============================================
+   RESPONSIVE - Images
+   ============================================ */
+@media (max-width: 767px) {
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    .hero-image,
+    .section-image {
+        margin: 20px 0;
+    }
+}
+
+/* ============================================
+   RESPONSIVE - Touch devices
+   ============================================ */
+@media (hover: none) and (pointer: coarse) {
+    /* Augmenter la taille des zones cliquables */
+    .btn,
+    .option,
+    .faq-question {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    /* Retirer les effets hover sur tactile */
+    .advantage-card:hover,
+    .step-card:hover,
+    .option:hover {
+        transform: none;
+    }
+}
+
+/* ============================================
+   PRINT - Pour impression
+   ============================================ */
+@media print {
+    /* Masquer éléments non nécessaires */
+    header,
+    .calculator-box,
+    .cta-section,
+    footer {
+        display: none;
+    }
+    
+    /* Optimiser pour impression */
+    body {
+        color: black;
+        background: white;
+    }
+    
+    h1, h2, h3 {
+        page-break-after: avoid;
+    }
+    
+    .advantage-card,
+    .step-card {
+        page-break-inside: avoid;
+    }
+}
