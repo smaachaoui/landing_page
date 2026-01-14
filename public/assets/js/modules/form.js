@@ -349,6 +349,13 @@ function setupPhoneFormatting() {
 // ============================================
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
+
+    // Vérification du consentement RGPD
+    const consentRGPD = document.getElementById('consent-rgpd');
+    if (!consentRGPD || !consentRGPD.checked) {
+        alert('Vous devez accepter la politique de confidentialité pour continuer.');
+        return;
+    }
     
     if (!validateCurrentStep()) {
         alert('Veuillez remplir tous les champs correctement.');
@@ -387,18 +394,17 @@ form.addEventListener('submit', async (e) => {
         // Envoi du SMS d'accusé de réception 
         // Le SMS est envoyé en parallèle et ne bloque pas le formulaire en cas d'erreur
         if (window.sendSMS) {
-            try {
-                const smsResult = await window.sendSMS(data);
-                if (smsResult.success && !smsResult.skipped) {
-                    console.log('SMS envoyé avec succès');
-                } else if (smsResult.skipped) {
-                    console.log('SMS désactivé');
-                } else {
-                    console.warn('SMS non envoyé:', smsResult.error);
+            // Envoi SMS uniquement si consentement
+            const consentSMS = document.getElementById('consent-sms');
+            if (consentSMS && consentSMS.checked) {
+                try {
+                    await sendSMS(data);
+                    console.log('SMS envoyé avec consentement');
+                } catch (error) {
+                    console.warn('Erreur SMS (non bloquant):', error);
                 }
-            } catch (smsError) {
-                // Je log l'erreur mais je ne bloque pas le formulaire
-                console.warn('Erreur SMS (non bloquant):', smsError);
+            } else {
+                console.log('SMS non envoyé - absence de consentement utilisateur');
             }
         }
         

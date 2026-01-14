@@ -649,16 +649,39 @@
                                 <span class="page-indicator"><span class="current-step">4</span>/4</span>
                             </div>
 
+                           
+                            <div class="form-field consent-field" style="margin-bottom: 1rem;">
+                                <label class="consent-checkbox" style="display: flex; align-items: flex-start; cursor: pointer;">
+                                    <input type="checkbox" id="consent-rgpd" name="consent_rgpd" required 
+                                        style="margin-right: 0.75rem; margin-top: 0.25rem; min-width: 18px; min-height: 18px; cursor: pointer;">
+                                    <span style="font-size: 0.9rem; line-height: 1.5;">
+                                        J'accepte que mes données personnelles (nom, prénom, email, téléphone) 
+                                        soient traitées par Haut Sommet dans le cadre de ma demande de simulation. 
+                                        Je reconnais avoir pris connaissance de la 
+                                        <a href="mentions_legales.html#donnees-personnelles" target="_blank" 
+                                        style="color: #0066CC; text-decoration: underline;">politique de confidentialité</a> 
+                                        et de mes droits.
+                                        <strong style="color: #d32f2f; margin-left: 0.25rem;">*</strong>
+                                    </span>
+                                </label>
+                            </div>
+
+                            <!-- Case SMS -->
+                            <div class="form-field consent-field" style="margin-bottom: 1.5rem;">
+                                <label class="consent-checkbox" style="display: flex; align-items: flex-start; cursor: pointer;">
+                                    <input type="checkbox" id="consent-sms" name="consent_sms" 
+                                        style="margin-right: 0.75rem; margin-top: 0.25rem; min-width: 18px; min-height: 18px; cursor: pointer;">
+                                    <span style="font-size: 0.9rem; line-height: 1.5;">
+                                        J'accepte de recevoir un accusé de réception par SMS et d'être 
+                                        contacté(e) par un expert Haut Sommet par téléphone.
+                                    </span>
+                                </label>
+                            </div>
+
                             <button type="submit" class="btn-submit">
                                 <i class="bi bi-check-circle" aria-hidden="true"></i>
                                 Envoyer
                             </button>
-
-                            <p class="form-disclaimer">
-                                En soumettant ce formulaire, vous acceptez d'être recontacté(e) par Haut Sommet 
-                                dans le cadre de votre demande de simulation. Vos données sont protégées conformément au RGPD.
-                            </p>
-                        </div>
 
                         <!-- Étape 5 : Confirmation -->
                         <div class="form-step" data-step="5">
