@@ -1528,6 +1528,75 @@ a {
     color: var(--accent-green-light);
 }
 
+/* MENTIONS LÉGALES */
+
+.section-mentions {
+    padding: 100px 0 80px;
+    background: #f8f9fa;
+    min-height: 100vh;
+}
+
+.section-mentions h1 {
+    color: var(--primary-blue);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.intro-text {
+    text-align: center;
+    color: #666;
+    margin-bottom: 50px;
+    font-size: 1.05rem;
+}
+
+.mention-block {
+    background: white;
+    padding: 30px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+}
+
+.mention-block h2 {
+    color: var(--primary-blue);
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--secondary-orange);
+}
+
+.mention-block h3 {
+    color: var(--secondary-orange);
+    font-size: 1.2rem;
+    margin: 25px 0 15px 0;
+}
+
+.mention-block ul {
+    margin: 15px 0;
+    padding-left: 25px;
+}
+
+.mention-block li {
+    margin: 8px 0;
+    line-height: 1.6;
+}
+
+.mention-block a {
+    color: var(--primary-blue);
+    text-decoration: underline;
+}
+
+.mention-block a:hover {
+    color: var(--secondary-orange);
+}
+
+.date-maj {
+    text-align: center;
+    color: #999;
+    font-style: italic;
+    margin-top: 50px;
+}
+
 /* RESPONSIVE TABLETTE 768px+ */
 
 @media (min-width: 768px) {
