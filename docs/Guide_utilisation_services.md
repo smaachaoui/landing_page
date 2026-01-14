@@ -206,24 +206,17 @@ Brevo permet d'envoyer automatiquement un SMS de confirmation au prospect après
 ## Coûts Brevo
 
 ### Offre Gratuite
-- **Prix : 0€/mois**
-- **Emails : 300 par jour** (9000/mois)
+- **Emails : 300 par jour**
 - **SMS : 0 SMS gratuits** Les SMS sont TOUJOURS payants
 
 ### SMS à la carte (Pay-as-you-go)
 - **Prix : 0,046€ par SMS** en France
 - Achat par packs :
-  - 100 SMS = 4,60€
-  - 500 SMS = 23€
-  - 1000 SMS = 46€
+  - 100 SMS = 5,00 €
+  - 200 SMS = 9,00 €
 - **Les crédits n'expirent JAMAIS**
 
-**Calcul pour votre activité :**
-- 10 prospects/jour = 10 SMS/jour = 300 SMS/mois = **13,80€/mois**
-- 20 prospects/jour = 20 SMS/jour = 600 SMS/mois = **27,60€/mois**
-- 50 prospects/jour = 50 SMS/jour = 1500 SMS/mois = **69€/mois**
-
-**Mon conseil :** Achetez d'abord un pack de 100 SMS (4,60€) pour tester le système. Si ça fonctionne bien, achetez ensuite des packs plus gros selon votre volume.
+**Mon conseil :** Achetez d'abord un pack de 100 SMS (5,00€) pour tester le système. Si ça fonctionne bien, achetez ensuite des packs plus gros selon votre volume.
 
 ---
 
