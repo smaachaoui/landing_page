@@ -56,18 +56,12 @@ function formatPhoneNumber(phone) {
 // J'ai créé cette fonction pour générer un message personnalisé avec la civilité et le nom du client
 // Le message doit rester court (max 160 caractères pour 1 SMS = 1 crédit)
 function createSMSMessage(formData) {
-    // J'utilise la civilité et le nom du client
-    const civilite = formData.civilite === 'mr' ? 'Monsieur' : 'Madame';
-    const nom = formData.nom || '';
+    const civilite = formData.civilite === 'mr' ? 'M.' : 'Mme';
+    const nom = formData.nom;
     
-    // J'ai composé un message court et professionnel avec civilité + nom
-    // Important : 160 caractères maximum pour 1 SMS, au-delà = 2 SMS = 2 crédits
-    const message = `Bonjour ${civilite} ${nom}, votre demande d'aide à l'installation d'une pompe à chaleur a bien été reçue. Un expert Haut-Sommet vous contactera sous 48h. Merci ! - Haut Sommet`;
-    
-    // Je log le message pour vérifier sa longueur dans la console
-    console.log('Message SMS créé:', message);
-    console.log('Longueur du message:', message.length, 'caractères');
-    return message;
+    // Message avec droit d'opposition (160 caractères max)
+    return `${civilite} ${nom}, votre demande PAC est enregistrée. Expert vous contactera sous 48h. STOP au 36111. - Haut Sommet`;
+       
 }
 
 
@@ -123,7 +117,7 @@ async function sendSMS(formData) {
         };
         
         // Je log les informations d'envoi pour le débogage (sans afficher le numéro complet)
-        console.log('📤 Envoi du SMS vers Make.com...', {
+        console.log('Envoi du SMS vers Make.com...', {
             telephone: phoneFormatted.substring(0, 7) + '...',
             messageLength: message.length
         });
