@@ -18,6 +18,7 @@
         './assets/js/modules/config.js',      // Je charge d'abord la configuration
         './assets/js/modules/validation.js',  // Puis la validation (utilisée par form.js)
         './assets/js/modules/email.js',       // L'envoi d'email (utilisé par form.js)
+        './assets/js/modules/sms.js',         // L'envoi de SMS (utilisé par form.js)
         './assets/js/modules/menu.js',        // Le menu de navigation
         './assets/js/modules/form.js',        // Le formulaire (dépend de validation et email)
         './assets/js/modules/faq.js'          // La FAQ (indépendante)
