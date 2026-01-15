@@ -669,7 +669,7 @@ mon-site/
 
 1. Je clique sur **"Create a project"**
 2. Cloudflare me demande un nom pour mon projet
-3. J'écris : **"haut-sommet-marseille"**
+3. J'écris : **"mes-guides-energie"**
    - Le nom doit être en minuscules
    - Sans espaces (utiliser des tirets -)
    - Sans accents
@@ -706,7 +706,7 @@ Une fois que tous les fichiers sont uploadés :
 
 Cloudflare me donne une URL qui ressemble à :
 ```
-https://haut-sommet-marseille.pages.dev
+https://mesguidesenergie.pages.dev
 ```
 
 ### Étape 6 : Vérifier que tout fonctionne
@@ -729,11 +729,11 @@ https://haut-sommet-marseille.pages.dev
 
 ### Étape 7 : Configurer un nom de domaine personnalisé (optionnel)
 
-Si j'ai acheté un nom de domaine (ex: haut-sommet-marseille.fr), je peux le connecter à Cloudflare.
+Si j'ai acheté un nom de domaine (ex: mesguidesenergie.fr), je peux le connecter à Cloudflare.
 
 1. Dans mon projet Cloudflare Pages, je clique sur **"Custom domains"**
 2. Je clique sur **"Set up a custom domain"**
-3. J'entre mon nom de domaine : haut-sommet-marseille.fr
+3. J'entre mon nom de domaine : mesguidesenergie.fr
 4. Je clique sur **"Continue"**
 
 Cloudflare me donne des instructions pour configurer mon domaine :
@@ -744,7 +744,7 @@ Cloudflare me donne des instructions pour configurer mon domaine :
 3. J'ajoute un enregistrement CNAME :
    - Type : CNAME
    - Nom : @ (ou www)
-   - Valeur : haut-sommet-marseille.pages.dev
+   - Valeur : mesguidesenergie.pages.dev
 4. Je sauvegarde
 5. J'attends 5-10 minutes que ça se propage
 

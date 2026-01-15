@@ -17,7 +17,7 @@ J'ai conçu ce manuel pour :
 ### Accès au site web
 
 **URL de production**
-J'accède au site via l'URL : https://www.hautsommet-marseille.fr
+J'accède au site via l'URL : https://https://www.mesguidesenergie.fr/
 
 **Hébergement**
 Le site est hébergé sur OVHcloud : https://www.ovhcloud.com/fr/web-hosting/
