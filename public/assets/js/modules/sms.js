@@ -72,7 +72,7 @@ function createSMSMessage(formData) {
 async function sendSMS(formData) {
     // Je vérifie d'abord si les SMS sont activés dans la configuration
     if (!SMS_CONFIG.enabled) {
-        console.log('📱 SMS désactivé dans la configuration');
+        console.log('SMS désactivé dans la configuration');
         // Je retourne un objet indiquant que le SMS a été sauté volontairement
         return { success: true, skipped: true };
     }
