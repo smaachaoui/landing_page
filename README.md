@@ -110,7 +110,7 @@ landing_page/
 │   │   │       └── faq.js      # Accordéon FAQ
 │   │   └── img/
 │   │       └── [images du site]
-│   └── mentions-legales.html   # Page mentions légales
+│   └── mentions_legales.html   # Page mentions légales
 └── docs/
     ├── README.md               # Ce fichier
     ├── DOCUMENTATION_TECHNIQUE.md  # Documentation détaillée
