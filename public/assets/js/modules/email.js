@@ -158,4 +158,4 @@ async function sendEmail(formData) {
 // J'exporte la fonction pour l'utiliser dans les autres modules
 window.sendEmail = sendEmail;
 
-console.log('Module d\'envoi d\'email chargé avec succès');
+// console.log('Module d\'envoi d\'email chargé avec succès');

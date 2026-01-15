@@ -422,4 +422,4 @@ window.validateFormData = validateFormData;
 window.sanitizeInput = sanitizeInput;
 window.checkAppartementEligibility = checkAppartementEligibility;
 
-console.log('Module de validation chargé avec succès. Protection XSS activée.');
+// console.log('Module de validation chargé avec succès. Protection XSS activée.');

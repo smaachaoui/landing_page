@@ -7,7 +7,7 @@
 (function() {
     'use strict';
     
-    console.log('Application Haut Sommet : démarrage...');
+    // console.log('Application Haut Sommet : démarrage...');
     
     // ============================================
     // ORDRE DE CHARGEMENT DES MODULES
@@ -37,7 +37,7 @@
             
             // Je gère le succès du chargement
             script.onload = () => {
-                console.log(`Module chargé : ${src}`);
+                // console.log(`Module chargé : ${src}`);
                 resolve();
             };
             
@@ -65,7 +65,7 @@
                 await new Promise(resolve => setTimeout(resolve, 50));
             }
             
-            console.log(' Tous les modules sont chargés.');
+            // console.log(' Tous les modules sont chargés.');
             
             // J'initialise l'application
             initApp();
@@ -81,7 +81,7 @@
     // ============================================
     // Je vérifie que l'application est prête et que tous les modules sont disponibles
     function initApp() {
-        console.log('Vérification de l\'application...');
+        // console.log('Vérification de l\'application...');
         
         // Je vérifie que tous les modules essentiels sont disponibles
         const requiredModules = [
@@ -102,8 +102,8 @@
             return;
         }
         
-        console.log(' Tous les modules requis sont disponibles.');
-        console.log('Application prête.');
+        // console.log(' Tous les modules requis sont disponibles.');
+        // console.log('Application prête.');
         
         // J'ajoute une classe au body pour indiquer que tout est chargé
         document.body.classList.add('app-ready');
@@ -184,7 +184,7 @@
     // DÉMARRAGE DE L'APPLICATION
     // ============================================
     // Je démarre le chargement des modules
-    console.log('Démarrage du chargement des modules...');
+    // console.log('Démarrage du chargement des modules...');
     loadAllModules();
     
 })();

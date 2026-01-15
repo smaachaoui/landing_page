@@ -21,4 +21,4 @@ const EMAILJS_CONFIG = {
 // J'exporte la configuration pour qu'elle soit accessible dans les autres modules
 window.EMAILJS_CONFIG = EMAILJS_CONFIG;
 
-console.log('Configuration EmailJS chargée avec succès');
+//console.log('Configuration EmailJS chargée avec succès');

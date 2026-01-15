@@ -26,7 +26,7 @@ function toggleMenu() {
     // J'empêche le scroll du body quand le menu est ouvert
     document.body.style.overflow = isOpen ? 'hidden' : '';
     
-    console.log(`Menu ${isOpen ? 'ouvert' : 'fermé'}`);
+    //console.log(`Menu ${isOpen ? 'ouvert' : 'fermé'}`);
 }
 
 // ============================================
@@ -90,7 +90,7 @@ window.addEventListener('resize', () => {
         // Je ferme le menu si on passe en mode desktop (> 1024px)
         if (window.innerWidth > 1024 && navbar.classList.contains('active')) {
             toggleMenu();
-            console.log('Menu fermé automatiquement (passage en mode desktop)');
+            //console.log('Menu fermé automatiquement (passage en mode desktop)');
         }
     }, 250);
 });
@@ -114,9 +114,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 block: 'start'
             });
             
-            console.log(`Scroll vers ${targetId}`);
+            //console.log(`Scroll vers ${targetId}`);
         }
     });
 });
 
-console.log('Module menu chargé avec succès');
+//console.log('Module menu chargé avec succès');

@@ -8,11 +8,12 @@
 // CONFIGURATION DU WEBHOOK
 // J'ai centralisé ici toutes les informations de connexion au système SMS
 
-// IMPORTANT : Je dois remplacer l'URL webhook par celle que j'ai récupérée sur Make.com
 const SMS_CONFIG = {
     // J'ai configuré l'URL du webhook Make.com
-    // Cette URL est fournie par Make.com lors de la création du module Webhooks
     webhookURL: 'https://hook.eu1.make.com/g3wux52p3qbyxtrh94g0ey88espxeiag',
+    
+    // Clé API pour sécuriser le webhook (configurée dans Make.com)
+    apiKey: 'Hs2026SecretWebhook!PAC-Marseille',
     
     // J'ai défini le nom de l'expéditeur qui apparaîtra sur le téléphone du client
     // Maximum 11 caractères, pas d'espaces, alphanumériques uniquement
@@ -45,8 +46,6 @@ function formatPhoneNumber(phone) {
         cleaned = '+33' + cleaned;
     }
     
-    // Je log le numéro formaté pour vérifier qu'il est correct dans la console
-    console.log('Numéro formaté:', cleaned);
     return cleaned;
 }
 
@@ -72,17 +71,12 @@ function createSMSMessage(formData) {
 async function sendSMS(formData) {
     // Je vérifie d'abord si les SMS sont activés dans la configuration
     if (!SMS_CONFIG.enabled) {
-        console.log('SMS désactivé dans la configuration');
-        // Je retourne un objet indiquant que le SMS a été sauté volontairement
         return { success: true, skipped: true };
     }
     
     // Je vérifie que l'URL webhook a bien été configurée
-    // Si elle contient encore "VOTRE_URL", c'est que l'utilisateur ne l'a pas remplacée
     if (!SMS_CONFIG.webhookURL || SMS_CONFIG.webhookURL.includes('VOTRE_URL')) {
         console.warn('URL webhook Make.com non configurée - SMS non envoyé');
-        console.warn('→ Veuillez configurer l\'URL dans sms.js ligne 15');
-        // Je retourne une erreur mais je ne bloque pas le formulaire
         return { success: false, error: 'Webhook non configuré' };
     }
     
@@ -101,13 +95,8 @@ async function sendSMS(formData) {
         
         // Je prépare les données à envoyer au webhook Make.com
         const webhookData = {
-            // J'envoie le numéro formaté
             telephone: phoneFormatted,
-            
-            // J'envoie le message personnalisé
             message: message,
-            
-            // J'ajoute des métadonnées pour le suivi et le débogage
             metadata: {
                 prenom: formData.prenom,
                 nom: formData.nom,
@@ -116,33 +105,24 @@ async function sendSMS(formData) {
             }
         };
         
-        // Je log les informations d'envoi pour le débogage (sans afficher le numéro complet)
-        console.log('Envoi du SMS vers Make.com...', {
-            telephone: phoneFormatted.substring(0, 7) + '...',
-            messageLength: message.length
-        });
-        
-        // J'envoie la requête POST au webhook Make.com
+        // J'envoie la requête POST au webhook Make.com avec la clé API sécurisée
         const response = await fetch(SMS_CONFIG.webhookURL, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'x-make-apikey': SMS_CONFIG.apiKey  // Header d'authentification Make.com
             },
             body: JSON.stringify(webhookData)
         });
         
         // Je vérifie la réponse du serveur
         if (response.ok) {
-            console.log('SMS envoyé avec succès !');
             return { success: true };
         } else {
-            // J'ai reçu une erreur HTTP du serveur
-            console.error('Erreur lors de l\'envoi du SMS:', response.status, response.statusText);
             return { success: false, error: `Erreur HTTP ${response.status}` };
         }
         
     } catch (error) {
-        // J'ai intercepté une erreur (réseau, timeout, etc.)
         console.error('Erreur lors de l\'envoi du SMS:', error);
         return { success: false, error: error.message };
     }
@@ -151,23 +131,4 @@ async function sendSMS(formData) {
 // ============================================
 // EXPORT DE LA FONCTION
 // ============================================
-// J'exporte la fonction sendSMS
 window.sendSMS = sendSMS;
-
-// ============================================
-// INITIALISATION ET LOGS
-// ============================================
-// Je log le chargement du module avec les informations de configuration
-console.log('📱 Module SMS chargé avec succès');
-console.log('Configuration SMS:', {
-    enabled: SMS_CONFIG.enabled,
-    webhookConfigured: !SMS_CONFIG.webhookURL.includes('VOTRE_URL'),
-    sender: SMS_CONFIG.sender
-});
-
-// J'affiche un avertissement si le webhook n'est pas configuré
-if (SMS_CONFIG.webhookURL.includes('VOTRE_URL')) {
-    console.warn('ATTENTION : URL webhook non configurée !');
-    console.warn('→ Modifiez la ligne 15 de sms.js avec votre URL Make.com');
-    console.warn('→ Consultez GUIDE_VISUEL.md pour les instructions');
-}

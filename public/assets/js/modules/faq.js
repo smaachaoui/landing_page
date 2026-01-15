@@ -9,7 +9,7 @@
 (function() {
     'use strict';
     
-    console.log('Module FAQ : chargement...');
+    // console.log('Module FAQ : chargement...');
     
     // ============================================
     // INITIALISATION DE LA FAQ
@@ -66,7 +66,7 @@
                             otherQuestion.setAttribute('aria-expanded', 'false');
                         }
                         
-                        console.log(`FAQ : Item ${Array.from(faqItems).indexOf(otherItem) + 1} fermé`);
+                        /* console.log(`FAQ : Item ${Array.from(faqItems).indexOf(otherItem) + 1} fermé`); */
                     }
                 });
                 
@@ -88,7 +88,7 @@
                 }
                 
                 // Log pour le debug
-                console.log(`FAQ : Item ${index + 1} ${newState ? 'ouvert' : 'fermé'}`);
+                // console.log(`FAQ : Item ${index + 1} ${newState ? 'ouvert' : 'fermé'}`);
             });
             
             // J'ajoute le support du clavier pour l'accessibilité
@@ -126,7 +126,7 @@
             });
         });
         
-        console.log(`FAQ : ${faqItems.length} items initialisés avec succès`);
+        /* console.log(`FAQ : ${faqItems.length} items initialisés avec succès`); */
     }
     
     // ============================================
@@ -146,6 +146,6 @@
     // J'expose la fonction pour permettre une réinitialisation si nécessaire
     window.initFAQ = initFAQ;
     
-    console.log('Module FAQ : chargé');
+    // console.log('Module FAQ : chargé');
     
 })();

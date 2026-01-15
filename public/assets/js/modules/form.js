@@ -369,7 +369,7 @@ form.addEventListener('submit', async (e) => {
         data[key] = window.sanitizeInput(value);
     });
     
-    console.log('Données du formulaire:', data);
+    // console.log('Données du formulaire:', data);
     
     // Validation finale
     if (!window.validateFormData(data)) {
@@ -389,7 +389,7 @@ form.addEventListener('submit', async (e) => {
     try {
         // Envoi de l'email 
         await window.sendEmail(data);
-        console.log('Email envoyé avec succès');
+        // console.log('Email envoyé avec succès');
         
         // Envoi du SMS d'accusé de réception 
         // Le SMS est envoyé en parallèle et ne bloque pas le formulaire en cas d'erreur
@@ -399,12 +399,12 @@ form.addEventListener('submit', async (e) => {
             if (consentSMS && consentSMS.checked) {
                 try {
                     await sendSMS(data);
-                    console.log('SMS envoyé avec consentement');
+                    // console.log('SMS envoyé avec consentement');
                 } catch (error) {
                     console.warn('Erreur SMS (non bloquant):', error);
                 }
             } else {
-                console.log('SMS non envoyé - absence de consentement utilisateur');
+                // console.log('SMS non envoyé - absence de consentement utilisateur');
             }
         }
         
@@ -644,4 +644,4 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-console.log('Formulaire optimisé chargé avec succès');
+// console.log('Formulaire optimisé chargé avec succès');
