@@ -60,7 +60,7 @@ function createSMSMessage(formData) {
     const nom = formData.nom;
     
     // Message avec droit d'opposition (160 caractères max)
-    return `${civilite} ${nom}, votre demande PAC est enregistrée. Expert vous contactera sous 48h. STOP au 36111. - Haut Sommet`;
+    return `${civilite} ${nom}, votre simulation PAC a bien été enregistrée. Un conseiller Haut Sommet vous contactera sous 48h. STOP au 36111`;
        
 }
 
