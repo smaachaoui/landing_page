@@ -16,12 +16,12 @@
     // L'ordre est important car certains modules dépendent d'autres
     const modules = [
         './assets/js/modules/config.js',      // Je charge d'abord la configuration
-        './assets/js/modules/validation.js',  // Puis la validation (utilisée par form.js)
-        './assets/js/modules/email.js',       // L'envoi d'email (utilisé par form.js)
-        './assets/js/modules/sms.js',         // L'envoi de SMS (utilisé par form.js)
+        './assets/js/modules/validation.js',  // Puis la validation 
+        './assets/js/modules/email.js',       // L'envoi d'email 
+        './assets/js/modules/sms.js',         // L'envoi de SMS 
         './assets/js/modules/menu.js',        // Le menu de navigation
-        './assets/js/modules/form.js',        // Le formulaire (dépend de validation et email)
-        './assets/js/modules/faq.js'          // La FAQ (indépendante)
+        './assets/js/modules/form.js',        // Le formulaire 
+        './assets/js/modules/faq.js'          // La FAQ 
     ];
     
     // ============================================
