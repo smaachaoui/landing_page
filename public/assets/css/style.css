@@ -1708,7 +1708,7 @@ a {
     
     /* Header desktop */
     .header {
-        padding: var(--spacing-sm) var(--spacing-xl);
+        padding: var(--spacing-xs) var(--spacing-xl);
     }
     
     /* Logo desktop */
