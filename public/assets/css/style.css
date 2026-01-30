@@ -1788,6 +1788,11 @@ a {
         margin-left: auto;
         margin-right: auto;
     }
+
+    .important{
+        color:#0fff02;
+        padding: 1rem;
+    }
     
     /* Titre grille desktop */
     .grid-title {
