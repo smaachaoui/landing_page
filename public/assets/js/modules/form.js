@@ -32,6 +32,21 @@ function updateProgressBar() {
     }
 }
 
+function scrollToCalculator(options = {}) {
+    const el = document.querySelector('#calculator');
+    if (!el) return;
+
+    const header = document.querySelector('.header');
+    const headerH = header ? header.getBoundingClientRect().height : 0;
+
+    // marge supplémentaire pour respirer
+    const offset = headerH + 16;
+
+    const top = window.scrollY + el.getBoundingClientRect().top - offset;
+    window.scrollTo({ top, behavior: options.behavior || 'smooth' });
+}
+
+
 // ============================================
 // AFFICHAGE DES ÉTAPES AVEC ANIMATIONS
 // ============================================
@@ -76,14 +91,9 @@ function showStep(stepIndex) {
         
         // Scroll vers le haut du formulaire avec un léger délai
         setTimeout(() => {
-            const calculatorBox = document.querySelector('.calculator-box');
-            if (calculatorBox) {
-                calculatorBox.scrollIntoView({ 
-                    behavior: 'smooth',
-                    block: 'center'
-                });
-            }
+            scrollToCalculator({ behavior: 'smooth' });
         }, 100);
+        
     }, 150);
 }
 
@@ -97,7 +107,8 @@ function focusFirstField() {
             // Chercher le premier input non-radio ou le premier select
             const firstField = currentStepElement.querySelector('input[type="text"], input[type="email"], input[type="tel"], select');
             if (firstField && !firstField.disabled) {
-                firstField.focus();
+                firstField.focus({ preventScroll: true });
+
             }
         }
     }, 400);

@@ -598,6 +598,11 @@ a {
 
 /* CALCULATEUR */
 
+#calculator {
+    scroll-margin-top: 6rem; /* ajuste selon ton header */
+}
+
+
 /* Boite calculateur */
 .calculator-box {
     background: white;
