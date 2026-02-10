@@ -1,4 +1,4 @@
-# Un site web Landing Page pour la société Haut Sommet basé à Marseille.
+# Un site web Landing Page pour la société Haut Sommet.
 
 ## A propos du projet
 
