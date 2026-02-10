@@ -26,15 +26,14 @@ Le site est hébergé sur OVHcloud : https://www.ovhcloud.com/fr/web-hosting/
 
 **EmailJS**
 J'accède au dashboard EmailJS via : https://dashboard.emailjs.com
-Identifiants : [conservés de manière sécurisée]
 
 **Make.com**
 J'accède à Make.com via : https://www.make.com
-Identifiants : [conservés de manière sécurisée]
+
 
 **Brevo**
 J'accède à Brevo via : https://app.brevo.com
-Identifiants : [conservés de manière sécurisée]
+
 
 ## Fonctionnement du formulaire
 
