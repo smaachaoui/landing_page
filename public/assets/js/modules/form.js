@@ -40,10 +40,39 @@ function scrollToCalculator(options = {}) {
     const headerH = header ? header.getBoundingClientRect().height : 0;
 
     // marge supplémentaire pour respirer
-    const offset = headerH + 16;
+    const offset = headerH + 20;
 
     const top = window.scrollY + el.getBoundingClientRect().top - offset;
-    window.scrollTo({ top, behavior: options.behavior || 'smooth' });
+    
+    // Scroll fluide vers le formulaire
+    window.scrollTo({ 
+        top, 
+        behavior: options.behavior || 'smooth' 
+    });
+}
+
+// Fonction pour maintenir le focus sur le formulaire lors des sélections
+function lockScrollToCalculator() {
+    const calculator = document.querySelector('#calculator');
+    if (!calculator) return;
+    
+    const header = document.querySelector('.header');
+    const headerH = header ? header.getBoundingClientRect().height : 0;
+    const offset = headerH + 20;
+    
+    // Calcul de la position cible
+    const targetTop = calculator.offsetTop - offset;
+    
+    // Si l'utilisateur est proche du formulaire, on le maintient en place
+    const currentScroll = window.scrollY;
+    const calculatorBottom = calculator.offsetTop + calculator.offsetHeight;
+    
+    if (currentScroll >= targetTop - 100 && currentScroll <= calculatorBottom) {
+        window.scrollTo({
+            top: targetTop,
+            behavior: 'smooth'
+        });
+    }
 }
 
 
@@ -487,7 +516,11 @@ function toggleAppartementDetails() {
 }
 
 habitationRadios.forEach(radio => {
-    radio.addEventListener('change', toggleAppartementDetails);
+    radio.addEventListener('change', () => {
+        toggleAppartementDetails();
+        // Maintenir le focus sur le formulaire après sélection
+        setTimeout(() => lockScrollToCalculator(), 100);
+    });
 });
 
 toggleAppartementDetails();
@@ -567,7 +600,11 @@ function toggleAutreChauffage() {
 }
 
 chauffageRadios.forEach(radio => {
-    radio.addEventListener('change', toggleAutreChauffage);
+    radio.addEventListener('change', () => {
+        toggleAutreChauffage();
+        // Maintenir le focus sur le formulaire après sélection
+        setTimeout(() => lockScrollToCalculator(), 100);
+    });
 });
 
 toggleAutreChauffage();
@@ -625,6 +662,30 @@ setupPhoneFormatting();
 
 // Désactiver le bouton Suivant au démarrage si nécessaire
 updateNextButtonState();
+
+// ============================================
+// GESTION GLOBALE DU SCROLL FORMULAIRE
+// ============================================
+// Ajouter un écouteur sur tous les inputs du formulaire pour maintenir le scroll
+if (form) {
+    form.querySelectorAll('input[type="radio"], select').forEach(input => {
+        input.addEventListener('change', () => {
+            // Petit délai pour laisser le DOM se mettre à jour
+            setTimeout(() => {
+                lockScrollToCalculator();
+            }, 150);
+        });
+    });
+    
+    // Pour les options cliquables (labels)
+    form.querySelectorAll('.option').forEach(option => {
+        option.addEventListener('click', () => {
+            setTimeout(() => {
+                lockScrollToCalculator();
+            }, 200);
+        });
+    });
+}
 
 // Ajouter les animations CSS nécessaires
 const style = document.createElement('style');
