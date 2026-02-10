@@ -2,7 +2,7 @@
 
 ## A propos du projet
 
-Ce projet consistait à réaliser une landing page pour la société Haut Sommet, basée à Marseille. Développée à la demande du client, cette page a pour objectif de permettre aux visiteurs de vérifier leur éligibilité aux aides financières de l’État pour l’installation d’une pompe à chaleur.
+Ce projet consistait à réaliser une landing page pour la société Haut Sommet. Développée à la demande du client, cette page a pour objectif de permettre aux visiteurs de vérifier leur éligibilité aux aides financières de l’État pour l’installation d’une pompe à chaleur.
 
 Le site propose un formulaire en plusieurs étapes permettant aux prospects de renseigner leurs informations afin d’évaluer leur éligibilité aux dispositifs d’aide en vigueur. Une fois le formulaire complété, les données sont transmises directement à l’adresse e-mail de contact de la société Haut Sommet, facilitant ainsi la prise de contact et le suivi des demandes.
 
@@ -294,4 +294,4 @@ J'ai utilisé les bibliothèques et services suivants :
 
 ## Auteur
 
-Landing page développé par Seifeddine Maachaoui, pour la société Haut Sommet dans le cadre d'un stage d'entreprise.
+J'ai développé cette landing page pour la société Haut Sommet dans le cadre d'un stage d'entreprise.
